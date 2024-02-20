@@ -1,0 +1,110 @@
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .animated-text {
+    font-size: 54px;
+    font-weight: bold;
+    position: absolute;
+    opacity: 0;
+    left: 260px;
+    transform: translateY(-500%);
+    animation: slideAnimation 5s ease-in-out forwards;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  .bg-image {
+    position: absolute;
+    z-index: -10;
+    right: -200px;
+  }
+  .over-image {
+    position: absolute;
+    z-index: 0;
+    right: 40px;
+    top: 70px;
+    width: 240px;
+    height: 152px;
+    object-fit: contain;
+    background: #fff;
+    padding: 0px 0px 50px 0px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  @keyframes slideAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    67% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+  
+  .main-heading {
+    margin-right: 100px;
+  }
+  
+  .text1 {
+    animation-delay: 0s;
+    font-size: 70px;
+  }
+  .text1 .main-text1 {
+    color: #1e8e3e;
+  }
+  
+  .text2 {
+    animation-delay: 5s;
+    font-size: 70px;
+  }
+  .text2 .main-text2 {
+    color: #c5221f;
+  }
+  
+  .text3 {
+    animation-delay: 10s;
+    font-size: 70px;
+  }
+  
+  .text3 .main-text3 {
+    color: #2d659b;
+  }
+  
+  .text4 {
+    animation-delay: 15s;
+    font-size: 70px;
+  }
+  .text4 .main-text4 {
+    color: #1e8e3e;
+  }
+  
+  .text5 {
+    animation-delay: 20s;
+    font-size: 70px;
+  }
+  .text5 .main-text5 {
+    color: #c5221f;
+  }
+  
+  .text6 {
+    animation-delay: 25s;
+   font-size: 70px;
+  }
+  
+  .text6 .main-text6 {
+    color: #2d659b;
+  }

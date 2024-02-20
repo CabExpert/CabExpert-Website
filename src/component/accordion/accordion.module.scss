@@ -1,0 +1,29 @@
+.cross {
+  display: flex;
+  background-color: white;
+  margin-bottom: 8px;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 18px 18px;
+}
+.accord {
+  width: 800px;
+  background-color: #f8f9fa;
+  padding: 40px;
+  margin-left: 39%;
+  margin-bottom: 100px;
+}
+
+.accord p {
+  background-color: white;
+  font-size: 18px;
+  font-weight: 400;
+  color: #3C3C43D9;
+  padding: 18px 18px;
+  margin-bottom: 8px;
+
+}
+.rotate{
+    transform: rotate(45deg);
+}

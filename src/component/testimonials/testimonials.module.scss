@@ -1,0 +1,85 @@
+.testbox {
+  display: flex;
+}
+.test h2{
+  padding-bottom: 45px;
+}
+.customer h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.customer h5 {
+  font-size: 15px;
+  color: #ff9900;
+}
+.customer p {
+  font-size: 22px;
+  color: #6a6a6a;
+  font-weight: 400;
+  text-align:center;
+  padding: 20px;
+  &:before {
+    content: "''";
+  }
+
+  &:after {
+    content: "''";
+    bottom: -17px;
+    position: relative;
+  }
+
+  &:before,
+  &:after {
+    font-size: 30px;
+    /* position: absolute; */
+    color: #ff9900;
+    line-height: 0;
+  }
+}
+
+.customer span {
+  font-size: 40px;
+  color: #ff9900;
+}
+
+.test h2 {
+  font-size: 48px;
+  font-weight: 700;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.test {
+  margin-bottom: 80px;
+}
+
+.customer {
+  width: 513px;
+  margin: 10px 10px 10px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 33px;
+  background-image: url("/Vector (2).png");
+  background-size: 243px 270px;
+  background-repeat: no-repeat;
+  background-position: left;
+  padding: 5px 0;
+  position: relative;
+  img {
+    margin-top: -60px;
+  }
+}
+.cot {
+  color: #ff9900;
+  font-size: 40px;
+}
+.cottwo {
+  color: #ff9900;
+  position: absolute;
+  bottom: -13px;
+  right: 0px;
+}
