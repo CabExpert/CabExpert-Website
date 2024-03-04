@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   margin-top: 80px;
-  background-image: linear-gradient(to bottom, white, #f8ead3);
+  background-image: url("/Ellipse 23.png");
   padding-bottom: 127px;
   border-bottom-left-radius: 40%;
   border-bottom-right-radius: 40%;
+  transform: rotate(180deg);
 }
 
 .us {
@@ -45,7 +46,11 @@
   color: #868686;
   padding-left: 20px;
 }
+.conta{
+  transform: rotate(-180deg);
+  padding-bottom: 50px;
 
+}
 .contactimage {
   display: flex;
   justify-content: center;

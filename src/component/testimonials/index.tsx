@@ -6,7 +6,7 @@ const Testimonials = () => {
   return (
     <>
       <div className={styles.test}>
-        <h2>Client Testimonials</h2>
+        <h2>Client Testimonials</h2>  
         <div className={styles.testbox}>
           {customer.map((value, index) => {
             return (

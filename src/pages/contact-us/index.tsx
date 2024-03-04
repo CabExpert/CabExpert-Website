@@ -3,8 +3,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/contact.module.scss";
 import Navbar from "@/component/navbar";
-import { Value } from "sass";
-import { useState } from "react";
 import Footer from "@/component/footer";
 import Testimonials from "@/component/testimonials";
 import Accordion from "@/component/accordion";
@@ -137,7 +135,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-          <div><Accordion /></div>
+        <div>
+          <Accordion />
+        </div>
         <Testimonials />
       </div>
 

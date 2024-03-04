@@ -17,3 +17,36 @@ li{
 h1,h2,h3,h4,h5,h6,p{
   margin: 0;
 }
+
+
+
+
+.at-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.at-item {
+  width: 100px; height: 100px; background-color:#ffe672; 
+  
+  animation-name: slide-bottom;
+  animation-duration: 2.2s;
+  animation-timing-function: ease;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: both;
+      
+  /* shorthand
+  animation: slide-bottom 2.2s ease 0.2s infinite normal both;*/
+}
+@keyframes slide-bottom {
+      
+  0% {
+      transform:translateY(0);
+  }
+  100% {
+      transform:translateY(100px);
+  }
+}

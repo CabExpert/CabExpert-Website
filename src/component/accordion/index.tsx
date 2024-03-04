@@ -14,7 +14,8 @@ const accordion = () => {
     }
   return (
     <>
-      <div className={`${styles.accordion} container `}>
+    <div></div>
+      <div className={`${styles.accordion} container `} style={{position:"relative"}}>
         <div className={styles.accord}>
           {accord.map((value, index) => {
             return (
@@ -32,6 +33,9 @@ const accordion = () => {
             );
           })}
         </div>
+        <Image src={"/Cloud-in-sky-vector-PNG-ezgif.com-video-to-gif-converter.gif"} alt="car" width={1440} height={1024} style={{width:"46%", height:"80%", position:"absolute", top:"0px",zIndex:"-9"}} />
+
+        <Image src={"/car.gif"} alt="car" width={1440} height={1024} style={{width:"46%", height:"80%", position:"absolute", bottom:"-140px",zIndex:"-9"}} />
       </div>
 
       <div className={styles.test}></div>
