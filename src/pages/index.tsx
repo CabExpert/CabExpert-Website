@@ -28,7 +28,7 @@ export default function Home() {
       <Animation />
     
 
-      <div className={`${styles.content_two} container `}>
+      {/* <div className={`${styles.content_two} container `}>
         <div className={styles.content}>
           <h1>Digital Duty Slips</h1>
 
@@ -38,7 +38,7 @@ export default function Home() {
         <div className={styles.imagetwo}>
           <Image src="/mytaxi.png" alt="image" height={287} width={205} />
         </div>
-      </div>
+      </div> */}
       <div className={`${styles.start} container `}>
         <span>One New-Age Car Rental Software to Replace Them All</span>
         <div className={styles.button}>

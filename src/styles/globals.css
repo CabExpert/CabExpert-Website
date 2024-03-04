@@ -1,9 +1,10 @@
-body{
+body {
   position: relative;
   margin: auto;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-li{
+li {
   list-style-type: none;
 }
 
@@ -14,12 +15,15 @@ li{
   margin-right: auto;
   min-height: auto;
 }
-h1,h2,h3,h4,h5,h6,p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
-
-
-
 
 .at-container {
   display: flex;
@@ -28,8 +32,10 @@ h1,h2,h3,h4,h5,h6,p{
   height: 100%;
 }
 .at-item {
-  width: 100px; height: 100px; background-color:#ffe672; 
-  
+  width: 100px;
+  height: 100px;
+  background-color: #ffe672;
+
   animation-name: slide-bottom;
   animation-duration: 2.2s;
   animation-timing-function: ease;
@@ -37,16 +43,198 @@ h1,h2,h3,h4,h5,h6,p{
   animation-iteration-count: infinite;
   animation-direction: normal;
   animation-fill-mode: both;
-      
+
   /* shorthand
   animation: slide-bottom 2.2s ease 0.2s infinite normal both;*/
 }
 @keyframes slide-bottom {
-      
   0% {
-      transform:translateY(0);
+    transform: translateY(0);
   }
   100% {
-      transform:translateY(100px);
+    transform: translateY(100px);
   }
 }
+
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 100vw;
+  max-width: 1440px;
+  position: relative;
+}
+
+/* Digital Duty Slips with CabX */
+.animated-text::after {
+  content: "";
+  animation: slideAnimation 10s ease-in-out infinite;
+}
+.animated-gap {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  width: 90vw;
+}
+.bg-image {
+  position: absolute;
+  z-index: -10;
+  top: 70px;
+  right: 40px;
+}
+.over-image {
+  position: absolute;
+  z-index: 0;
+  right: 40px;
+  top: 70px;
+  width: 240px;
+  height: 152px;
+  object-fit: contain;
+}
+
+.image {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-image: url("/public/overImage.png");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  animation-delay: 0.01s;
+  animation: slideAnimation 10s ease-in-out infinite;
+}
+
+.animated-text {
+  font-size: 54px;
+  font-weight: bold;
+  position: absolute;
+  opacity: 0;
+  top: 15vh;
+  left: -10%;
+  right: 35%;
+  transform: translateX(-50%, -50%);
+  text-align: center;
+  animation: slideAnimation 10s ease-in-out infinite;
+  animation-delay: 0.15s;
+  width: 100vw;
+  max-width: 1440px;
+}
+
+@keyframes slideAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-40%);
+    content: "Digital Duty Slips";
+    color: #1e8e3e;
+  }
+  9% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Digital Duty Slips";
+    color: #1e8e3e;
+  }
+
+  16% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Digital Duty Slips";
+    color: #1e8e3e;
+  }
+  24% {
+    opacity: 0;
+    transform: translateY(10%);
+    content: "Digital Duty Slips";
+    color: #1e8e3e;
+  }
+  35% {
+    opacity: 0;
+    transform: translateY(-40%);
+    content: "Billing and Invoicing";
+    color: #c5221f;
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Billing and Invoicing";
+    color: #c5221f;
+  }
+  48% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Billing and Invoicing";
+    color: #c5221f;
+  }
+  56% {
+    opacity: 0;
+    transform: translateY(10%);
+    content: "Billing and Invoicing";
+    color: #c5221f;
+  }
+  64% {
+    opacity: 0;
+    transform: translateY(-40%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+
+  88% {
+    opacity: 1;
+    transform: translateY(10%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+  90% {
+    opacity: 0;
+    transform: translateY(40%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40%);
+    content: "Real-Time Tracking";
+    color: #2d659b;
+  }
+}
+
+.main-heading {
+  margin-right: 100px;
+}
+.text1 {
+  animation-delay: 0s;
+  font-size: 85px;
+  margin-right: 400px;
+}
+.text1 .main-text1 {
+  color: #1e8e3e;
+}
+.with {
+  font-size: 85px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.with img{
+  width: 218.89px !important;
+}
+
