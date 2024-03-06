@@ -50,7 +50,7 @@ export default function Home() {
         <h4>Elevate Your Taxi Business </h4>
         <span>Key Advantages</span>
       </div>
-      <div style={{ position: "relative" }}>
+      <div className="three-box" style={{ position: "relative" }}>
         <div className={`${styles.main_box} container `}>
           {box.map((value, index) => {
             return (
@@ -81,6 +81,7 @@ export default function Home() {
           </h3>
           <Image src="/Group 489.png" alt="Indiamap" width={950} height={900} />
         </div>
+        
         <Testimonials />
       </div>
       <div className={`${styles.help} container `}>
@@ -90,7 +91,7 @@ export default function Home() {
             Get started with our free-of-charge, personalised support. Create
             your custom ads plan with a Google Ads Expert.
           </p>
-          <button className={styles.button_help}>5675-548-862</button>
+          <button className={styles.button_help}>0120-417-6500</button>
         </div>
       </div>
 

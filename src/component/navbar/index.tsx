@@ -1,72 +1,80 @@
 import React from "react";
 import Style from "../navbar/header.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
+  const [menu, setMenu] = React.useState(false);
+
+  const handleMenu = () => {
+    setMenu(!menu);
+  }
+
   return (
     <header className={Style.mainheader}>
       <div className={Style.topheder}>
-      <div className={`${Style.topnav} container `} >
-        <div className={`${Style.text_one} `}>
-          Cabx Taxi Service & Transport Solutions!
-        </div>
-        <div className={Style.righttop}>
-          <div className={Style.areas}>
-            <ul>
-              <li>
-                <a href="#Help">Help</a>
-              </li>
-              <li>
-                <a href="#Support">Support</a>
-              </li>
-              <li>
-                <a href="#FAQ">FAQ</a>
-              </li>
-            </ul>
+        <div className={`${Style.topnav} container `}>
+          <div className={`${Style.text_one} `}>
+            Cabx Taxi Service & Transport Solutions!
           </div>
-          <div className={Style.socialmedia}>
-            <ul>
-              <li>
-                <Image
-                  src="/Vector (1).png"
-                  alt="facebook"
-                  width="15"
-                  height="15"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/twitter.png"
-                  alt="twitter"
-                  width="15"
-                  height="15"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/Vector (3).png"
-                  alt="google"
-                  width="15"
-                  height="15"
-                />
-              </li>
-              <li>
-                <Image
-                  src="/Vector (4).png"
-                  alt="instagram"
-                  width="15"
-                  height="15"
-                />
-              </li>
-            </ul>
+          <div className={Style.righttop}>
+            <div className={Style.areas}>
+              <ul>
+                <li>
+                  <a href="#Help">Help</a>
+                </li>
+                <li>
+                  <a href="#Support">Support</a>
+                </li>
+                <li>
+                  <a href="#FAQ">FAQ</a>
+                </li>
+              </ul>
+            </div>
+            <div className={Style.socialmedia}>
+              <ul>
+                <li>
+                  <Image
+                    src="/Vector (1).png"
+                    alt="facebook"
+                    width="15"
+                    height="15"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/twitter.png"
+                    alt="twitter"
+                    width="15"
+                    height="15"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/Vector (3).png"
+                    alt="google"
+                    width="15"
+                    height="15"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/Vector (4).png"
+                    alt="instagram"
+                    width="15"
+                    height="15"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-      
+
       <div className={`${Style.topnav_two} container`}>
         <div>
-          <Image src="/Group 214.png" alt="logo" height={72} width={150} />
+          <Image onClick={() => router.push("/")} src="/Group 214.png" className={`${Style.header_logo}`} alt="logo" height={72} width={150} />
         </div>
         <div className={Style.menu_two}>
           <ul>
@@ -77,12 +85,16 @@ const Header = () => {
               <a href="#Features">Features</a>
             </li>
             <li>
-              <a href="#Contact us">Contact us</a>
+              <a onClick={() => router.push("/contact-us")}>Contact us</a>
             </li>
             <li>
-              <a href="#About Us">About Us</a>
+              <a onClick={() => router.push("/about-us")} >About Us</a>
             </li>
           </ul>
+        </div>
+    
+        <div className={Style.menu}>
+          <Image onClick={handleMenu} src="/menu.png" alt="logo" height={42} width={42} />
         </div>
         <div className={Style.button_nav}>
           <button className={Style.button_one}>sign in</button>

@@ -35,7 +35,7 @@ export default function Home() {
             more customers.
           </h4>
           <p>
-            "As a child, I have travelled a lot in trains across India. I
+            As a child, I have travelled a lot in trains across India. I
             remember my excitement as a train would slowly approach the
             platform, waiting to take me to somewhere new and totally
             unexplored. I carried this dream with me when I moved to the UK and
@@ -53,7 +53,7 @@ export default function Home() {
             ‘convenience’ that customers desire. Our goal is to create more
             transparency and drive best practices in the industry. At Cabx, we
             believe that transforming the industry from the inside out is key to
-            solving customer problems."
+            solving customer problems.
           </p>
           <h5>Anupam Singh</h5>
           <span>FOUNDER AND CEO</span>

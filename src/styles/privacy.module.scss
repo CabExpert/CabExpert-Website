@@ -1,0 +1,20 @@
+.privacy_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    main{
+        font-size: 15px;
+        margin: 50px;
+        max-width: 1440px;
+
+        ul{
+            li{
+                list-style:square;
+            }
+        }
+        p{
+            text-align: justify;
+            margin: 20px 0px;
+        }
+    }
+}

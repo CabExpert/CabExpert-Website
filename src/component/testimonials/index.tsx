@@ -5,8 +5,11 @@ import styles from "./testimonials.module.scss";
 const Testimonials = () => {
   return (
     <>
+      <div className={styles.testHeading}>
+        <h2>Client Testimonials</h2>
+      </div>
+
       <div className={styles.test}>
-        <h2>Client Testimonials</h2>  
         <div className={styles.testbox}>
           {customer.map((value, index) => {
             return (

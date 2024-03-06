@@ -33,7 +33,7 @@ export default function Home() {
             <div className={styles.call}>
               <Image src="/Group.png" alt="phone" height={28} width={28} />
               <div>
-                <h4>Call 1677-9879-5643</h4>
+                <h4>Call 0129-417-6500</h4>
                 <span>MON-FRI, 9:00AM-6:00PM</span>
               </div>
             </div>

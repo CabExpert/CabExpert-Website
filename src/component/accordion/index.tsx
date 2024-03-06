@@ -3,10 +3,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "./accordion.module.scss";
 import React from "react";
-import { useState } from "react";
-
-const accordion = () => {
-  const [toggleFaq, setToggleFaq] = useState("");
+const Accordion = () => {
+  const [toggleFaq, setToggleFaq] = React.useState("");
   const toggleFunction = (value: string) => {
     // setToggleFaq(value);/
     toggleFaq === "" ? setToggleFaq(value) : setToggleFaq("");
@@ -77,7 +75,7 @@ const accordion = () => {
     </>
   );
 };
-export default accordion;
+export default Accordion;
 
 const accord = [
   {

@@ -1,9 +1,17 @@
 .testbox {
   display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-top: 50px;
 }
-.test h2{
+
+
+
+.test h2 {
   padding-bottom: 45px;
 }
+
+
 .customer h3 {
   font-size: 24px;
   font-weight: 700;
@@ -13,12 +21,14 @@
   font-size: 15px;
   color: #ff9900;
 }
+
 .customer p {
   font-size: 22px;
   color: #6a6a6a;
   font-weight: 400;
-  text-align:center;
+  text-align: center;
   padding: 20px;
+
   &:before {
     content: "''";
   }
@@ -69,17 +79,63 @@
   background-position: left;
   padding: 5px 0;
   position: relative;
+
   img {
     margin-top: -60px;
   }
 }
+
 .cot {
   color: #ff9900;
   font-size: 40px;
 }
+
 .cottwo {
   color: #ff9900;
   position: absolute;
   bottom: -13px;
   right: 0px;
+}
+
+
+.testHeading h2{
+  text-align: center !important;
+  margin: 10px;
+}
+
+.testHeading {
+  display: flex;
+  justify-content: center;
+  width: 100% !important;
+  text-align: center !important;
+  max-width: 1440px;
+  h2{
+   padding: 20px;
+ }
+ }
+
+
+@media screen and (max-width: 900px) {
+  .test h2 {
+    font-size: 30px;
+  }
+
+  .testbox {
+    min-width: max-content;
+    overflow: auto;
+    width: 100vw !important;
+    padding: 10px;
+  }
+
+  .customer {
+    padding-top: 60px;
+    width: 350px !important;
+  }
+
+  .test {
+    overflow: scroll;
+    width: 100%;
+
+  }
+
 }

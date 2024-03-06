@@ -1,8 +1,11 @@
 import React from "react";
 import Style from "../footer/footer.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Footer = () => {
+  const router = useRouter();
+
   return (
     <div className={Style.xaxa}>
       <div className={`${Style.footer} container`}>
@@ -39,13 +42,15 @@ const Footer = () => {
                 <a href="#Help Center">Help Center</a>
               </li>
               <li>
-                <a href="#Privecy & Policy">Privecy & Policy</a>
+                <a onClick={() => router.push("privacy-policy")}>
+                  Privacy & Policy
+                </a>
               </li>
               <li>
-                <a href="#Terms Of Use">Terms Of Use</a>
+                <a onClick={() => router.push("terms-and-use")}>Terms Of Use</a>
               </li>
               <li>
-                <a href="#Contact Us">Contact Us</a>
+                <a onClick={() => router.push("contact-us")}>Contact Us</a>
               </li>
             </ul>
           </div>
@@ -55,17 +60,15 @@ const Footer = () => {
             </h3>
             <ul>
               <li>
-                <a href="#Facebook ">Facebook </a>
+                <a href="https://www.facebook.com/officialcabX/" target="_blank">Facebook </a>
               </li>
               <li>
-                <a href="#Instagram">Instagram</a>
+                <a href="https://www.instagram.com/officialcabx" target="_blank">Instagram</a>
               </li>
               <li>
-                <a href="#You Tube">You Tube</a>
+                <a href="https://www.youtube.com/@officialCabx" target="_blank">You Tube</a>
               </li>
-              <li>
-                <a href="#Snapchat">Snapchat </a>
-              </li>
+
               <li>
                 <a href="#WhatsApp">WhatsApp</a>
               </li>
@@ -76,13 +79,15 @@ const Footer = () => {
               <span>Head </span> Office
             </h3>
             <h4>LOCATION</h4>
-            <p>167 Williamson Plaza,Maggieberg,MT 09856</p>
+            <p>402, H-140, Sector 63, Noida (UP) -201301</p>
             <h4>JOIN US</h4>
-            <p>info@Yourgmail24.com</p>
+            <p>
+              info@cabexpert.co <br /> 0129-417-6500
+            </p>
           </div>
         </div>
         <div className={Style.city}>
-          {" "}0
+          {" "}
           <Image
             src="/city-skiline - Copy.png"
             alt="car"
@@ -90,12 +95,27 @@ const Footer = () => {
             width={1440}
             className={Style.cityimage}
           />
-          
-          <img src="/truck-2.png" alt="truck" width={120} height={50} className={Style.movingimage} />
-          <img src="/truck-1.png" alt="truck" width={150} height={68} className={Style.movingimagetwo} />
-          <img src="/truck-3.png" alt="truck" width={180} height={100} className={Style.movingimagethree} />
-         
-
+          <img
+            src="/truck-2.png"
+            alt="truck"
+            width={120}
+            height={50}
+            className={Style.movingimage}
+          />
+          <img
+            src="/truck-1.png"
+            alt="truck"
+            width={150}
+            height={68}
+            className={Style.movingimagetwo}
+          />
+          <img
+            src="/truck-3.png"
+            alt="truck"
+            width={180}
+            height={100}
+            className={Style.movingimagethree}
+          />
         </div>
       </div>
     </div>

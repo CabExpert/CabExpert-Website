@@ -55,7 +55,7 @@ const Animation = () => {
 
   return (
     <>
-      <div className={`${styles.content_two} container `}>
+      <div className={`${styles.content_two} animation-container container `}>
         <main className="flex min-h-screen bg-black flex-col items-center justify-between p-24">
           <div className="animation-container animated-gap">
             {/* ----1 */}
