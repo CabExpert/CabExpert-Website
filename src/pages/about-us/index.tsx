@@ -27,8 +27,8 @@ export default function Home() {
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, Nuvven Limited, was founded out of a passion
-            for travelling, and the urge to make it convenient for all. This is
+            Cabx parent company, Epic Global Digital Solutions Pvt. Ltd., was founded out of a passion
+            how we can make our life easeay by using the , and the urge to make it convenient for all. This is
             the <br></br>story of our founder Biswajit, an avid traveller with a
             vision to solve problems faced by fellow travellers looking to rent
             cars, as well as <br></br>small vehicle rental companies seeking
