@@ -27,7 +27,7 @@ export default function Home() {
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, Epic Global Digital Solutions Pvt. Ltd., was founded out of a passion
+            Cabx parent company, was founded out of a passion
             how we can make our life easeay by using the , and the urge to make it convenient for all. This is
             the <br></br>story of our founder Biswajit, an avid traveller with a
             vision to solve problems faced by fellow travellers looking to rent
@@ -55,8 +55,8 @@ export default function Home() {
             believe that transforming the industry from the inside out is key to
             solving customer problems.
           </p>
-          <h5>Anupam Singh</h5>
-          <span>FOUNDER AND CEO</span>
+          {/* <h5>Anupam Singh</h5>
+          <span>FOUNDER AND CEO</span> */}
         </div>
 
         <div className={styles.value}>

@@ -92,13 +92,18 @@ const Header = () => {
             </li>
           </ul>
         </div>
-    
+
         <div className={Style.menu}>
           <Image onClick={handleMenu} src="/menu.png" alt="logo" height={42} width={42} />
         </div>
         <div className={Style.button_nav}>
-          <button className={Style.button_one}>sign in</button>
+
+          <a href="https://admin.cabexpert.co/" >
+            <button className={Style.button_one} >sign in </button>
+          </a>
+          <a href="https://admin.cabexpert.co/signup" >
           <button className={Style.button_two}>Create a free account</button>
+          </a>
         </div>
       </div>
       {/* <div className={Style.header_parent}>
