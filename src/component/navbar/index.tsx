@@ -101,6 +101,7 @@ const Header = () => {
           </ul>
         </div>
 
+
         {menu ? (
           <div className="mb_menu_view">
             <div className={Style.mb_menu_close}>
@@ -147,8 +148,13 @@ const Header = () => {
           />
         </div>
         <div className={Style.button_nav}>
-          <button className={Style.button_one}>sign in</button>
+
+          <a href="https://admin.cabexpert.co/" >
+            <button className={Style.button_one} >sign in </button>
+          </a>
+          <a href="https://admin.cabexpert.co/signup" >
           <button className={Style.button_two}>Create a free account</button>
+          </a>
         </div>
       </div>
       {/* <div className={Style.header_parent}>

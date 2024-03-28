@@ -13,6 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+    <Head>
+        <title>About Us - Discover Our Vision and Mission | CabX</title>
+        <meta name="description" content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/fabicon.png" />
+      </Head>
       <Navbar />
 
       <div className={`${styles.about} container `}>
@@ -27,8 +33,8 @@ export default function Home() {
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, Nuvven Limited, was founded out of a passion
-            for travelling, and the urge to make it convenient for all. This is
+            Cabx parent company, was founded out of a passion
+            how we can make our life easeay by using the , and the urge to make it convenient for all. This is
             the <br></br>story of our founder Biswajit, an avid traveller with a
             vision to solve problems faced by fellow travellers looking to rent
             cars, as well as <br></br>small vehicle rental companies seeking
@@ -55,8 +61,8 @@ export default function Home() {
             believe that transforming the industry from the inside out is key to
             solving customer problems.
           </p>
-          <h5>Anupam Singh</h5>
-          <span>FOUNDER AND CEO</span>
+          {/* <h5>Anupam Singh</h5>
+          <span>FOUNDER AND CEO</span> */}
         </div>
 
         <div className={styles.value}>
