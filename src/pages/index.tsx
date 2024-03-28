@@ -23,14 +23,14 @@ export default function Home() {
         <meta name="description" content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
- 
-             { /*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+
+        { /*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WGTKRVJF'); */}
-      
-          <script
+
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             (function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
@@ -41,15 +41,75 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             `,
           }}
         />
+
+ <script type="application/ld+json"
+ dangerouslySetInnerHTML={{
+  __html: `
+           
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CabX: Streamline Driver Management and Billing Processes Digitally",
+  "image":"https://cabexpert.co/_next/image?url=%2FGroup%20214.png&w=384&q=75",
+"description": "CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now!",
+  "@id": "https://cabexpert.co/",
+ "url": "https://cabexpert.co/", 
+"telephone": "0129-417-6500",
+  "priceRange": "Ask",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "402, H-140, Sector 63",
+    "addressLocality": "Noida (UP)",
+    "postalCode": "201301",
+    "addressCountry": "+91",
+    "addressRegion": "+91"
+  },
+"openingHoursSpecification": 
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "08:00"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type" : "Rating",
+      "ratingValue" : "5",
+      "bestRating" : "5",
+      "worstRating" : "1"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Hithrik Soni"
+    },
+    "reviewBody": "CabX has revolutionized my small taxi business! Previously, juggling duty slips, billing, and monitoring drivers was a real headache. But CabX has simplified everything. I can now concentrate on expanding my business without the burden of administrative hassles. I highly recommend it!."
+  },
+  "sameAs": [
+    "https://www.facebook.com/officialcabX/",
+    "https://www.instagram.com/officialcabx",
+    "https://www.youtube.com/@officialCabx"
+  ] 
+}
+
+            `,
+          }}
+        />
       </Head>
-    <Navbar/>
-    <Animation/>    
+      <Navbar />
+      <Animation />
 
       {/* <!-- Google Tag Manager (noscript) --> */}
-<noscript>
-<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF" height="0" width="0" style={{display:"none",visibility:"hidden"}}>
-</iframe></noscript>
-{/* <!-- End Google Tag Manager (noscript) --> */}
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF" height="0" width="0" style={{ display: "none", visibility: "hidden" }}>
+        </iframe></noscript>
+      {/* <!-- End Google Tag Manager (noscript) --> */}
 
 
 
