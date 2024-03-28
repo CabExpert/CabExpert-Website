@@ -170,14 +170,15 @@
             box-shadow: 0px 0px 2px 0px #171A1F1F;
             padding: 12px 15px;
             margin-top: 30px;
-            border-right: 5px;
+            border-radius: 5px;
 
             .overview_head {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 10px;
-                span{
+
+                span {
                     font-size: 24px;
                     font-weight: 700;
                 }
@@ -188,6 +189,8 @@
                     outline: 0;
                     padding: 10px;
                     border: 0;
+                    border-radius: 5px;
+                    cursor: pointer;
 
                 }
 
@@ -195,44 +198,349 @@
             }
 
             .overview_container {
+                display: flex;
+                gap: 20px;
+
                 .overview_left {
+
 
                     .left_div_container {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         background: #F5F2FD;
-                        padding: 20px;
+                        padding: 10px 20px;
                         width: 300px;
                         height: 141px;
                         border-radius: 8px;
+                        margin: 10px 0px;
 
                         .left_div1 {
                             display: flex;
                             gap: 15px;
                             flex-direction: column;
 
+                            span {
+                                display: flex;
+                                align-items: center;
+
+                                .arrow {
+                                    width: 16px;
+                                    height: 16px;
+                                    background: inherit;
+                                    object-fit: contain;
+                                }
+                            }
+
+
+
                             :nth-child(1) {
                                 font-size: 14px;
                                 font-weight: 400;
-                                font-weight: normal;
+                                font-weight:
+                                    normal;
+                                background: #F5F2FD;
+
+                                span {
+                                    background: #F5F2FD !important;
+
+                                    .arrow {
+                                        background: #F5F2FD;
+                                    }
+                                }
                             }
 
                             :nth-child(2) {
                                 font-weight: 900 !important;
                                 font-size: 20px;
+                                background: #F5F2FD !important;
                             }
 
                             :nth-child(3) {
                                 font-weight: normal;
                                 font-size: 12px;
                                 font-weight: 700;
+                                background: #F5F2FD !important;
+                            }
+                        }
+
+                        .chart {
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+
+                    :nth-child(1) {
+                        background: #F5F2FD !important;
+
+                        span {
+                            background: #F5F2FD !important;
+
+                            .arrow {
+                                background: #F5F2FD !important;
+                            }
+                        }
+
+                        .chart {
+                            background: #F5F2FD;
+                        }
+
+                        :nth-child(1) {
+                            background: #F1F4FD;
+                        }
+
+                        :nth-child(2) {
+                            background: #F1F4FD;
+
+                        }
+
+                        :nth-child(3) {
+                            background: #F1F4FD;
+
+                        }
+
+                    }
+
+                    :nth-child(2) {
+                        background: #F1F4FD !important;
+
+                        .left_div1 {
+                            :nth-child(1) {
+                                background: #F1F4FD !important;
+                            }
+
+                            :nth-child(2) {
+                                background: #F1F4FD !important;
+                            }
+
+                            :nth-child(3) {
+                                background: #F1F4FD !important;
+                            }
+                        }
+
+                        .chart {
+                            background: #F1F4FD !important;
+                        }
+
+
+
+                    }
+
+
+                    :nth-child(3) {
+                        .left_div1 {
+                            background: #FDF2F2 !important;
+
+                            :nth-child(1) {
+                                background: #FDF2F2 !important;
+                            }
+
+                            :nth-child(2) {
+                                background: #FDF2F2 !important;
+                            }
+
+                            :nth-child(3) {
+                                background: #FDF2F2 !important;
+                            }
+                        }
+
+                        background: #FDF2F2 !important;
+
+
+                        .chart {
+                            background: #FDF2F2 !important;
+                        }
+
+
+                    }
+                }
+
+                .overview_right {
+                    width: 100%;
+
+                    .right_header {
+                        display: flex !important;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        div {
+                            display: flex;
+                            gap: 20px;
+                            align-items: center;
+                            gap: 10px;
+                            font-weight: 700;
+                            color: #323842;
+                            justify-content: space-between;
+
+                            span {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+
+                            }
+
+                            .listColor {
+                                background: #00BDD6;
+                                width: 15px;
+                                height: 15px;
+                                border-radius: 50%;
+                            }
+
+                            .listColor2 {
+                                background: #8353E2;
+                                width: 15px;
+                                height: 15px;
+                                border-radius: 50%;
                             }
                         }
                     }
+
+                    .chartContainer {
+                        margin-top: 20px;
+                        display: flex;
+                        gap: 20px;
+                        align-items: start;
+                        flex-direction: row;
+
+                        .right_number {
+                            display: flex;
+                            gap: 88px;
+                            flex-direction: column;
+                        }
+
+                        .chart {
+                            width: 90%;
+                            height: 452px;
+                        }
+                    }
+
                 }
             }
         }
 
+    }
+
+    .callToAction {
+        width: 1176px;
+        height: 384px;
+        background: #FAFAFB;
+        margin-top: 20px;
+        position: relative;
+        overflow: hidden;
+
+        .CTA {
+            h2 {
+                color: #FF9900;
+            }
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            gap: 20px;
+            width: 400px;
+            margin: auto;
+            transform: translateY(30%);
+
+            button {
+                background: #FF9900;
+                color: #fff;
+                outline: 0;
+                border: 0;
+                width: 165px;
+                height: 60px;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 21.3px;
+                text-align: center;
+
+
+
+            }
+        }
+
+        .oval {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            object-fit: contain;
+        }
+
+        .dots {
+            position: absolute;
+            top: -40px;
+            left: 150px;
+            object-fit: contain;
+        }
+
+        .unfilled {
+            position: absolute;
+            top: 0px;
+            right: -50px;
+            object-fit: contain;
+        }
+
+        .dots2 {
+            position: absolute;
+            bottom: 0px;
+            right: -120px;
+            object-fit: contain;
+        }
+    }
+
+    .revenueOrders {
+
+
+        display: grid;
+        gap: 20px;
+        align-items: center;
+        grid-template-columns: 65%  30%;
+        justify-content: space-between;
+        margin-top: 30px;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 28px !important;
+            text-align: left;
+
+
+        }
+
+        .revenueOrdersGraph {
+        //     border: 1px solid #DEE1E6;
+        // border-radius: 5px;
+        // padding: 20px;
+
+
+
+            .revenueOrdersGraphHeader {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                :nth-child(1){
+                    font-weight: 700;
+                }
+                .ctaChart{
+                    width: 40px;
+                    height: 500px;
+                }
+                select{
+                    border: 0;
+                    outline: 0;
+                    background: #F3F4F6 ;
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+            }
+        }
     }
 }

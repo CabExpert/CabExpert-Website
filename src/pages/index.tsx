@@ -21,34 +21,37 @@ export default function Home() {
         <title>CabX: Streamline Driver Management and Billing Processes Digitally</title>
         <meta name="description" content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <script>
-          {`(function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WGTKRVJF');`}
-        </script>
+        <link rel="icon" href="/fabicon.png" />
+ 
+             { /*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WGTKRVJF'); */}
+      
+          <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WGTKRVJF');
+            `,
+          }}
+        />
       </Head>
+    <Navbar/>
+    <Animation/>    
 
-      <Navbar />
-      <Animation />
+      {/* <!-- Google Tag Manager (noscript) --> */}
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF" height="0" width="0" style={{display:"none",visibility:"hidden"}}>
+</iframe></noscript>
+{/* <!-- End Google Tag Manager (noscript) --> */}
 
-      {/* <div className={`${styles.content_two} container `}>
-        <div className={styles.content}>
-          <h1>Digital Duty Slips</h1>
 
-          <p>with Cabx</p>
-        </div>
 
-        <div className={styles.imagetwo}>
-          <Image src="/mytaxi.png" alt="image" height={287} width={205} />
-        </div>
-      </div> */}
       <div className={`${styles.start} container `}>
         <span>One New-Age Car Rental Software to Replace Them All</span>
         <div className={styles.button}>
@@ -91,7 +94,6 @@ export default function Home() {
           </h3>
           <Image src="/Group 489.png" alt="Indiamap" width={950} height={900} />
         </div>
-
 
         <Testimonials />
       </div>

@@ -4,6 +4,10 @@ import styles from "@/styles/blogs.module.scss";
 import BannerImage from "../../../public/view-blog-cover.png";
 import BannerCar from "../../../public/view-blog-car.png";
 import BannerLogo from "../../../public/view-blog-logo.png";
+import Oval from "../../../public/Oval.png";
+import Dots from "../../../public/dots.png";
+import Unfilled from "../../../public/unfilledCircle.png";
+import CTAGraph from "../../../public/ctagraph.png";
 
 import Image from "next/image";
 import Overview from "@/component/overview";
@@ -87,13 +91,103 @@ const ViewBlog = () => {
             <input type="text" placeholder=" Billing and Invoicing" />
             <button>Search</button>
           </div>
-          <span className={`${styles.para_below_search}`}><p>For example, a search for the phrase “Billing and Invoicing” generates the following:</p></span>
+          <span className={`${styles.para_below_search}`}>
+            <p>
+              For example, a search for the phrase “Billing and Invoicing”
+              generates the following:
+            </p>
+          </span>
         </div>
         <div>
-            <Overview/>
+          <Overview />
         </div>
 
-        
+        <div className={`${styles.cabSuggest}`}>
+          <p>
+            Our goal is to create more transparency and drive best practices in
+            the industry. At Cabx, we believe that transforming the industry
+            from the inside out is key to solving customer problems."
+          </p>
+        </div>
+
+        <div className={`${styles.callToAction}`}>
+          <div className={`${styles.CTA}`}>
+            <h2>Call to Action</h2>
+            <span>
+              Qui ut exercitation officia proident enim non tempor tempor ipsum
+              ex nulla ea adipisicing sit consequat enim elit cupidatat o
+            </span>
+            <button>Book A Call</button>
+          </div>
+
+          <Image
+            src={Oval}
+            className={`${styles.oval}`}
+            alt="location"
+            width={220}
+            height={220}
+          />
+          <Image
+            src={Dots}
+            className={`${styles.dots}`}
+            alt="location"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={Unfilled}
+            className={`${styles.unfilled}`}
+            alt="location"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={Dots}
+            className={`${styles.dots2}`}
+            alt="location"
+            width={200}
+            height={200}
+          />
+        </div>
+        <div className={`${styles.revenueOrders}`}>
+          <div>
+            <p>
+              To use AI in professional services effectively, you need to
+              analyze how it can simplify your day-to-day processes and how this
+              fits into your business goals. For instance, if you want to
+              improve customer experience, you can use AI to analyze data, spot
+              patterns, and personalize customer responses. Or if
+              decision-making is taking up valuable human resources, AI can
+              analyze your financial data and help you decide where to put your
+              resources.
+            </p>
+            <p>
+              Another area to focus on is the repetitive tasks that AI could
+              handle for you. <br />
+              Think about system monitoring, email management, virtual
+              assistants, workflow automation, document processing, data
+              analysis, research, and manual task management.
+            </p>
+          </div>
+          <div className={`${styles.revenueOrdersGraph}`}>
+   
+              {/* <span>Statistics</span>
+                <span>
+                  <select name="" id="">
+                    <option value="This week">This Week</option>
+                  </select>
+                </span> */}
+
+              <Image
+                src={CTAGraph}
+                className={`${styles.ctaChart}`}
+                alt="location"
+                width={350}
+               
+              />
+            
+          </div>
+        </div>
       </div>
     </div>
   );
