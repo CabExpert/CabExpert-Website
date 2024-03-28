@@ -13,6 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+    <Head>
+        <title>About Us - Discover Our Vision and Mission | CabX</title>
+        <meta name="description" content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/fabicon.png" />
+      </Head>
       <Navbar />
 
       <div className={`${styles.about} container `}>
