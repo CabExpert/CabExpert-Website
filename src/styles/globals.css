@@ -311,7 +311,7 @@ p {
     height: 60vh;
   }
   .animated-text {
-    font-size: 50px;
+    font-size: 40px !important;
     top: 15%;
   }
   .with {
@@ -323,7 +323,22 @@ p {
   .bg-image{
     top: 60%;
   }
-  .header_logo{
-    width: 2000px !important;
+  .topnav_two{
+    position: relative;
   }
+
+}
+
+.mb_menu_view{
+  position: absolute;
+  top: 0px;
+  background: #fff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+.mb_menu_close{
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }

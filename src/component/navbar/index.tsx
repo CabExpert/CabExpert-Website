@@ -9,7 +9,8 @@ const Header = () => {
 
   const handleMenu = () => {
     setMenu(!menu);
-  }
+    console.log("menu");
+  };
 
   return (
     <header className={Style.mainheader}>
@@ -74,7 +75,14 @@ const Header = () => {
 
       <div className={`${Style.topnav_two} container`}>
         <div>
-          <Image onClick={() => router.push("/")} src="/Group 214.png" className={`${Style.header_logo}`} alt="logo" height={72} width={150} />
+          <Image
+            onClick={() => router.push("/")}
+            src="/Group 214.png"
+            className={`${Style.header_logo}`}
+            alt="logo"
+            height={72}
+            width={150}
+          />
         </div>
         <div className={Style.menu_two}>
           <ul>
@@ -88,13 +96,55 @@ const Header = () => {
               <a onClick={() => router.push("/contact-us")}>Contact us</a>
             </li>
             <li>
-              <a onClick={() => router.push("/about-us")} >About Us</a>
+              <a onClick={() => router.push("/about-us")}>About Us</a>
             </li>
           </ul>
         </div>
-    
+
+        {menu ? (
+          <div className="mb_menu_view">
+            <div className={Style.mb_menu_close}>
+              <Image
+                onClick={handleMenu}
+                src="/close.png"
+                alt="logo"
+                height={42}
+                width={42}
+              />
+            </div>
+            <div className={Style.menu_two_mb}>
+              <ul>
+                <li>
+                  <a href="#Pricing ">Pricing </a>
+                </li>
+                <li>
+                  <a href="#Features">Features</a>
+                </li>
+                <li>
+                  <a onClick={() => router.push("/contact-us")}>Contact us</a>
+                </li>
+                <li>
+                  <a onClick={() => router.push("/about-us")}>About Us</a>
+                </li>
+              </ul>
+            </div>
+            <div className={Style.button_nav_mb}>
+              <button className={Style.button_one}>sign in</button>
+              <button className={Style.button_two}>
+                Create a free account
+              </button>
+            </div>
+          </div>
+        ) : null}
+
         <div className={Style.menu}>
-          <Image onClick={handleMenu} src="/menu.png" alt="logo" height={42} width={42} />
+          <Image
+            onClick={handleMenu}
+            src="/menu.png"
+            alt="logo"
+            height={42}
+            width={42}
+          />
         </div>
         <div className={Style.button_nav}>
           <button className={Style.button_one}>sign in</button>
