@@ -79,7 +79,7 @@ const Animation = () => {
               <Image
                 src={MyTaxi}
                 width={300}
-                height={300}
+                height={350}
                 className="w-[500px] object-contain h-[500px] absolute right-14 top-0"
                 alt=""
               />
