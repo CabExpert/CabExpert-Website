@@ -92,7 +92,7 @@ const Footer = () => {
         <div className={Style.city}>
           {" "}
           <Image
-            src="/city-skiline - Copy.png"
+            src="/city-skiline-Copy.png"
             alt="car"
             height={400}
             width={1440}
