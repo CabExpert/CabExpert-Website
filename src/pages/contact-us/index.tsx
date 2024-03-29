@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             <div className={styles.contactimage}>
               <Image
-                src="/Group 426.png"
+                src="/Group426.png"
                 alt="image"
                 className={styles.contactimage_image}
                 width={505}
@@ -153,7 +153,7 @@ export default function Home() {
 const callus = [
   {
     id: "",
-    image: "/Group 333.png",
+    image: "/Group333.png",
     heading: "Call Us",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
@@ -161,7 +161,7 @@ const callus = [
   },
   {
     id: "secondCard",
-    image: "/Group 433.png",
+    image: "/Group433.png",
     heading: "Visit us",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
@@ -169,7 +169,7 @@ const callus = [
   },
   {
     id: "thirdCard",
-    image: "/Group 434.png",
+    image: "/Group434.png",
     heading: "Live Chat",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",

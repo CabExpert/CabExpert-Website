@@ -131,38 +131,38 @@ export default function Home() {
 
 const material = [
   {
-    image: "/Group 490.png",
+    image: "/Group490.png",
     heading: "Challenging",
     paragraph:
       "We know we can always do better, and we relentlessly challenge ourselves to do so. We’re innovative in everything we do.",
   },
   {
-    image: "/Group 491.png",
+    image: "/Group491.png",
     heading: "Accountable",
 
     paragraph:
       "We hold ourselves accountable. We say what we’ll do, and we do what we say. We learn from our successes and failures.",
   },
   {
-    image: "/Group 492.png",
+    image: "/Group492.png",
     heading: "Caring",
     paragraph:
       " We care about the people we work for, and those we work with. We also care deeply about the environment.",
   },
   {
-    image: "/Group 493.png",
+    image: "/Group493.png",
     heading: "Commercial",
     paragraph:
       "      We build success by making sound business decisions and by building mutually profitable relationships with our customers and our partners.  ",
   },
   {
-    image: "/Group 494.png",
+    image: "/Group494.png",
     heading: "Transparent",
     paragraph:
       " Customers, partners and colleagues know what to expect from us and what we ask from them in return.",
   },
   {
-    image: "/Group 495.png",
+    image: "/Group495.png",
     heading: "Inclusive",
     paragraph:
       "We care about the people we work for, and those we work with. We also care deeply about the environment. ",

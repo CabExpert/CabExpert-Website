@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 80px;
-  background-image: url("/Ellipse 23.png");
+  background-image: url("/Ellipse23.png");
   padding-bottom: 127px;
   border-bottom-left-radius: 40%;
   border-bottom-right-radius: 40%;
@@ -184,7 +184,7 @@
 @media screen and (max-width: 700px) {
   .us {
     font-size: 30px;
-    
+
     text-align: center;
 
     h3 {
@@ -192,7 +192,7 @@
       text-align: center;
     }
   }
-  
+
   .reach h2 {
     text-align: center;
     font-weight: 500;
@@ -263,6 +263,7 @@
     margin-bottom: 10px;
     gap: 10px;
   }
+
   .name {
     display: flex;
     align-items: start;
@@ -271,13 +272,13 @@
     width: 100%;
     margin-bottom: 10px;
   }
-  
+
   .email {
     display: flex;
     align-items: start;
     flex-direction: column;
     gap: 10px;
-    
+
   }
 
   .inputbox {

@@ -175,7 +175,7 @@ const Header = () => {
       </div>
       {/* <div className={Style.header_parent}>
         <div className={Style.header}>
-          <Image src="/Group 214.png" alt="logo" height={72} width={150} />
+          <Image src="/Group214.png" alt="logo" height={72} width={150} />
           <div className={Style.icons}>
             <ul>
               <li>
@@ -241,13 +241,13 @@ const Header = () => {
                 <div className={Style.line}></div>
                 <div className={Style.search}>
                   <Image
-                    src="/Group 185.svg"
+                    src="/Group185.svg"
                     alt="search"
                     height={26}
                     width={25}
                   />
                   <Image
-                    src="/Group 186.svg"
+                    src="/Group186.svg"
                     alt="search"
                     height={26}
                     width={25}
