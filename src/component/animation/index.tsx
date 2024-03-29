@@ -35,7 +35,7 @@ const Animation = () => {
     } else {
       console.error("Element not found");
     }
-  },[value]);
+  },[]);
 
   useEffect(() => {
     // console.log("value", value);
