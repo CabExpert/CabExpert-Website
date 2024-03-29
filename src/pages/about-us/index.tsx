@@ -13,9 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-    <Head>
+      <Head>
         <title>About Us - Discover Our Vision and Mission | CabX</title>
-        <meta name="description" content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now" />
+        <meta
+          name="description"
+          content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
       </Head>
@@ -25,20 +28,32 @@ export default function Home() {
         <div className={styles.cabx}>
           <h4>Take Part In </h4>
           <div className={styles.logo}>
-            <Image src="/Cab.png" alt="logo" width={300} height={150} />
-            <Image src="/mytaxi.png" alt="logo" width={105} height={150} />
+            <Image
+              src="/Cab.png"
+              alt="logo"
+              className={styles.cablogo}
+              width={300}
+              height={150}
+            />
+            <Image
+              src="/mytaxi.png"
+              alt="logo"
+              className={styles.xlogo}
+              width={105}
+              height={150}
+            />
           </div>
         </div>
 
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, was founded out of a passion
-            how we can make our life easeay by using the , and the urge to make it convenient for all. This is
-            the <br></br>story of our founder Biswajit, an avid traveller with a
-            vision to solve problems faced by fellow travellers looking to rent
-            cars, as well as <br></br>small vehicle rental companies seeking
-            more customers.
+            Cabx parent company, was founded out of a passion how we can make
+            our life easeay by using the , and the urge to make it convenient
+            for all. This is the <br></br>story of our founder Biswajit, an avid
+            traveller with a vision to solve problems faced by fellow travellers
+            looking to rent cars, as well as <br></br>small vehicle rental
+            companies seeking more customers.
           </h4>
           <p>
             As a child, I have travelled a lot in trains across India. I

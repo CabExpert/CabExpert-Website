@@ -982,19 +982,20 @@
         .chartContainer {
             margin-top: 20px;
             display: flex;
-            gap: 20px;
+            gap: 10px !important;
             align-items: start;
             flex-direction: row;
 
             .right_number {
                 display: flex;
-                gap: 28px !important;
+                gap:20px !important;
                 flex-direction: column;
             }
 
             .chart {
-                width: 80% !important;
-                height: 220px !important;
+                width: 70% !important;
+                height: 200px !important;
+                margin-top: 18px;
             }
         }
 

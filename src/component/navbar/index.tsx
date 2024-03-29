@@ -147,7 +147,7 @@ const Header = () => {
               </ul>
             </div>
             <div className={Style.button_nav_mb}>
-              <button className={Style.button_one}>sign in</button>
+              <button className={Style.button_one}>Sign in</button>
               <button className={Style.button_two}>
                 Create a free account
               </button>
