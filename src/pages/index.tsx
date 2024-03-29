@@ -443,7 +443,7 @@ height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></nos
 
 const box = [
   {
-    image: "/Group404 (1).png",
+    image: "/Group404(1).png",
     heading: "Reduced Manpower",
     content:
       "Save on labor costs with our SAAS platform for cab and taxi businesses, streamlining operations and reducing the need for extensive manpower.",
