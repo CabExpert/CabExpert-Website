@@ -24,7 +24,7 @@ const ViewBlog = () => {
 
       <div className={`${styles.view_blog_container}`}>
         <h2>
-          Car Rental software boosts retail business's revenue by 55%+ in 2024
+          Car Rental software boosts retail business revenue by 55%+ in 2024
         </h2>
 
         <div className={`${styles.view_blog_banner}`}>
