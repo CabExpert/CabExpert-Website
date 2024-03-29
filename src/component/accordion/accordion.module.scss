@@ -6,9 +6,10 @@
   font-size: 20px;
   font-weight: 700;
   padding: 18px 18px;
+  width: 100%;
 }
 .accord {
-  width: 800px;
+  // width: 100%;
   background-color: #f8f9fa;
   padding: 40px;
   margin-left: 39%;
@@ -30,5 +31,23 @@
 
 .accordion{
   // background-image: url("/Cloud-in-sky-vector-PNG-ezgif.com-video-to-gif-converter.gif");
-  
+}
+
+@media screen and (max-width: 600px) {
+  .accord {
+    width: 94%;
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin-left: 0%;
+    margin-bottom: 0px;
+    h3{
+      font-size: 20px;
+    }
+    .cross{
+      align-items: start;
+      gap: 5px;
+      width: 90%;
+    }
+  }
+
 }

@@ -14,6 +14,7 @@
   font-weight: 600;
   margin-bottom: 50px;
 }
+
 .us span {
   color: #ff9900;
 }
@@ -46,11 +47,12 @@
   color: #868686;
   padding-left: 20px;
 }
-.conta{
+
+.conta {
   transform: rotate(-180deg);
   padding-bottom: 50px;
-
 }
+
 .contactimage {
   display: flex;
   justify-content: center;
@@ -69,6 +71,7 @@
   font-size: 20px;
   color: #696969;
 }
+
 .callus {
   width: 300px;
   margin: 10px 10px 10px 10px;
@@ -89,6 +92,7 @@
   font-weight: 300;
   padding-bottom: 12px;
 }
+
 .callus span {
   color: #ff9900;
   font-size: 26px;
@@ -102,9 +106,11 @@
   height: fit-content;
   margin-top: 45px;
 }
+
 .secondCard {
   margin-top: 150px;
 }
+
 .thirdCard {
   margin-top: 250px;
 }
@@ -113,14 +119,14 @@
   font-size: 32px;
   font-weight: 400;
 }
-.formbox{
+
+.formbox {
   max-width: 500px;
   display: block;
   flex: 1;
 }
-.formside{
-  
-}
+
+.formside {}
 
 .inputbox {
   position: relative;
@@ -131,39 +137,38 @@
   border: 0;
   outline: 0;
   border-bottom: 1px solid black;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   padding: 5px;
-  font-family: inherit; 
+  font-family: inherit;
 }
+
 .formside span {
   font-size: 24px;
   color: #7c7c7c;
 }
+
 .mainform {
   display: flex;
   justify-content: space-around;
-  background-color: #F8F9FA;
- padding-top: 109px;;
- padding-bottom: 109px;
- border-radius: 20px;
- margin-top: 100px;
- margin-bottom: 100px;
+  background-color: #f8f9fa;
+  padding-top: 109px;
+  padding-bottom: 109px;
+  border-radius: 20px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
+
 .name {
   display: flex;
   gap: 10px;
-  
 }
- 
 
 .email {
   display: flex;
   gap: 10px;
 }
- 
 
- 
-.button_one{
+.button_one {
   background-color: #ff9900;
   border: none;
   color: white;
@@ -173,6 +178,119 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  cursor: pointer;}
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .us {
+    font-size: 30px;
+    
+    text-align: center;
+
+    h3 {
+      font-size: 25px;
+      text-align: center;
+    }
+  }
   
+  .reach h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 81px;
+    margin-bottom: 17px;
+  }
+
+  .contactimage {
+    width: 100% !important;
+
+    .contactimage_image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .callus {
+    width: 86%;
+    margin: 10px 10px 10px 10px;
+    border: 1px solid #dbdbdb;
+    padding: 27px 5px 27px 27px;
+    height: fit-content;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    margin-top: 20px;
+  }
+
+  .secondCard {
+    margin-top: 20px;
+  }
+
+  .thirdCard {
+    margin-top: 20px;
+  }
+
+  .formbox {
+    max-width: 90%;
+    margin: auto;
+    display: block;
+    flex: 1;
+  }
+
+  .formside {
+    text-align: left;
+    padding: 30px;
+
+    span {
+      margin: 30px 0px !important;
+    }
+  }
+
+  .mainform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #f8f9fa;
+    padding-top: 109px;
+    padding-bottom: 109px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .name {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
   
+  .email {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+    
+  }
+
+  .inputbox {
+    position: relative;
+    flex: 1 1;
+    display: block;
+    width: 350px;
+    padding: 1;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid black;
+    background-color: #f8f9fa;
+    padding: 5px;
+    font-family: inherit;
+  }
+}

@@ -14,7 +14,10 @@ export default function Home() {
     <>
       <Head>
         <title>Contact Us - Get in Touch with Our Team | CabX</title>
-        <meta name="description" content="Need assistance or have inquiries regarding our driver management, digital duty slips, or services? Reach out to us today, and one of our representatives will be happy to assist you" />
+        <meta
+          name="description"
+          content="Need assistance or have inquiries regarding our driver management, digital duty slips, or services? Reach out to us today, and one of our representatives will be happy to assist you"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
       </Head>
@@ -41,6 +44,7 @@ export default function Home() {
               <Image
                 src="/Group 426.png"
                 alt="image"
+                className={styles.contactimage_image}
                 width={505}
                 height={415}
               />

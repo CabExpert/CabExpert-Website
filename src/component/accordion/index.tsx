@@ -33,7 +33,7 @@ const Accordion = () => {
                     className={`${
                       toggleFaq === value.heading ? styles.rotate : ""
                     }`}
-                    style={{ backgroundColor: "#fff" }}
+                    style={{ backgroundColor: "#fff", borderRadius: "50%", marginTop: "4px" }}
                   />
                 </div>
                 {toggleFaq === value.heading && <p>{value.paragraph}</p>}
