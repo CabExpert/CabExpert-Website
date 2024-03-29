@@ -85,7 +85,7 @@ const Header = () => {
         <div>
           <Image
             onClick={() => router.push("/")}
-            src="/Group 214.png"
+            src="/Group214.png"
             className={`${Style.header_logo}`}
             alt="logo"
             height={72}
