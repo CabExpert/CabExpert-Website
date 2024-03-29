@@ -53,7 +53,7 @@ const Footer = () => {
                 <a onClick={() => router.push("contact-us")}>Contact Us</a>
               </li>
               <li>
-                <a onClick={() => router.push("blogs")}>Blogs</a>
+                <a onClick={() => router.push("/blogs")}>Blogs</a>
               </li>
             </ul>
           </div>

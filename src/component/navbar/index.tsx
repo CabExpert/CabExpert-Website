@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Style from "../navbar/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -11,6 +11,14 @@ const Header = () => {
     setMenu(!menu);
     console.log("menu");
   };
+
+  useEffect(() => {
+    if (menu) {
+      document.body.classList.add("stop-scrolling"); // Add the stop-scrolling class to the body
+    } else {
+      document.body.classList.remove("stop-scrolling"); // Remove the stop-scrolling class from the body
+    }
+  }, [menu]);
 
   return (
     <header className={Style.mainheader}>
@@ -101,9 +109,18 @@ const Header = () => {
           </ul>
         </div>
 
-
         {menu ? (
           <div className="mb_menu_view">
+            <div className={Style.mb_menu_logo}>
+              <Image
+                onClick={() => router.push("/")}
+                src="/Group 214.png"
+                className={`${Style.header_logo_mb}`}
+                alt="logo"
+                height={72}
+                width={150}
+              />
+            </div>
             <div className={Style.mb_menu_close}>
               <Image
                 onClick={handleMenu}
@@ -148,12 +165,11 @@ const Header = () => {
           />
         </div>
         <div className={Style.button_nav}>
-
-          <a href="https://admin.cabexpert.co/" >
-            <button className={Style.button_one} >sign in </button>
+          <a href="https://admin.cabexpert.co/">
+            <button className={Style.button_one}>sign in </button>
           </a>
-          <a href="https://admin.cabexpert.co/signup" >
-          <button className={Style.button_two}>Create a free account</button>
+          <a href="https://admin.cabexpert.co/signup">
+            <button className={Style.button_two}>Create a free account</button>
           </a>
         </div>
       </div>
