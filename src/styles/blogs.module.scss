@@ -576,7 +576,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: start;
-            gap: 20px;
+            gap: 10px;
             height: 100%;
 
             span {
@@ -647,10 +647,12 @@
     span{
         font-size: 20px !important;
         line-height: 30px;
+        text-align: justify;
     }
     p{
         font-size: 20px !important;
         line-height: 30px;
+        text-align: justify !important;
 
     }
 }

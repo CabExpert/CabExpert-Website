@@ -2,6 +2,7 @@ import Header from "@/component/navbar";
 import React from "react";
 import BlogCard from "../../component/blog-card";
 import styles from "@/styles/blogs.module.scss";
+import Footer from "@/component/footer";
 
 const Blogs = () => {
   return (
@@ -31,6 +32,7 @@ const Blogs = () => {
 
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

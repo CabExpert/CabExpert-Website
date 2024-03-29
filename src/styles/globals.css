@@ -328,6 +328,7 @@ p {
   .animated-text {
     font-size: 40px !important;
     top: 15%;
+    width: 100% !important;
   }
   .with {
     font-size: 40px;

@@ -15,6 +15,7 @@ import PaperPlane from "../../../public/Paperplane.png";
 
 import Image from "next/image";
 import Overview from "@/component/overview";
+import Footer from "@/component/footer";
 
 const ViewBlog = () => {
   return (
@@ -51,7 +52,7 @@ const ViewBlog = () => {
         </div>
         <div className={`${styles.blog_para}`}>
           <span>
-            "As a child, I have travelled a lot in trains across India. I
+            As a child, I have travelled a lot in trains across India. I
             remember my excitement as a train would slowly approach the
             platform, waiting to take me to somewhere new and totally
             unexplored.
@@ -79,7 +80,7 @@ const ViewBlog = () => {
           <span>
             Our goal is to create more transparency and drive best practices in
             the industry. At Cabx, we believe that transforming the industry
-            from the inside out is key to solving customer problems."
+            from the inside out is key to solving customer problems.
           </span>
         </div>
 
@@ -110,7 +111,7 @@ const ViewBlog = () => {
           <p>
             Our goal is to create more transparency and drive best practices in
             the industry. At Cabx, we believe that transforming the industry
-            from the inside out is key to solving customer problems."
+            from the inside out is key to solving customer problems.
           </p>
         </div>
 
@@ -301,6 +302,7 @@ const ViewBlog = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
