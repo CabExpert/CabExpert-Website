@@ -8,6 +8,10 @@ import Oval from "../../../public/Oval.png";
 import Dots from "../../../public/dots.png";
 import Unfilled from "../../../public/unfilledCircle.png";
 import CTAGraph from "../../../public/ctagraph.png";
+import RevAndOrders from "../../../public/revAndOrders.png";
+import MethodChart from "../../../public/methodChart.png";
+import HalfPhone from "../../../public/halfPhone.png";
+import PaperPlane from "../../../public/Paperplane.png";
 
 import Image from "next/image";
 import Overview from "@/component/overview";
@@ -170,22 +174,130 @@ const ViewBlog = () => {
             </p>
           </div>
           <div className={`${styles.revenueOrdersGraph}`}>
-   
-              {/* <span>Statistics</span>
+            {/* <span>Statistics</span>
                 <span>
                   <select name="" id="">
                     <option value="This week">This Week</option>
                   </select>
                 </span> */}
 
+            <Image
+              src={CTAGraph}
+              className={`${styles.ctaChart}`}
+              alt="location"
+              width={350}
+            />
+          </div>
+        </div>
+        <div className={`${styles.revAndOrders}`}>
+          <Image
+            src={RevAndOrders}
+            className={`${styles.revOrdersImage}`}
+            alt="location"
+            width={1180}
+            height={500}
+            objectFit="contain"
+          />
+        </div>
+        <div className={`${styles.methodology}`}>
+          <b>Our Data Methodology</b>
+          <p>
+            To collect this data, NP Digital surveyed 1,000 retail professionals
+            across the U.S. Each survey participant fell into one of three
+            categories:
+          </p>
+          <ul>
+            <li>Retail manager</li>
+            <li>Retail owner</li>
+            <li>Retail employees involved in marketing or advertising</li>
+          </ul>
+          <span>
+            Our goal is to show insights into how these professionals view the
+            overall retail trends, specific challenges, and their action plans
+            to combat the current obstacles and seize upcoming opportunities.
+          </span>
+
+          <p>Developing a Comprehensive AI Strategy</p>
+
+          <p>
+            Once you’ve identified areas, you’re ready to develop a strategy to
+            integrate AI, improve efficiency, and lower costs.
+          </p>
+
+          <div className={`${styles.flexmethod}`}>
+            <div>
               <Image
-                src={CTAGraph}
-                className={`${styles.ctaChart}`}
+                src={MethodChart}
+                className={`${styles.methodImage}`}
                 alt="location"
-                width={350}
-               
+                width={300}
+                height={500}
+                objectFit="contain"
               />
-            
+            </div>
+            <div className={`${styles.flexmethodRight}`}>
+              <span>
+                Begin by assessing your company’s readiness for AI adoption.
+                You’ll want to:
+              </span>
+              <ul>
+                <li>
+                  Address any challenges related to the quality (and
+                  availability) of your data
+                </li>
+                <li>
+                  Assess your current IT infrastructure and your team’s skills
+                  and expertise.
+                </li>
+                <li>
+                  Review your current AI tools, which tools you’ll need, and how
+                  they integrate with existing systems.
+                </li>
+              </ul>
+              <span>
+                Allocate the resources for introducing AI and build some flex
+                into your budget if you need to change track and make further
+                investments. <br />
+                Next, define your business objectives and evaluate what AI can
+                do and where it can deliver the most value. For example, if
+                repetitive tasks take over your day, consider implementing AI
+                solutions that handle those tasks, freeing you up for more
+                creative or complex business objectives. <br />
+                Decide how you’ll measure the use of AI in professional services
+                and its impact. Is it getting you closer to your goals? If the
+                answer’s “Yes,” keep doing what you’re doing.
+              </span>
+            </div>
+          </div>
+
+          <div className={`${styles.something}`}>
+            <div>
+              <h3>Looking for something</h3>
+              <span>Subscribe to our newsletter</span>
+              <span>
+                <input type="text" placeholder="Your Email Address" />
+                <button>Subscribe</button>
+              </span>
+            </div>
+            <Image
+              src={HalfPhone}
+              className={`${styles.halfPhone}`}
+              alt="location"
+              width={300}
+              height={500}
+              objectFit="contain"
+            />
+            <button>
+              {" "}
+              <Image
+                src={PaperPlane}
+                className={`${styles.plane}`}
+                alt="location"
+                width={500}
+                height={500}
+                objectFit="contain"
+              />
+            </button>
           </div>
         </div>
       </div>

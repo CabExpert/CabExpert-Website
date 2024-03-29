@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className={Style.mainheader}>
-      <div className={Style.topheder}>
+      {/* <div className={Style.topheder}>
         <div className={`${Style.topnav} container `}>
           <div className={`${Style.text_one} `}>
             Cabx Taxi Service & Transport Solutions!
@@ -71,7 +71,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className={`${Style.topnav_two} container`}>
         <div>
