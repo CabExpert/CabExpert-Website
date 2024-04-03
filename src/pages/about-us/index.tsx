@@ -13,9 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-    <Head>
+      <Head>
         <title>About Us - Discover Our Vision and Mission | CabX</title>
-        <meta name="description" content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now" />
+        <meta
+          name="description"
+          content="Elevate your taxi service to new heights with our cutting-edge cab management system. Our platform offers  driver scheduling, customer bookings, and real-time tracking. Explore Now"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
         <link rel= "canonical" href= "/about-us" />
@@ -26,20 +29,32 @@ export default function Home() {
         <div className={styles.cabx}>
           <h4>Take Part In </h4>
           <div className={styles.logo}>
-            <Image src="/Cab.png" alt="logo" width={300} height={150} />
-            <Image src="/mytaxi.png" alt="logo" width={105} height={150} />
+            <Image
+              src="/Cab.png"
+              alt="logo"
+              className={styles.cablogo}
+              width={300}
+              height={150}
+            />
+            <Image
+              src="/mytaxi.png"
+              alt="logo"
+              className={styles.xlogo}
+              width={105}
+              height={150}
+            />
           </div>
         </div>
 
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, was founded out of a passion
-            how we can make our life easeay by using the , and the urge to make it convenient for all. This is
-            the <br></br>story of our founder Biswajit, an avid traveller with a
-            vision to solve problems faced by fellow travellers looking to rent
-            cars, as well as <br></br>small vehicle rental companies seeking
-            more customers.
+            Cabx parent company, was founded out of a passion how we can make
+            our life easeay by using the , and the urge to make it convenient
+            for all. This is the <br></br>story of our founder Biswajit, an avid
+            traveller with a vision to solve problems faced by fellow travellers
+            looking to rent cars, as well as <br></br>small vehicle rental
+            companies seeking more customers.
           </h4>
           <p>
             As a child, I have travelled a lot in trains across India. I
@@ -117,38 +132,38 @@ export default function Home() {
 
 const material = [
   {
-    image: "/Group 490.png",
+    image: "/Group490.png",
     heading: "Challenging",
     paragraph:
       "We know we can always do better, and we relentlessly challenge ourselves to do so. We’re innovative in everything we do.",
   },
   {
-    image: "/Group 491.png",
+    image: "/Group491.png",
     heading: "Accountable",
 
     paragraph:
       "We hold ourselves accountable. We say what we’ll do, and we do what we say. We learn from our successes and failures.",
   },
   {
-    image: "/Group 492.png",
+    image: "/Group492.png",
     heading: "Caring",
     paragraph:
       " We care about the people we work for, and those we work with. We also care deeply about the environment.",
   },
   {
-    image: "/Group 493.png",
+    image: "/Group493.png",
     heading: "Commercial",
     paragraph:
       "      We build success by making sound business decisions and by building mutually profitable relationships with our customers and our partners.  ",
   },
   {
-    image: "/Group 494.png",
+    image: "/Group494.png",
     heading: "Transparent",
     paragraph:
       " Customers, partners and colleagues know what to expect from us and what we ask from them in return.",
   },
   {
-    image: "/Group 495.png",
+    image: "/Group495.png",
     heading: "Inclusive",
     paragraph:
       "We care about the people we work for, and those we work with. We also care deeply about the environment. ",

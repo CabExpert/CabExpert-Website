@@ -14,7 +14,10 @@ export default function Home() {
     <>
       <Head>
         <title>Contact Us - Get in Touch with Our Team | CabX</title>
-        <meta name="description" content="Need assistance or have inquiries regarding our driver management, digital duty slips, or services? Reach out to us today, and one of our representatives will be happy to assist you" />
+        <meta
+          name="description"
+          content="Need assistance or have inquiries regarding our driver management, digital duty slips, or services? Reach out to us today, and one of our representatives will be happy to assist you"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
         <link rel= "canonical" href= "/contact-us" />
@@ -40,8 +43,9 @@ export default function Home() {
             </div>
             <div className={styles.contactimage}>
               <Image
-                src="/Group 426.png"
+                src="/Group426.png"
                 alt="image"
+                className={styles.contactimage_image}
                 width={505}
                 height={415}
               />
@@ -150,7 +154,7 @@ export default function Home() {
 const callus = [
   {
     id: "",
-    image: "/Group 333.png",
+    image: "/Group333.png",
     heading: "Call Us",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
@@ -158,7 +162,7 @@ const callus = [
   },
   {
     id: "secondCard",
-    image: "/Group 433.png",
+    image: "/Group433.png",
     heading: "Visit us",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
@@ -166,7 +170,7 @@ const callus = [
   },
   {
     id: "thirdCard",
-    image: "/Group 434.png",
+    image: "/Group434.png",
     heading: "Live Chat",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",

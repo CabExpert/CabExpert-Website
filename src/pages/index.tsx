@@ -10,7 +10,6 @@ import Footer from "@/component/footer";
 import Testimonials from "@/component/testimonials";
 import Animation from "@/component/animation";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -155,7 +154,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           <h3>
             Automated Calculations from<br></br> Garage to Garage
           </h3>
-          <Image src="/Group 489.png" alt="Indiamap" width={950} height={900} />
+          <Image src="/Group489.png" alt="Indiamap" width={950} height={900} />
         </div>
 
         <Testimonials />
@@ -171,6 +170,9 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         </div>
       </div>
 
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF"
+height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></noscript>
+
       {/* <div className={styles.heading_one}>
         <h2>
           How could <span>Cabx</span> benefit you?
@@ -183,7 +185,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               <div className={styles.content_box} key={index}>
                 <Image
                   src={value.Imageurl}
-                  alt="group image"
+                  alt="Groupimage"
                   height={60}
                   width={60}
                 />
@@ -201,7 +203,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         <div className={styles.banner_three}>
           <div className={styles.style}>
             <Image
-              src="/biling 1.png"
+              src="/biling1.png"
               alt="billing image"
               width={551}
               height={401}
@@ -216,15 +218,15 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             </p>
             <ul>
               <li>
-                <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+                <Image src="/Group269.png" alt="icon" width={9} height={10} />
                 <span>Automated Billing & Compliance Reminders</span>
               </li>
               <li>
-                <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+                <Image src="/Group269.png" alt="icon" width={9} height={10} />
                 <span>Revenue Management</span>
               </li>
               <li>
-                <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+                <Image src="/Group269.png" alt="icon" width={9} height={10} />
                 <span>Digital Booking Management</span>
               </li>
             </ul>
@@ -247,15 +249,15 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           </p>
           <ul>
             <li>
-              <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+              <Image src="/Group269.png" alt="icon" width={9} height={10} />
               <span>Follow the journey progress.</span>
             </li>
             <li>
-              <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+              <Image src="/Group269.png" alt="icon" width={9} height={10} />
               <span>Track the driver location in real-time.</span>
             </li>
             <li>
-              <Image src="/Group 269.png" alt="icon" width={9} height={10} />
+              <Image src="/Group269.png" alt="icon" width={9} height={10} />
               <span>
                 Assists in calculating the distance traveled and the time taken.
               </span>
@@ -276,7 +278,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         </div>
         <div className={styles.livelocation_image}>
           <Image
-            src="/Group 359.png"
+            src="/Group359.png"
             alt="billing image"
             width={450}
             height={450}
@@ -289,7 +291,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         </h2>
         <div className={styles.banner_four}>
           <Image
-            src="/Group 363.png"
+            src="/Group363.png"
             alt="iamge"
             height={510.66}
             width={1249}
@@ -318,7 +320,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         <div className={styles.box_five}>
           <div className={styles.banner_five}>
             <Image
-              src="/Group 401.png"
+              src="/Group401.png"
               alt="car image"
               width={604}
               height={348}
@@ -363,25 +365,25 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 
 // const Cabxbenefit = [
 //   {
-//     Imageurl: "/Group 282.png",
+//     Imageurl: "/Group282.png",
 //     heading: "CREATE USERS & MANAGE PERMISSIONS",
 //     content:
 //       "Create as many login IDs as you need to. Give each employee their own login details and control what they have access to.",
 //   },
 //   {
-//     Imageurl: "/Group 276.png",
+//     Imageurl: "/Group276.png",
 //     heading: "ACTIVITY LOG",
 //     content:
 //       "View a real-time record of any action performed by your employees on the platform.",
 //   },
 //   {
-//     Imageurl: "/Group 277.png",
+//     Imageurl: "/Group277.png",
 //     heading: "FUEL & VEHICLE MANAGEMENT",
 //     content:
 //       "Track real-time fuel mileage & expenses for each of your vehicles.",
 //   },
 //   {
-//     Imageurl: "/Group 278.png",
+//     Imageurl: "/Group278.png",
 //     heading: "REAL-TIME SUPPORT",
 //     content:
 //       "We’re here when you need us! Talk to our customer service representative for anything you need.",
@@ -420,40 +422,40 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 //   },
 // ];
 // const list = [
-//   { image: "/Group 269.png ", content: "Follow the journey progress." },
-//   { image: "/Group 269.png ", content: "Fleet Management App." },
+//   { image: "/Group269.png ", content: "Follow the journey progress." },
+//   { image: "/Group269.png ", content: "Fleet Management App." },
 
-//   { image: "/Group 269.png ", content: "Maintenance Management." },
-//   { image: "/Group 269.png ", content: "Fleet Movement and Transfer." },
-//   { image: "/Group 269.png ", content: "Real Time Vehicle Scheduler." },
-//   { image: "/Group 269.png ", content: "Custom Vehicle Checklist." },
-//   { image: "/Group 269.png ", content: "Automated Fleet On-boarding." },
+//   { image: "/Group269.png ", content: "Maintenance Management." },
+//   { image: "/Group269.png ", content: "Fleet Movement and Transfer." },
+//   { image: "/Group269.png ", content: "Real Time Vehicle Scheduler." },
+//   { image: "/Group269.png ", content: "Custom Vehicle Checklist." },
+//   { image: "/Group269.png ", content: "Automated Fleet On-boarding." },
 //   {
-//     image: "/Group 269.png ",
+//     image: "/Group269.png ",
 //     content: "Remote Immobilisation & Mobilisation.",
 //   },
-//   { image: "/Group 269.png ", content: "Compliance Check." },
+//   { image: "/Group269.png ", content: "Compliance Check." },
 //   {
-//     image: "/Group 269.png ",
+//     image: "/Group269.png ",
 //     content: "Vehicle body type / Frog diagram: vehicle diagrams.",
 //   },
 // ];
 
 const box = [
   {
-    image: "/Group 404 (1).png",
+    image: "/Group404(1).png",
     heading: "Reduced Manpower",
     content:
       "Save on labor costs with our SAAS platform for cab and taxi businesses, streamlining operations and reducing the need for extensive manpower.",
   },
   {
-    image: "/Group 405.png",
+    image: "/Group405.png",
     heading: "Paperwork Efficiency",
     content:
       "Say goodbye to cumbersome paperwork. Our SAAS solution for small taxi businesses minimizes paperwork, promoting a more eco-friendly and organized operational approach.",
   },
   {
-    image: "/Group 402.png",
+    image: "/Group402.png",
     heading: "Minimized Human Error",
     content:
       "Enhance accuracy and efficiency as our SAAS platform mitigates human errors, ensuring seamless and reliable taxi business operations.",

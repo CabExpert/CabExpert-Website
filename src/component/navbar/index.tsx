@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Style from "../navbar/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -9,7 +9,16 @@ const Header = () => {
 
   const handleMenu = () => {
     setMenu(!menu);
-  }
+    console.log("menu");
+  };
+
+  useEffect(() => {
+    if (menu) {
+      document.body.classList.add("stop-scrolling"); // Add the stop-scrolling class to the body
+    } else {
+      document.body.classList.remove("stop-scrolling"); // Remove the stop-scrolling class from the body
+    }
+  }, [menu]);
 
   return (
     <header className={Style.mainheader}>
@@ -74,7 +83,14 @@ const Header = () => {
 
       <div className={`${Style.topnav_two} container`}>
         <div>
-          <Image onClick={() => router.push("/")} src="/Group 214.png" className={`${Style.header_logo}`} alt="logo" height={72} width={150} />
+          <Image
+            onClick={() => router.push("/")}
+            src="/Group214.png"
+            className={`${Style.header_logo}`}
+            alt="logo"
+            height={72}
+            width={150}
+          />
         </div>
         <div className={Style.menu_two}>
           <ul>
@@ -88,27 +104,78 @@ const Header = () => {
               <a onClick={() => router.push("/contact-us")}>Contact us</a>
             </li>
             <li>
-              <a onClick={() => router.push("/about-us")} >About Us</a>
+              <a onClick={() => router.push("/about-us")}>About Us</a>
             </li>
           </ul>
         </div>
 
+        {menu ? (
+          <div className="mb_menu_view">
+            <div className={Style.mb_menu_logo}>
+              <Image
+                onClick={() => router.push("/")}
+                src="/Group214.png"
+                className={`${Style.header_logo_mb}`}
+                alt="logo"
+                height={72}
+                width={150}
+              />
+            </div>
+            <div className={Style.mb_menu_close}>
+              <Image
+                onClick={handleMenu}
+                src="/close.png"
+                alt="logo"
+                height={42}
+                width={42}
+              />
+            </div>
+            <div className={Style.menu_two_mb}>
+              <ul>
+                <li>
+                  <a href="#Pricing ">Pricing </a>
+                </li>
+                <li>
+                  <a href="#Features">Features</a>
+                </li>
+                <li>
+                  <a onClick={() => router.push("/contact-us")}>Contact us</a>
+                </li>
+                <li>
+                  <a onClick={() => router.push("/about-us")}>About Us</a>
+                </li>
+              </ul>
+            </div>
+            <div className={Style.button_nav_mb}>
+              <button className={Style.button_one}>Sign in</button>
+              <button className={Style.button_two}>
+                Create a free account
+              </button>
+            </div>
+          </div>
+        ) : null}
+
         <div className={Style.menu}>
-          <Image onClick={handleMenu} src="/menu.png" alt="logo" height={42} width={42} />
+          <Image
+            onClick={handleMenu}
+            src="/menu.png"
+            alt="logo"
+            height={42}
+            width={42}
+          />
         </div>
         <div className={Style.button_nav}>
-
-          <a href="https://admin.cabexpert.co/" >
-            <button className={Style.button_one} >sign in </button>
+          <a href="https://admin.cabexpert.co/">
+            <button className={Style.button_one}>Sign in </button>
           </a>
-          <a href="https://admin.cabexpert.co/signup" >
-          <button className={Style.button_two}>Create a free account</button>
+          <a href="https://admin.cabexpert.co/signup">
+            <button className={Style.button_two}>Create a free account</button>
           </a>
         </div>
       </div>
       {/* <div className={Style.header_parent}>
         <div className={Style.header}>
-          <Image src="/Group 214.png" alt="logo" height={72} width={150} />
+          <Image src="/Group214.png" alt="logo" height={72} width={150} />
           <div className={Style.icons}>
             <ul>
               <li>
@@ -174,13 +241,13 @@ const Header = () => {
                 <div className={Style.line}></div>
                 <div className={Style.search}>
                   <Image
-                    src="/Group 185.svg"
+                    src="/Group185.svg"
                     alt="search"
                     height={26}
                     width={25}
                   />
                   <Image
-                    src="/Group 186.svg"
+                    src="/Group186.svg"
                     alt="search"
                     height={26}
                     width={25}

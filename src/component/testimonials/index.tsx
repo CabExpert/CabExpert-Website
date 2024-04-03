@@ -17,7 +17,7 @@ const Testimonials = () => {
                 <div className={styles.customer} key={index}>
                   <Image
                     src={value.Image}
-                    alt="/Ellipse 28.png"
+                    alt="/Ellipse28.png"
                     height={100}
                     width={100}
                   />
@@ -37,21 +37,21 @@ export default Testimonials;
 
 const customer = [
   {
-    Image: "/Ellipse 28.png",
+    Image: "/Ellipse28.png",
     name: "Hithrik Soni",
     place: "Punjab",
     content:
       "Good to have transportation available in places and times it is otherwise hard to find, but the app has always been a bit difficult to use especially how it works or doesn't with large font phone settings...",
   },
   {
-    Image: "/Ellipse 28.png",
+    Image: "/Ellipse28.png",
     name: "Hithrik Soni",
     place: "Punjab",
     content:
       "Good to have transportation available in places and times it is otherwise hard to find, but the app has always been a bit difficult to use especially how it works or doesn't with large font phone settings...",
   },
   {
-    Image: "/Ellipse 28.png",
+    Image: "/Ellipse28.png",
     name: "Hithrik Soni",
     place: "Punjab",
     content:

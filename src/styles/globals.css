@@ -238,6 +238,21 @@ p {
   width: 218.89px !important;
 }
 
+.mb_menu_view {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+.mb_menu_close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
 @media screen and (max-width: 1200px) {
   .animated-gap {
     width: 100vw;
@@ -311,8 +326,9 @@ p {
     height: 60vh;
   }
   .animated-text {
-    font-size: 50px;
+    font-size: 40px !important;
     top: 15%;
+    width: 100% !important;
   }
   .with {
     font-size: 40px;
@@ -320,10 +336,25 @@ p {
   .image {
     left: 80%;
   }
-  .bg-image{
+  .bg-image {
     top: 60%;
   }
-  .header_logo{
-    width: 2000px !important;
+  .topnav_two {
+    position: relative;
   }
+
+  .mb_menu_close {
+    position: absolute;
+    right: 450px;
+    top: 0px;
+    display: flex !important;
+    align-items: center;
+  }
+  .mb_menu_logo {
+    margin-top: 40px !important;
+  }
+}
+
+.stop-scrolling {
+  overflow: hidden;
 }

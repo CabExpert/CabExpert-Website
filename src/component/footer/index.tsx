@@ -10,7 +10,7 @@ const Footer = () => {
     <div className={Style.xaxa}>
       <div className={`${Style.footer} container`}>
         <div className={Style.foottop}>
-          <Image src="/Group 214.png" alt="logo" height={72} width={150} />
+          <Image src="/Group214.png" alt="logo" height={72} width={150} />
           <span>
             We successfully cope with tasks of varying complexity, provide
             long-term guarantees and regularly master new technologies.
@@ -52,6 +52,9 @@ const Footer = () => {
               <li>
                 <a onClick={() => router.push("contact-us")}>Contact Us</a>
               </li>
+              <li>
+                <a onClick={() => router.push("/blogs")}>Blogs</a>
+              </li>
             </ul>
           </div>
           <div className={Style.links}>
@@ -89,7 +92,7 @@ const Footer = () => {
         <div className={Style.city}>
           {" "}
           <Image
-            src="/city-skiline - Copy.png"
+            src="/city-skiline-Copy.png"
             alt="car"
             height={400}
             width={1440}

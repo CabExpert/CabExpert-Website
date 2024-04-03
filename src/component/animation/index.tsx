@@ -31,14 +31,14 @@ const Animation = () => {
       );
       const contentValue = beforeStyle.content;
       setValue(contentValue);
-      console.log(value, "value");
+      // console.log(value, "value");
     } else {
       console.error("Element not found");
     }
-  });
+  },[]);
 
   useEffect(() => {
-    console.log("value", value);
+    // console.log("value", value);
     if (value === `"Digital Duty Slips"`) {
       setImage(0);
       // console.log("Digital");
