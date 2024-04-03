@@ -17,6 +17,7 @@ export default function Home() {
         <meta name="description" content="Need assistance or have inquiries regarding our driver management, digital duty slips, or services? Reach out to us today, and one of our representatives will be happy to assist you" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
+        <link rel= "canonical" href= "/contact-us" />
       </Head>
 
       <Navbar />
