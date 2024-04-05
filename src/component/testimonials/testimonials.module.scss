@@ -2,7 +2,7 @@
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-top: 50px;
+  padding: 50px 50px 0 50px;
 }
 
 
@@ -23,7 +23,7 @@
 }
 
 .customer p {
-  font-size: 22px;
+  font-size: 18px;
   color: #6a6a6a;
   font-weight: 400;
   text-align: center;
@@ -101,6 +101,8 @@
 .testHeading h2{
   text-align: center !important;
   margin: 10px;
+  font-size: 48px;
+  font-weight: 600;
 }
 
 .testHeading {
