@@ -1,7 +1,7 @@
 .contactus {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 0px;
   background-image: url("/Ellipse23.png");
   padding-bottom: 127px;
   border-bottom-left-radius: 40%;
@@ -29,9 +29,9 @@
   align-items: center;
   width: fit-content;
   margin: auto;
-  border: 0.5px solid #190f0f;
+  border: 0.5px solid #efefef;
   border-radius: 10px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 25px 5px 25px;
   margin-bottom: 50px;
 }
 
@@ -151,11 +151,25 @@
   display: flex;
   justify-content: space-around;
   background-color: #f8f9fa;
-  padding-top: 109px;
-  padding-bottom: 109px;
-  border-radius: 20px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-radius: 0px;
+  margin: 100px;
+}
+
+.outer_form{
+  position: relative;
+  padding: 50px 0;
+}
+.outer_form::before{
+  content: " ";
+  position: absolute;
+  background-image: url("/Vector_x.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  left: 2%;
+  bottom: -5%;
 }
 
 .name {
