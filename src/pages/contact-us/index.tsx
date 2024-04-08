@@ -137,16 +137,27 @@ export default function Home() {
               </div>
 
               <div className={styles.button}>
-                <button className={styles.button_one}>submit</button>
+                <button className={styles.button_one}>
+                  <span>submit</span>
+
+                  <div>
+                    <Image
+                      src="/Polygon-btn.png"
+                      alt="phone"
+                      height={14}
+                      width={14}
+                    />
+                  </div>
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <Accordion />
-        </div>
-        <Testimonials />
       </div>
+      <div>
+        <Accordion />
+      </div>
+      <Testimonials />
 
       {<Footer />}
     </>
