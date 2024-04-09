@@ -4,15 +4,16 @@ import styles from "../../styles/packages.module.scss";
 import Image from "next/image";
 import Testimonials from "@/component/testimonials";
 import { useState } from "react";
-
+import StarSvgIcon from "@/component/svg/star_icon";
+import KingSvgIcon from "@/component/svg/king_icon";
+import OrangeStarSvgIcon from "@/component/svg/orange_star_icon";
 
 const Packages = () => {
-
-const [showFaq, setshowFaq] = useState("");
-const faqToggle = (value:any) =>{
-    showFaq==="" ? setshowFaq(value) : setshowFaq("")
-}
-
+  const [showFaq, setshowFaq] = useState("");
+  const faqToggle = (value: any) => {
+    showFaq === "" ? setshowFaq(value) : setshowFaq("");
+  };
+  const [color, setColor] = useState("");
   return (
     <>
       <Header />
@@ -66,15 +67,42 @@ const faqToggle = (value:any) =>{
       <div className={styles.second_sec}>
         {inner_Box.map((value, index) => {
           return (
-            <div className={styles.innerBox} key={index}>
-              <Image
-                src={value.imageUrl}
-                alt="box-icon"
-                width={53}
-                height={52}
-              />
+            <div
+              className={`${styles.innerBox} ${
+                color === value.title ? "hover_card" : "#000"
+              }`}
+              key={index}
+              onMouseEnter={() => setColor(value.title)}
+              onMouseLeave={() => setColor("")}
+            >
+              <div>
+              {value.title === "Essential Bundle A" && (
+
+                <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+              )}
+
+              {value.title === "Essential Bundle B" && (
+                <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+              )}
+
+              {value.title === "Standard Package" && (
+                <KingSvgIcon color={color === value.title ? "#fff" : "#000"} />
+              )}
+
+              {value.title === "Premium Collection A" && (
+                <OrangeStarSvgIcon
+                  color={color === value.title ? "#fff" : "#FF9900"}
+                />
+              )}
+
+              {value.title === "Premium Collection B" && (
+                <OrangeStarSvgIcon
+                  color={color === value.title ? "#fff" : "#FF9900"}
+                />
+              )}
+</div>
               <div className={styles.hollowCircle}>
-                <span></span>
+                <span className="hover"></span>
               </div>
               <h4>{value.title}</h4>
               <p>
@@ -83,6 +111,7 @@ const faqToggle = (value:any) =>{
               <p>
                 Per month cost <br /> <span>{value.cost}</span>
               </p>
+              <button style={{display:"none"}}>Upgrade</button>
             </div>
           );
         })}
@@ -122,12 +151,23 @@ const faqToggle = (value:any) =>{
           {faq.map((value, index) => {
             return (
               <div key={index} className={styles.bb}>
-                <h4 onClick={() => faqToggle(value.ques)}> <span> {value.ques}</span> <span><Image src="/Chevron-up-large.png" className={`${showFaq===value.ques ? "" : "rotate"} ${styles.bg}`} alt="dropdown" width={15} height={15}/></span></h4>
-                {showFaq === value.ques &&
-                
-                <p>{value.ans}</p>
-                }
-                </div>
+                <h4 onClick={() => faqToggle(value.ques)}>
+                  {" "}
+                  <span> {value.ques}</span>{" "}
+                  <span>
+                    <Image
+                      src="/Chevron-up-large.png"
+                      className={`${showFaq === value.ques ? "" : "rotate"} ${
+                        styles.bg
+                      }`}
+                      alt="dropdown"
+                      width={15}
+                      height={15}
+                    />
+                  </span>
+                </h4>
+                {showFaq === value.ques && <p>{value.ans}</p>}
+              </div>
             );
           })}
         </div>

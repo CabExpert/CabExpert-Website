@@ -272,3 +272,13 @@
   }
 
 }
+@media only screen and (max-width: 425px){
+  .topnav_two img{
+    width: 96px !important;
+    height: auto !important;
+  }
+  .menu img{
+    width: 28px !important;
+    height: auto !important;
+  }
+}

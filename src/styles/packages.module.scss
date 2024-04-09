@@ -93,13 +93,20 @@
   background-color: #f9f9f9;
   padding: 50px;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: space-around;
 
   .innerBox {
     margin: auto;
     text-align: center;
+    padding: 10px 20px 0 20px;
+    display: grid;
+    justify-content: center;
+    height: 270px;
+
+   img{
+    margin: auto;
+   }
 
     h4 {
       font-size: 16px;
@@ -118,69 +125,142 @@
     }
     .hollowCircle {
       margin-top: 10px !important;
-      width: 15px;
-      height: 15px;
-      border: 1px solid #9e9797;
+      padding: 3px;
+      border: 1px solid #BEB9B9;
+      width: fit-content;
       border-radius: 50%;
       margin: auto;
+     
+      span{
+        width: 8px;
+        height: 8px;
+        display: block;
+        border-radius: 50%;
+        margin: auto;
+      }
+    }
+    &:hover .hollowCircle{
+  border: 1px solid #fff !important; 
+
     }
   }
 }
-.third_sec{
-    padding: 30px 50px;
-    p{
-        color: #ff9900;
-        margin-top: 10px;
-font-size: 18px;
-font-weight: 600;
+.third_sec {
+  padding: 30px 50px;
+  p {
+    color: #ff9900;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #9e9797;
+      font-size: 18px;
+      padding-bottom: 20px;
+      line-height: 0;
     }
-    ul{
-        padding: 0;
-        margin: 0;
-        li{
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            color: #9E9797;
-            font-size: 18px;
-            padding-bottom: 20px;
-            line-height: 0;
-        }
-    }
+  }
 }
-.forth_sec{
-    padding: 50px;
-    h2{
-        font-size: 48px;
-        font-weight: 600;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    p{
-        color: #9095A0;
-        text-align: center;
-        font-size: 18px;
-    }
-    .faq{
-        border-top: 1px solid #DEE1E6 ;
-        margin-top: 50px;
+.forth_sec {
+  padding: 50px;
+  h2 {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  p {
+    color: #9095a0;
+    text-align: center;
+    font-size: 18px;
+  }
+  .faq {
+    border-top: 1px solid #dee1e6;
+    margin-top: 50px;
 
-        h4{
-            font-size: 18px;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-        }
-        p{
-            font-size: 16px;
-            color: #9E9797;
-            text-align: left;
-            padding-top: 10px;
-            width: 60%;
-        }
-        .bb{
-            border-bottom: 1px solid #DEE1E6 ;
-            padding: 30px 0;
-        }
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
     }
+    p {
+      font-size: 16px;
+      color: #9e9797;
+      text-align: left;
+      padding-top: 10px;
+      width: 60%;
+    }
+    .bb {
+      border-bottom: 1px solid #dee1e6;
+      padding: 30px 0;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .second_sec {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .forth_sec h2,
+  .first_sec h2 {
+    font-size: 40px;
+  }
+  .first_sec p {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .second_sec {
+    grid-template-columns: 1fr 1fr;
+  }
+  .forth_sec h2,
+  .first_sec h2 {
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .first_sec {
+    padding: 30px 0;
+  }
+  .first_sec p {
+    font-size: 18px;
+    line-height: 1;
+  }
+  .third_sec ul li {
+    line-height: 1.2;
+  }
+  .faq h4{
+gap: 15px;
+  }
+  .faq p{
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .second_sec {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .third_sec, .forth_sec{
+    padding: 30px;
+  }
+}
+@media only screen and (max-width: 320px){
+  .first_sec{
+    padding: 20px;
+  }
+  p.para{
+    margin: 15px 0;
+  }
+  .lists{
+    display: block;
+  }
 }
