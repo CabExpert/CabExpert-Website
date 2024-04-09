@@ -27,22 +27,22 @@ export default function Home() {
 
       <div className={`${styles.about} container `}>
         <div className={styles.cabx}>
-          <h4>Take Part In </h4>
+          {/* <h4>Take Part In </h4> */}
           <div className={styles.logo}>
             <Image
-              src="/Cab.png"
+              src="/about-cab-img.png"
               alt="logo"
               className={styles.cablogo}
               width={300}
               height={150}
             />
-            <Image
+            {/* <Image
               src="/mytaxi.png"
               alt="logo"
               className={styles.xlogo}
               width={105}
               height={150}
-            />
+            /> */}
           </div>
         </div>
 
@@ -107,17 +107,17 @@ export default function Home() {
           <h2>Customizable workflow to suit your internal policies.</h2>
           <h3>Employee profile & category management</h3>
           <ul>
-            <li>1.Tailor the workflow to align with your internal policies.</li>
+            <li>1. Tailor the workflow to align with your internal policies.</li>
             <li>
-              2.Customize the workflow according to your specific organizational
+              2. Customize the workflow according to your specific organizational
               rules.
             </li>
             <li>
-              3.Make adjustments to the workflow to accommodate and reflect your
+              3. Make adjustments to the workflow to accommodate and reflect your
               internal policies.
             </li>
             <li>
-              4.Personalize the workflow to adhere to the guidelines and
+              4. Personalize the workflow to adhere to the guidelines and
               procedures within your organization
             </li>
           </ul>
