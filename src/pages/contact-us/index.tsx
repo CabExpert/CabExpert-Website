@@ -58,8 +58,9 @@ export default function Home() {
             get your first campaign up and running.
           </h2>
           <p>
-            chedule your 1-to-1 call or chat within the first 30 days of signing
-            up and a Cabx Expert will give you easy first steps to get started
+            Schedule your 1-to-1 call or chat within the first 30 days of
+            signing up and a Cabx Expert will give you easy first steps to get
+            started
             <br></br>
             on your campaign, at no-cost.
           </p>
@@ -88,63 +89,76 @@ export default function Home() {
             );
           })}
         </div>
-        <div className={styles.mainform}>
-          <div className={styles.formside}>
-            <h2>Let’s talk</h2>
-            <span>Ask us anything or just say hi...</span>
-          </div>
-          <div className={styles.formbox}>
-            <div className={styles.name}>
-              <input
-                type="text"
-                placeholder="First Name"
-                id=""
-                name=""
-                className={styles.inputbox}
-              />
-
-              <input
-                type="text"
-                placeholder="Last Name"
-                id=""
-                name=""
-                className={styles.inputbox}
-              />
+        <div className={styles.outer_form}>
+          <div className={styles.mainform}>
+            <div className={styles.formside}>
+              <h2>Let’s talk</h2>
+              <span>Ask us anything or just say hi...</span>
             </div>
-            <div className={styles.email}>
-              <input
-                type="text"
-                placeholder="Email Address"
-                id=""
-                name=""
-                className={styles.inputbox}
-              />
+            <div className={styles.formbox}>
+              <div className={styles.name}>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  id=""
+                  name=""
+                  className={styles.inputbox}
+                />
 
-              <input
-                type="number"
-                placeholder="Phone Number"
-                id=""
-                name=""
-                className={styles.inputbox}
-              />
-            </div>
-            <div className={styles.message}>
-              <textarea
-                placeholder="Message"
-                className={styles.inputbox}
-              ></textarea>
-            </div>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id=""
+                  name=""
+                  className={styles.inputbox}
+                />
+              </div>
+              <div className={styles.email}>
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  id=""
+                  name=""
+                  className={styles.inputbox}
+                />
 
-            <div className={styles.button}>
-              <button className={styles.button_one}>submit</button>
+                <input
+                  type="number"
+                  placeholder="Phone Number"
+                  id=""
+                  name=""
+                  className={styles.inputbox}
+                />
+              </div>
+              <div className={styles.message}>
+                <textarea
+                  placeholder="Message"
+                  className={styles.inputbox}
+                ></textarea>
+              </div>
+
+              <div className={styles.button}>
+                <button className={styles.button_one}>
+                  <span>submit</span>
+
+                  <div>
+                    <Image
+                      src="/Polygon-btn.png"
+                      alt="phone"
+                      height={14}
+                      width={14}
+                    />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div>
-          <Accordion />
-        </div>
-        <Testimonials />
       </div>
+      <div>
+        <Accordion />
+      </div>
+      <Testimonials />
 
       {<Footer />}
     </>

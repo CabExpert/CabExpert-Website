@@ -24,7 +24,9 @@ h6,
 p {
   margin: 0;
 }
-
+.rotate{
+  transform: rotate(180deg);
+}
 .at-container {
   display: flex;
   align-items: center;

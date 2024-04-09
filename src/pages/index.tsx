@@ -125,7 +125,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         <h4>Elevate Your Taxi Business </h4>
         <span>Key Advantages</span>
       </div>
-      <div className="three-box" style={{ position: "relative" }}>
+      <div className={styles.three_box} style={{ position: "relative" }}>
         <div className={`${styles.main_box} container `}>
           {box.map((value, index) => {
             return (
@@ -159,6 +159,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 
         <Testimonials />
       </div>
+      <div className={styles.outer}>
       <div className={`${styles.help} container `}>
         <div className={styles.helps}>
           <h2>Let us help.</h2>
@@ -168,6 +169,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           </p>
           <button className={styles.button_help}>0120-417-6500</button>
         </div>
+      </div>
       </div>
 
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF"
