@@ -150,8 +150,8 @@ const Packages = () => {
         <div className={styles.faq}>
           {faq.map((value, index) => {
             return (
-              <div key={index} className={styles.bb}>
-                <h4 onClick={() => faqToggle(value.ques)}>
+              <div key={index} className={styles.bb} onClick={() => faqToggle(value.ques)}>
+                <h4 >
                   {" "}
                   <span> {value.ques}</span>{" "}
                   <span>

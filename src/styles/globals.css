@@ -390,6 +390,7 @@ p {
     margin-bottom: 0px;
     position: relative;
     bottom: -5px;
+    cursor: pointer;
   }
  
 }
