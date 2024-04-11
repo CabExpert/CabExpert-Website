@@ -1,0 +1,131 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgb(244, 244, 244);
+  padding: 107px;
+}
+.container h2 {
+  text-align: center;
+}
+.logoUpload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logoUpload label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #C8C8C8;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.logoUpload label img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logoUpload input[type="file"] {
+  display: none;
+}
+
+.setupform {
+  display: grid;
+  gap: 26px;
+  
+  
+}
+.inputField {
+  width: calc(100% - 32px);
+  padding: 12px 16px;
+  margin-bottom: 20px;  
+  border-radius: 5px;
+  font-size: 16px;
+  flex: 1;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid #C8C8C8;
+  border-radius: 5px;
+  font-size: 16px;
+
+}
+
+.box {
+    width: calc(100% - 44px);
+
+  padding: 16px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #C8C8C8;
+  p[tabIndex="1"]{
+    margin-bottom: 6px;
+  }
+  p[tabIndex="0"]{
+    margin-bottom:8px;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.input{
+   border: 1px solid #C8C8C8;
+  border-radius: 5px;
+  padding: 12px ;
+  background: rgb(244, 244, 244);
+  
+}
+
+.verifyButton {
+  padding: 10px;
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.type_parent{
+    width: calc(100% - 10px);
+    border: 1px solid #C8C8C8;
+    border-radius: 4px;
+    overflow: hidden;
+    .business_type{
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
+        background-color: white;
+        align-items: baseline;
+        cursor: pointer;
+        border-bottom: 1px solid #C8C8C8;
+        h3{
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+    .toggle_parent{
+        background-color: #F1EFEF;
+        padding: 12px;
+        margin: 10px;
+        border-radius: 8px;
+        width: calc(100% -  44px);
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.country{
+    // width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+}
