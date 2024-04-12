@@ -145,7 +145,7 @@ const Packages = () => {
         <p>*All charges are exclusive of taxes.</p>
       </div>
       <div className={styles.forth_sec}>
-        <h2>Frequently asked questions</h2>
+        <h2>Frequently asked questions</h2> 
         <p>Exercitation dolore reprehenderit fugi</p>
         <div className={styles.faq}>
           {faq.map((value, index) => {
