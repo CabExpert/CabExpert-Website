@@ -1,18 +1,17 @@
 .register {
-  width: 921px;
+  max-width: 921px;
   height: 500px;
   background-color: #fbfbfb;
   margin-top: 50px;
   padding-top: 65px;
- padding-bottom: 80px;
- margin-bottom: 100px;
-    
+  padding-bottom: 80px;
+  margin-bottom: 100px;
 }
 .name {
   padding-top: 65px;
   display: flex;
   gap: 12px;
-  width: 731px;
+  max-width: 731px;
 }
 .register h2 {
   text-align: center;
@@ -38,8 +37,8 @@
     color: #444343;
     padding: 12px;
     outline: 0;
-    &:focus{
-        border: 1.2px solid #444343;
+    &:focus {
+      border: 1.2px solid #444343;
     }
   }
 }
@@ -50,7 +49,10 @@
   font-weight: 400;
   gap: 6px;
   padding-top: 15px;
-  accent-color:#FF9900;
+  accent-color: #ff9900;
+}
+.check p {
+  font-size: 14px;
 }
 .check p span {
   color: #ff9900;
@@ -65,6 +67,41 @@
   border: transparent;
   margin-bottom: 50px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-  
+@media only screen and (max-width: 768px) {
+  .register {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 50px;
+  }
+  .continuebutton {
+    margin-top: 20px;
+  }
+  .name {
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 35px;
+  }
+  .form {
+    gap: 15px;
+    padding: 0 20px;
+
+    input {
+      width: calc(100% - 24px);
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .register {
+    padding-top: 40px;
+    h2 {
+      font-size: 28px;
+    }
+  }
+  .name {
+    padding-top: 25px;
+  }
+}

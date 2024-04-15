@@ -13,9 +13,10 @@ export default function Setup() {
         <form>
           <div className={styles.logoUpload}>
             <label htmlFor="logo">
-              <img src="/company_logo_placeholder.png" alt="Company Logo" />
+              <Image src="/company_logo_placeholder.png" alt="Company Logo" width={56} height={72}/>
             </label>
             <input type="file" id="logo" />
+            <p>Upload company logo</p>
           </div>
           <div className={styles.setupform}>
             <div>
@@ -32,7 +33,7 @@ export default function Setup() {
                 id="phoneNumber"
                 className={styles.inputField}
                 placeholder="Phone Number"
-              />
+              /> 
             </div>
             <div>
               <div className={styles.box}>
@@ -46,7 +47,7 @@ export default function Setup() {
                   />
                   <button className={styles.verifyButton}>Verify</button>
                 </div>
-                <p>Verification code is sent to this number:</p>
+                <p className={styles.para}>Verification code is sent to this number:</p>
               </div>
             </div>
             <div className={styles.type_parent}>

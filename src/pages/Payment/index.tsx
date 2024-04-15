@@ -6,7 +6,8 @@ export default function Payments() {
   return (
     <>
       <Navbar />
-      <div className={`${styles.cards} container `}>
+      <div className={`${styles.cards} container`}>
+        <div className={styles.outerbox}>
         <div className={styles.maincardbox}>
           <div className={styles.carddd}>
             <div className={styles.card_container}>
@@ -128,14 +129,17 @@ export default function Payments() {
             </div>
 
             <div className={styles.Expiry}>
-              <input type="Num" id="11" placeholder="11" />
+              <input type="text" id="11" placeholder="11" maxLength={2}/>
               <span>/</span>
-              <input type="Num" id="11" placeholder="11" />
+              <input type="text" id="12" placeholder="11" maxLength={2} tabIndex={2}/>
             </div>
           </div>
           <div className={styles.paynoww}>        <button className={styles.paynow}>Pay Now</button> </div>
         </div>
-        
+        <div className={styles.dbcardbox}>
+          <Image src="/dbcardbox.png" alt="dbcard" width={436} height={546} />
+        </div>
+        </div>
 
       </div>
     </>

@@ -13,7 +13,7 @@ const thankyou = () => {
         <p>
           Thank you for confirming. We will contact you within the next 24 hours
           <br />
-          using the email and phone number you provided.
+          using the email and phone number you provided. 
         </p>
         <div className={styles.box}>
           <h3>Like & Share</h3> 
