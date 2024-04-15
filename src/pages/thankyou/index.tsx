@@ -16,7 +16,7 @@ const thankyou = () => {
           using the email and phone number you provided.
         </p>
         <div className={styles.box}>
-          <h3>Like & Share</h3>
+          <h3>Like & Share</h3> 
           <div className={styles.social_icons}>
             <Image src="/fb.png" alt="fb" width={28} height={26} />
             <Image
