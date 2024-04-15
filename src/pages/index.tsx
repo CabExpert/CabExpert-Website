@@ -22,7 +22,7 @@ export default function Home() {
         <meta name="description" content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
-        <link rel= "canonical" href= "https://example.com/sample-page/" />
+        <link rel= "canonical" href= "/" />
 
         { /*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
