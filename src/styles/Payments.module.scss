@@ -1,0 +1,178 @@
+.cards {
+  
+}
+
+.card_container {
+  display: flex;
+  border-radius: 10px;
+
+}
+
+.maincardbox{
+    max-width: 595px;
+    background-color:#F8F9FD;
+   padding: 30px
+}
+.cardimage {
+  align-items: center;
+  display: flex;
+  border: 1px solid black;
+  width: 100px;
+  height: 62px;
+  border-radius: 12px;
+  margin-left: 15px;
+  gap: 10px;
+  justify-content: center;
+}
+.carddd {
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.editcard{
+  display: flex;
+  margin-top: 15px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  h{
+  
+  }
+  
+}
+.cardnumberr{
+    h3{
+        font-weight:600;
+        font-size: 24px;
+    }
+    p{
+        font-size: 15px;
+        color: #939292;
+        font-weight: 400;
+      }
+}
+.edit {
+  display: flex;
+  align-items: center;
+
+  span {
+    color: #0399f5;
+    font-weight: 600;
+    font-size: 15px;
+  }
+}
+
+.carddetails {
+  display: flex;
+  gap: 10px;
+  input {
+    width: 50px;
+    font-size: 15px;
+    border: transparent;
+    text-align: center;
+    outline: 0;
+    background-color: #f8f9fd;
+  }
+  span{
+    font-weight: 700;
+  }
+}
+.cardnumber
+ {
+  display: flex;  
+  justify-content: space-between;
+  background-color: #f8f9fd;
+  border: 1px solid #6D5D5D;
+  padding: 15px ;
+  border-radius: 5px;
+}
+
+.cvv{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    justify-content: space-between;
+    h3{
+        font-weight: 600;
+        font-size: 24px;
+        }
+        p{
+            font-size: 15px;
+            color: #939292;
+            font-weight: 400;
+        }
+}
+
+.Number{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fd;
+    border: 1px solid #6D5D5D;
+    padding: 15px;
+    border-radius: 5px; 
+    input{
+        width: 121px;
+    border: transparent;
+    background-color: #f8f9fd;
+    text-align: center;
+    outline: 0;
+    font-size: 15px;
+    
+    }
+}
+
+.ExpiryDate{
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.Expiry{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    input{
+        width: 50px;
+        display: flex;        
+        background-color: #f8f9fd;
+        border: 1px solid #6D5D5D;
+        font-size: 15px;
+        text-align: center;
+        padding: 15px;
+        border-radius: 5px;
+        outline: 0;
+    }
+    span{
+        font-size:20px;
+        
+    }
+}
+
+.date{
+    h3{
+        font-weight: 600;
+        font-size: 24px;
+    }
+    p{
+        font-size: 15px;
+            color: #939292;
+            font-weight: 400;
+    }
+}
+
+.paynow{
+    display: flex;
+    justify-content: center;
+   margin-top: 15px;
+  width:100%;
+  background-color: #FF9900;
+  color: #f8f9fd;
+  border: transparent;
+  border-radius: 5px;
+  padding: 15px ;
+  
+}
+.paynoww{
+    display: flex;
+    justify-content: center;
+}

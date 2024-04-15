@@ -108,18 +108,23 @@ export default function Setup() {
               />
             </div>
             <div className={styles.country}>
-              <input
-                type="Country"
-                id="Country"
-                className={styles.inputField}
-                placeholder="Country"
-              />
-              <Image
-                src="/arrow-down.png"
-                alt="dropdown"
-                width={16}
-                height={16}
-              />
+              <select name="Country" id="Country">
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+              </select>
+              <div className={styles.check}>
+              <input type="checkbox" style={{ width: 12, height: 12,}} />
+              
+              <p>
+                By signing up, I agree with the <span>Terms of Use</span> &{" "}
+                <span>Privacy Policy</span>
+              </p>
+            </div>
+            <div className={styles.buttonn}>
+            <button type="submit" className={styles.continuebutton}>
+            Setup my business
+          </button>
+          </div>
             </div>
           </div>
         </form>
