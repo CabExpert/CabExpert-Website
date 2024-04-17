@@ -17,8 +17,8 @@ export default function Payments() {
                   src="/Group 564.png"
                   alt="image"
                   className={styles.contactimage_image}
-                  width={78}
-                  height={47}
+                  width={75}
+                  height={45}
                 />
               </div>
             </div>
@@ -29,8 +29,8 @@ export default function Payments() {
                   src="/image 3.png"
                   alt="image"
                   className={styles.contactimage_image}
-                  width={78}
-                  height={23}
+                  width={70}
+                  height={20}
                 />
               </div>
             </div>
@@ -94,6 +94,7 @@ export default function Payments() {
                 id="4444"
                 className={styles.inputField}
                 placeholder="4444"
+                
               />
             </div>
             <div>
@@ -131,13 +132,16 @@ export default function Payments() {
             <div className={styles.Expiry}>
               <input type="text" id="11" placeholder="11" maxLength={2}/>
               <span>/</span>
-              <input type="text" id="12" placeholder="11" maxLength={2} tabIndex={2}/>
+              <input type="text" id="12" placeholder="11" maxLength={2} tabIndex={2} style={{
+                  background: '#FF990033',
+border: '1px solid #FF990033'
+                }}/>
             </div>
           </div>
           <div className={styles.paynoww}>        <button className={styles.paynow}>Pay Now</button> </div>
         </div>
         <div className={styles.dbcardbox}>
-          <Image src="/dbcardbox.png" alt="dbcard" width={436} height={546} />
+          <Image src="/dbcardbox.png" alt="dbcard" width={436} height={636} />
         </div>
         </div>
 

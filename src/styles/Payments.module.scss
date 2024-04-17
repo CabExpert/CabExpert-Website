@@ -2,7 +2,10 @@
   display: flex;
   border-radius: 10px;
 }
-.outerbox{
+.card_container input {
+  accent-color: #ff9900;
+}
+.outerbox {
   margin: 50px;
   display: flex;
   justify-content: space-around;
@@ -16,16 +19,16 @@
   align-items: center;
   display: flex;
   border: 1px solid black;
-  width: 100px;
-  height: 62px;
+  width: 85px;
+  height: 55px;
   border-radius: 12px;
-  margin-left: 15px;
+  margin-left: 10px;
   gap: 10px;
   justify-content: center;
 }
 .carddd {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   justify-content: start;
 }
 
@@ -126,8 +129,8 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  input [tabIndex="2"]{
-    background-color: #FF990033 !important;
+  input [tabIndex="2"] {
+    background-color: #ff990033 !important;
   }
   input {
     width: 50px;
@@ -167,8 +170,74 @@
   border: transparent;
   border-radius: 5px;
   padding: 15px;
+  font-size: 16px;
 }
 .paynoww {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .outerbox {
+    flex-direction: column;
+    margin: 20px;
+  }
+  .dbcardbox img{
+    width: 100%;
+    height: auto;
+  }
+  .cardimage img {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: contain;
+}
+.maincardbox{
+  padding: 15px;
+}
+.Number, .cardnumber, .Expiry input {
+  padding: 10px;
+}
+.Number input, .Expiry input{
+  width: 40px;
+}
+}
+@media only screen and (max-width: 425px){
+  .editcard, .cvv, .ExpiryDate, .paynow{
+    margin-top: 25px;
+  }
+  .cardnumberr{
+    margin-bottom: 15px;
+  }
+  .outerbox{
+    margin: 15px;
+  }
+  .carddd{
+    gap: 10px;
+  }
+ .carddetails{
+  gap: 2px;
+ }
+.cardimage{
+  width: 80px;
+  height: 50px;
+  margin-left: 5px;
+}
+.carddetails{
+  width: 40px;
+}
+}
+@media only screen and (max-width: 320px){
+.carddd{
+flex-wrap: wrap;
+}
+.maincardbox{
+  padding: 0;
+}
+.carddetails input{ 
+  width: 40px;
+  font-size: 14px;
+}
+.cardnumber, .Number, .Expiry input{
+  padding: 10px 5px;
+}
 }
