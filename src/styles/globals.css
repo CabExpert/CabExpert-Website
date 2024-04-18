@@ -382,8 +382,8 @@ p {
     color: #ff9900;
     border: 0;
     background-color: #fff;
-    padding: 8px 50px;
-    border-radius: 5px;
+    padding: 10px 50px;
+    border-radius: 8px;
     font-weight: 500;
     box-shadow: 0px 4px 4px 0px #00000040;
     font-size: 16px;
@@ -393,6 +393,4 @@ p {
     cursor: pointer;
   }
  
-}
-.innerBox  .hollowCircle{
 }

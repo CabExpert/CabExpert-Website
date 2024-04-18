@@ -39,7 +39,7 @@
   border-top: 6px solid #ff9900;
   border-bottom: 9px solid #ff9900;
   width: fit-content;
-  padding: 20px;
+  padding: 20px 60px;
   margin: auto;
   border-radius: 8px;
   justify-content: center;
@@ -55,7 +55,7 @@
     color: white;
     cursor: pointer;
     background-color: #ff9900;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 0;
     padding: 10px 75px;
     position: absolute;
@@ -92,7 +92,7 @@
 }
 .second_sec {
   background-color: #f9f9f9;
-  padding: 50px;
+  padding: 50px 100px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-content: space-around;
@@ -147,7 +147,7 @@
   }
 }
 .third_sec {
-  padding: 30px 50px;
+  padding: 30px 100px;
   p {
     color: #ff9900;
     margin-top: 10px;

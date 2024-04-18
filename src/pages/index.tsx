@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/next-script-for-ga */
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import styles from "@/styles/home.module.scss";
 import Navbar from "@/component/navbar";
 import { Value } from "sass";
@@ -11,6 +11,7 @@ import Testimonials from "@/component/testimonials";
 import Animation from "@/component/animation";
 
 const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({subsets:["latin"], weight:["100","300", "400", "500", "700"]})
 
 export default function Home() {
   // const [popup, setpopup] = useState(false);
