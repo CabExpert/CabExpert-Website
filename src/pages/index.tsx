@@ -5,26 +5,36 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/home.module.scss";
 import Navbar from "@/component/navbar";
 import { Value } from "sass";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "@/component/footer";
 import Testimonials from "@/component/testimonials";
 import Animation from "@/component/animation";
-
+import useToken from "../hooks/useToken";
+import { useDispatch } from "react-redux";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // const [popup, setpopup] = useState(false);
 
+  // Example how to get token value from redux state
+  const token = useToken();
+  console.log("get token value", token);
+
   return (
     <>
       <Head>
-        <title>CabX: Streamline Driver Management and Billing Processes Digitally</title>
-        <meta name="description" content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now" />
+        <title>
+          CabX: Streamline Driver Management and Billing Processes Digitally
+        </title>
+        <meta
+          name="description"
+          content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
-        <link rel= "canonical" href= "/" />
+        <link rel="canonical" href="/" />
 
-        { /*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
+        {/*(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -42,9 +52,10 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           }}
         />
 
- <script type="application/ld+json"
- dangerouslySetInnerHTML={{
-  __html: `
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `
            
 {
   "@context": "https://schema.org",
@@ -100,7 +111,6 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 
             `,
           }}
-         
         />
       </Head>
       <Navbar />
@@ -108,11 +118,14 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 
       {/* <!-- Google Tag Manager (noscript) --> */}
       <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF" height="0" width="0" style={{ display: "none", visibility: "hidden" }}>
-        </iframe></noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
       {/* <!-- End Google Tag Manager (noscript) --> */}
-
-
 
       <div className={`${styles.start} container `}>
         <span>One New-Age Car Rental Software to Replace Them All</span>
@@ -160,20 +173,26 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         <Testimonials />
       </div>
       <div className={styles.outer}>
-      <div className={`${styles.help} container `}>
-        <div className={styles.helps}>
-          <h2>Let us help.</h2>
-          <p>
-            Get started with our free-of-charge, personalised support. Create
-            your custom ads plan with a Google Ads Expert.
-          </p>
-          <button className={styles.button_help}>0120-417-6500</button>
+        <div className={`${styles.help} container `}>
+          <div className={styles.helps}>
+            <h2>Let us help.</h2>
+            <p>
+              Get started with our free-of-charge, personalised support. Create
+              your custom ads plan with a Google Ads Expert.
+            </p>
+            <button className={styles.button_help}>0120-417-6500</button>
+          </div>
         </div>
       </div>
-      </div>
 
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF"
-height="0" width="0" style={{display:"none",visibility:"hidden"}}></iframe></noscript>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-WGTKRVJF"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
 
       {/* <div className={styles.heading_one}>
         <h2>

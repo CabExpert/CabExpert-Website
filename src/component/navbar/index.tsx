@@ -2,15 +2,24 @@ import React, { useEffect } from "react";
 import Style from "../navbar/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import { useDispatch } from "react-redux";
+import { setToken } from "@/reducers/tokenSlice";
 const Header = () => {
   const router = useRouter();
   const [menu, setMenu] = React.useState(false);
-
+  const dispatch = useDispatch();
   const handleMenu = () => {
     setMenu(!menu);
     console.log("menu");
   };
+  // Example how to set token value in redux state
+  useEffect(() => {
+    const setAuthToken = (token: any) => {
+      dispatch(setToken(token));
+    };
+    let token = "0123456789";
+    setAuthToken(token);
+  }, []);
 
   useEffect(() => {
     if (menu) {
