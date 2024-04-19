@@ -5,12 +5,9 @@
   padding: 50px 50px 0 50px;
 }
 
-
-
 .test h2 {
   padding-bottom: 45px;
 }
-
 
 .customer h3 {
   font-size: 24px;
@@ -19,6 +16,7 @@
 
 .customer h5 {
   font-size: 15px;
+  font-weight: 400;
   color: #ff9900;
 }
 
@@ -97,12 +95,12 @@
   right: 0px;
 }
 
-
-.testHeading h2{
+.testHeading h2 {
   text-align: center !important;
   margin: 10px;
   font-size: 48px;
   font-weight: 600;
+  width: 190px;
 }
 
 .testHeading {
@@ -111,11 +109,10 @@
   width: 100% !important;
   text-align: center !important;
   max-width: 1440px;
-  h2{
-   padding: 20px;
- }
- }
-
+  h2 {
+    padding: 20px;
+  }
+}
 
 @media screen and (max-width: 900px) {
   .test h2 {
@@ -131,19 +128,27 @@
 
   .customer {
     padding-top: 60px;
-    width: 350px !important;
+    width: 325px !important;
   }
 
   .test {
     overflow: scroll;
     width: 100%;
-
   }
-
 }
-@media only screen and (max-width: 425px){
-  .testHeading h2{
-    font-size: 34px;
+@media only screen and (max-width: 425px) {
+  .testHeading h2 {
+    font-size: 28px;
     line-height: 1;
+  }
+  .customer p {
+    font-size: 16px;
+  }
+  .customer {
+   
+
+    img {
+      margin-top: -82px;
+    }
   }
 }

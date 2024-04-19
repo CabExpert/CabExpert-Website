@@ -10,7 +10,7 @@
 .name {
   padding-top: 65px;
   display: flex;
-  gap: 12px;
+  gap: 24px;
   max-width: 731px;
 }
 .register h2 {
@@ -49,10 +49,12 @@
   font-weight: 400;
   gap: 6px;
   padding-top: 15px;
-  accent-color: #ff9900;
+  accent-color: #f55c14;
+  ;
 }
 .check p {
   font-size: 14px;
+  font-weight: 500;
 }
 .check p span {
   color: #ff9900;

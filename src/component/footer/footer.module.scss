@@ -168,3 +168,19 @@
     
   }
 }
+
+@media only screen and (max-width:425px){
+  .foottop span {
+    font-size: 16px;    
+  }
+  .foottop{
+    text-align: left;
+    display: grid;
+
+    img{
+      margin-left: 20px;
+      width: 25%;
+      height: auto;
+    }
+  }
+}
