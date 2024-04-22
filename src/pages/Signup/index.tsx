@@ -1,7 +1,9 @@
 import Navbar from "@/component/navbar";
 import styles from "@/styles/Signup.module.scss";
+import { useRouter } from "next/router";
 
 export default function Signup() {
+  const router = useRouter();
   return (
     <>
       <Navbar />
@@ -61,7 +63,7 @@ export default function Signup() {
               </p>
             </div>
           </div>
-          <button type="submit" className={styles.continuebutton}>
+          <button type="submit" className={styles.continuebutton} onClick={()=>router.push("/Setup-your-business")}>
             Continue
           </button>
         </form>

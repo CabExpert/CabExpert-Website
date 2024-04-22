@@ -7,6 +7,7 @@ import { useState } from "react";
 import StarSvgIcon from "@/component/svg/star_icon";
 import KingSvgIcon from "@/component/svg/king_icon";
 import OrangeStarSvgIcon from "@/component/svg/orange_star_icon";
+import { useRouter } from "next/router";
 
 const Packages = () => {
   const [showFaq, setshowFaq] = useState("");
@@ -14,6 +15,7 @@ const Packages = () => {
     showFaq === "" ? setshowFaq(value) : setshowFaq("");
   };
   const [color, setColor] = useState("");
+  const router = useRouter();
   return (
     <>
       <Header />
@@ -36,8 +38,8 @@ const Packages = () => {
           <Image
             src="/box-package-icon1.png"
             alt="box-icon"
-            width={80}
-            height={75}
+            width={60}
+            height={55}
           />
           <div className={styles.circle}>
             <span></span>
@@ -61,7 +63,7 @@ const Packages = () => {
               Unlimited setup of the vehicles
             </li>
           </ul>
-          <button>select</button>
+          <button onClick={()=>router.push("/Signup")}>select</button>
         </div>
       </div>
       <div className={styles.second_sec}>

@@ -12,7 +12,7 @@
 .para {
   font-size: 24px;
   line-height: 42.19px;
-  font-weight: 300;
+  font-weight: 400;
   color: #404040;
 }
 .lists {
@@ -22,7 +22,7 @@
 }
 .lists p {
   display: flex;
-  gap: 5px;
+  gap: 7px;
   align-items: center;
   color: #9e9797;
   font-size: 22px;
@@ -33,13 +33,14 @@
   border: 1px solid #9e9797;
   border-radius: 50%;
   width: fit-content;
-  margin: 10px auto !important;
+  margin: 5px auto !important;
 }
 .box {
-  border-top: 6px solid #ff9900;
+  width: 280px;
+  border-top: 9px solid #ff9900;
   border-bottom: 9px solid #ff9900;
-  width: fit-content;
-  padding: 20px;
+  // width: fit-content;
+  padding: 10px;
   margin: auto;
   border-radius: 8px;
   justify-content: center;
@@ -50,19 +51,21 @@
 
   h3 {
     font-size: 24px;
+    line-height: 1;
+    font-weight: 500;
   }
   button {
     color: white;
     cursor: pointer;
     background-color: #ff9900;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 0;
-    padding: 10px 75px;
+    padding: 10px 40px;
     position: absolute;
     bottom: -7%;
-    left: 15%;
+    left: 30%;
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 16px;
   }
   span {
     width: 15px;
@@ -74,8 +77,9 @@
   ul {
     text-align: left;
     margin-top: 10px !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 35px !important;
     padding: 0;
+    padding-left: 10px;
     li {
       color: #746d6d;
       padding-bottom: 5px;
@@ -84,8 +88,8 @@
   }
 }
 .lists span {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: #ff9900;
   display: block;
@@ -101,9 +105,10 @@
     margin: auto;
     text-align: center;
     padding: 10px 20px 0 20px;
-    display: grid;
-    justify-content: center;
-    height: 270px;
+    width: 190px;
+    // display: grid;
+    // justify-content: center;
+    height: 250px;
 
    img{
     margin: auto;
@@ -111,13 +116,17 @@
 
     h4 {
       font-size: 16px;
-      margin: 10px;
+      margin-top: 10px;
+      // margin: 10px;
+      height: fit-content;
     }
     p {
       color: #666565;
       font-size: 16px;
       font-weight: 300;
-      margin: 10px 0;
+      margin: 0;
+      margin-top: 10px;
+      height: fit-content;
 
       span {
         color: black;
@@ -147,7 +156,7 @@
   }
 }
 .third_sec {
-  padding: 30px 50px;
+  padding: 30px 90px;
   p {
     color: #ff9900;
     margin-top: 10px;
@@ -169,7 +178,7 @@
   }
 }
 .forth_sec {
-  padding: 50px;
+  padding: 50px 90px;
   h2 {
     font-size: 48px;
     font-weight: 600;
@@ -208,7 +217,8 @@
 @media screen and (max-width: 768px) {
   .second_sec {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
   .forth_sec h2,
   .first_sec h2 {
@@ -220,11 +230,15 @@
 }
 @media only screen and (max-width: 425px) {
   .second_sec {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
+.forth_sec, .third_sec{
+  padding: 0 20px;
+  // margin-top: 20px;
+}
   .forth_sec h2,
   .first_sec h2 {
-    font-size: 34px;
+    font-size: 28px;
     line-height: 1;
     margin-bottom: 10px;
   }
@@ -232,17 +246,38 @@
     padding: 30px 0;
   }
   .first_sec p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1;
+    margin-bottom: 8px;
+  }
+  .third_sec{
+    margin-top: 20px;
+    p{
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
   }
   .third_sec ul li {
     line-height: 1.2;
+    font-size: 16px;
   }
   .faq h4{
 gap: 15px;
   }
   .faq p{
     width: 90% !important;
+  }
+  .bb {
+    padding: 12px 0 !important;
+    h4{
+      font-size: 16px !important;
+    }
+    p{
+      font-size: 14px !important;
+    }
+  }
+  .forth_sec p{
+    font-size: 16px;
   }
 }
 
@@ -252,7 +287,13 @@ gap: 15px;
     gap: 20px;
   }
   .third_sec, .forth_sec{
-    padding: 30px;
+    padding: 20px;
+  }
+  .box{
+    width: 260px;
+    button{
+      left:28%
+    }
   }
 }
 @media only screen and (max-width: 320px){

@@ -137,6 +137,7 @@ const Header = () => {
                 alt="logo"
                 height={42}
                 width={42}
+                className=""
               />
             </div>
             <div className={Style.menu_two_mb}>
