@@ -1,10 +1,24 @@
 import Header from "@/component/navbar";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BlogCard from "../../component/blog-card";
 import styles from "@/styles/blogs.module.scss";
 import Footer from "@/component/footer";
 
 const Blogs = () => {
+  const [state, setState] = useState<any>([]);
+  const getAllBlogs = useCallback(async () => {
+    const res = await fetch(
+      "https://admin.cabexpert.co/api/auth/superadmin/blogs"
+    );
+    const data = await res.json();
+
+    setState(data);
+  }, []);
+  useEffect(() => {
+    getAllBlogs();
+  }, [getAllBlogs]);
+
+  console.log("state", { state });
   return (
     <div className={`${styles.blog_container}`}>
       <Header />
@@ -12,27 +26,17 @@ const Blogs = () => {
       <div className={`${styles.blogs_container}`}>
         <div className={`${styles.blog_cards_wrapper}`}>
           <div className={`${styles.cards_compo}`}>
-            <BlogCard  />
+            {state?.map((item: any, index: any) => {
+              return (
+                <>
+                  <BlogCard item={item} />
+                </>
+              );
+            })}
           </div>
-          <div className={`${styles.cards_compo}`}>
-            <BlogCard />
-          </div>
-          <div className={`${styles.cards_compo}`}>
-            <BlogCard />
-          </div>
-          <div className={`${styles.cards_compo}`}>
-            <BlogCard />
-          </div>
-          <div className={`${styles.cards_compo}`}>
-            <BlogCard />
-          </div>
-          <div className={`${styles.cards_compo}`}>
-            <BlogCard />
-          </div>
-
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

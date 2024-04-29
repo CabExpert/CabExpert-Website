@@ -3,13 +3,16 @@ import Image from "next/image";
 import CardImage from "../../../public/blogCardCover.png";
 import styles from "@/styles/blogs.module.scss";
 import { useRouter } from "next/navigation";
+interface ProposData {
+  item?: any;
+}
 
-const BlogCard = () => {
-
+const BlogCard = ({item}:ProposData) => {
+console.log("ineer data",{item})
     const router = useRouter()
 
     const viewBlog = () => {
-        router.push("/view-blog")
+        router.push(`/blogs/${item?._id}`)
     }
   return (
     <div onClick={() =>viewBlog()} className={`${styles.blog_card_container}`}>
@@ -18,7 +21,7 @@ const BlogCard = () => {
       </div>
       <div className={`${styles.card_bottom}`}>
         <div className={`${styles.blog_card_title}`}>
-            How renting vehicle can save your money
+           {item?.ogTitle}
         </div>
       </div>
     </div>

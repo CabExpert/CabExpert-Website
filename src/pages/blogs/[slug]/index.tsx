@@ -1,30 +1,45 @@
 import Header from "@/component/navbar";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/blogs.module.scss";
-import BannerImage from "../../../public/view-blog-cover.png";
-import BannerCar from "../../../public/view-blog-car.png";
-import BannerLogo from "../../../public/view-blog-logo.png";
-import Oval from "../../../public/Oval.png";
-import Dots from "../../../public/dots.png";
-import Unfilled from "../../../public/unfilledCircle.png";
-import CTAGraph from "../../../public/ctagraph.png";
-import RevAndOrders from "../../../public/revAndOrders.png";
-import MethodChart from "../../../public/methodChart.png";
-import HalfPhone from "../../../public/halfPhone.png";
-import PaperPlane from "../../../public/Paperplane.png";
+import BannerImage from "../../../../public/view-blog-cover.png";
+import BannerCar from "../../../../public/view-blog-car.png";
+import BannerLogo from "../../../../public/view-blog-logo.png";
+import Oval from "../../../../public/Oval.png";
+import Dots from "../../../../public/dots.png";
+import Unfilled from "../../../../public/unfilledCircle.png";
+import CTAGraph from "../../../../public/ctagraph.png";
+import RevAndOrders from "../../../../public/revAndOrders.png";
+import MethodChart from "../../../../public/methodChart.png";
+import HalfPhone from "../../../../public/halfPhone.png";
+import PaperPlane from "../../../../public/Paperplane.png";
 
 import Image from "next/image";
 import Overview from "@/component/overview";
 import Footer from "@/component/footer";
 
 const ViewBlog = () => {
+
+  const [state, setState] = useState<any>([]);
+  const getBlogs = useCallback(async () => {
+    const res = await fetch(
+      "https://admin.cabexpert.co/api/auth/superadmin/blog/660a99d6c37c238d9da75d7b"
+    );
+    const data = await res.json();
+
+    setState(data);
+  }, []);
+  useEffect(() => {
+    getBlogs();
+  }, [getBlogs]);
+  console.log(state,"hello");
   return (
     <div className={`${styles.view_blog_main_container}`}>
       <Header />
 
       <div className={`${styles.view_blog_container}`}>
         <h2>
-          Car Rental software boosts retail business revenue by 55%+ in 2024
+          {/* Car Rental software boosts retail business revenue by 55%+ in 2024 */}
+          {state?.metaTitle}
         </h2>
 
         <div className={`${styles.view_blog_banner}`}>
@@ -51,7 +66,8 @@ const ViewBlog = () => {
           />
         </div>
         <div className={`${styles.blog_para}`}>
-          <span>
+          <p>{state?.content}</p>
+          {/* <span>
             As a child, I have travelled a lot in trains across India. I
             remember my excitement as a train would slowly approach the
             platform, waiting to take me to somewhere new and totally
@@ -81,7 +97,7 @@ const ViewBlog = () => {
             Our goal is to create more transparency and drive best practices in
             the industry. At Cabx, we believe that transforming the industry
             from the inside out is key to solving customer problems.
-          </span>
+          </span> */}
         </div>
 
         <div className={`${styles.cabSuggest}`}>
