@@ -178,7 +178,7 @@ const Header = () => {
           <a href="https://admin.cabexpert.co/">
             <button className={Style.button_one}>Sign in </button>
           </a>
-          <a href="https://admin.cabexpert.co/signup">
+          <a href="/Signup">
             <button className={Style.button_two}>Create a free account</button>
           </a>
         </div>
