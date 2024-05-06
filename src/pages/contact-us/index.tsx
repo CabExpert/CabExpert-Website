@@ -11,9 +11,6 @@ import { LeadTypes } from "../../../network-requests/types";
 import { LeadsValidationsSchema } from "../../../network-requests/validations/signupValidation";
 import React from "react";
 
-
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
 
   const formik = useFormik({
@@ -112,7 +109,7 @@ export default function Home() {
           </p>
         </div>
         <div className={styles.cards}>
-          {callus.map((value, index) => {
+          {callus?.map((value, index) => {
             return (
               <>
                 <div

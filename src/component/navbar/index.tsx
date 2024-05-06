@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setToken } from "@/reducers/tokenSlice";
+import Link from "next/link";
+
 const Header = () => {
   const router = useRouter();
   const [menu, setMenu] = React.useState(false);
@@ -174,14 +176,20 @@ const Header = () => {
             width={42}
           />
         </div>
+      
         <div className={Style.button_nav}>
-          <a href="https://admin.cabexpert.co/">
-            <button className={Style.button_one}>Sign in </button>
-          </a>
-          <a href="/Signup">
-            <button className={Style.button_two}>Create a free account</button>
-          </a>
+          <Link href="https://admin.cabexpert.co/">
+            <a>
+              <button className={Style.button_one}>Sign in</button>
+            </a>
+          </Link>
+          <Link href="/Signup">
+            <a>
+              <button className={Style.button_two}>Create a free account</button>
+            </a>
+          </Link>
         </div>
+
       </div>
       {/* <div className={Style.header_parent}>
         <div className={Style.header}>
