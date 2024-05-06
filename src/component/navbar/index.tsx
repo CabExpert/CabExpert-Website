@@ -176,17 +176,13 @@ const Header = () => {
             width={42}
           />
         </div>
-      
+
         <div className={Style.button_nav}>
           <Link href="https://admin.cabexpert.co/">
-            <a>
-              <button className={Style.button_one}>Sign in</button>
-            </a>
+            <button className={Style.button_one}>Sign in</button>
           </Link>
           <Link href="/Signup">
-            <a>
-              <button className={Style.button_two}>Create a free account</button>
-            </a>
+            <button className={Style.button_two}>Create a free account</button>
           </Link>
         </div>
 
