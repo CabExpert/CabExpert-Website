@@ -2,7 +2,7 @@ import Navbar from "@/component/navbar";
 import styles from "@/styles/setup-your-business.module.scss";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { SetupYourBusiness } from "../../../network-requests/types";
 import { setupNewBusinessValidationSchema } from "../../../network-requests/validations/signupValidation";
 import { useRouter } from 'next/router';

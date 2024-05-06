@@ -6,10 +6,55 @@ import Navbar from "@/component/navbar";
 import Footer from "@/component/footer";
 import Testimonials from "@/component/testimonials";
 import Accordion from "@/component/accordion";
+import { useFormik } from "formik";
+import { LeadTypes } from "../../../network-requests/types";
+import { LeadsValidationsSchema } from "../../../network-requests/validations/signupValidation";
+import React from "react";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      number: "",
+      message: "",
+    } as LeadTypes,
+
+    validationSchema: LeadsValidationsSchema(),
+    onSubmit: (values: LeadTypes) => {
+      console.log({ values }, "values");
+      // handleSubmitLeads(values);
+    },
+  });
+
+  const {
+    values,
+    errors,
+    handleChange,
+    handleSubmit,
+    touched,
+  } = formik;
+
+  console.log({ values })
+
+  const handleSubmitForm = (e: any, values: any) => {
+    e.preventDefault();
+    handleSubmitLeads(values);
+  };
+
+  const handleSubmitLeads = React.useCallback(async (values: any) => {
+    try {
+      console.log({ values })
+    } catch (error: any) {
+      console.log({ error })
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -20,7 +65,7 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
-        <link rel= "canonical" href= "/contact-us" />
+        <link rel="canonical" href="/contact-us" />
       </Head>
 
       <Navbar />
@@ -70,9 +115,8 @@ export default function Home() {
             return (
               <>
                 <div
-                  className={`${styles.callus} ${
-                    value.id === "secondCard" ? styles.secondCard : ""
-                  } ${value.id === "thirdCard" ? styles.thirdCard : ""}`}
+                  className={`${styles.callus} ${value.id === "secondCard" ? styles.secondCard : ""
+                    } ${value.id === "thirdCard" ? styles.thirdCard : ""}`}
                   key={index}
                 >
                   <Image
@@ -95,63 +139,83 @@ export default function Home() {
               <h2>Let’s talk</h2>
               <span>Ask us anything or just say hi...</span>
             </div>
-            <div className={styles.formbox}>
-              <div className={styles.name}>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  id=""
-                  name=""
-                  className={styles.inputbox}
-                />
-
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  id=""
-                  name=""
-                  className={styles.inputbox}
-                />
-              </div>
-              <div className={styles.email}>
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  id=""
-                  name=""
-                  className={styles.inputbox}
-                />
-
-                <input
-                  type="number"
-                  placeholder="Phone Number"
-                  id=""
-                  name=""
-                  className={styles.inputbox}
-                />
-              </div>
-              <div className={styles.message}>
-                <textarea
-                  placeholder="Message"
-                  className={styles.inputbox}
-                ></textarea>
-              </div>
-
-              <div className={styles.button}>
-                <button className={styles.button_one}>
-                  <span>submit</span>
-
+            <form onSubmit={handleSubmit}>
+              <div className={styles.formbox}>
+                <div className={styles.name}>
                   <div>
-                    <Image
-                      src="/Polygon-btn.png"
-                      alt="phone"
-                      height={14}
-                      width={14}
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      id="firstName"
+                      name="firstName"
+                      value={values?.firstName}
+                      onChange={handleChange}
+                      className={styles.inputbox}
                     />
+                    <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
+                      {errors?.firstName && touched?.firstName && errors?.firstName}
+                    </span>
                   </div>
-                </button>
+
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    id="lastName"
+                    name="lastName"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+                </div>
+                <div className={styles.email}>
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    id="email"
+                    name="email"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+
+                  <input
+                    type="number"
+                    placeholder="Phone Number"
+                    id="number"
+                    name="number"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+                </div>
+                <div className={styles.message}>
+                  <textarea
+                    placeholder="Message"
+                    className={styles.inputbox}
+                    id="message"
+                    name="message"
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                {/* <div className={styles.button}>
+                  <button className={styles.button_one} type="submit" onClick={() => handleSubmitLeads(values)}>
+                    <span>submit</span>
+                    <div>
+                      <Image
+                        src="/Polygon-btn.png"
+                        alt="phone"
+                        height={14}
+                        width={14}
+                      />
+                    </div>
+                  </button>
+                </div> */}
+
+                <div className={styles.button} onClick={(e) => handleSubmitForm(e, values)}>
+                  <button className={styles.button_one} type="submit" >
+                    Submit
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

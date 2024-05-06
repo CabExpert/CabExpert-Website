@@ -18,3 +18,11 @@ export interface SetupYourBusiness {
     verificationCode: string,
     profile: string,
 }
+
+export interface LeadTypes {
+    firstName: string,
+    lastName: string,
+    email: string,
+    number: string,
+    message: string
+}

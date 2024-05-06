@@ -27,3 +27,13 @@ export const setupNewBusinessValidationSchema = () =>
             .length(15, 'GST number must be exactly 15 characters')
             .required('GST number is required'),
     });
+
+export const LeadsValidationsSchema = () =>
+    Yup.object().shape({
+        firstName: Yup.string().required('First name is required'),
+        lastName: Yup.string().required('Last name is required'),
+        email: Yup.string().email('Invalid email').required('Email is required'),
+        number: Yup.string()
+            .matches(/^[6-9]\d{9}$/, 'Invalid phone number')
+            .required('Number is required'),
+    });
