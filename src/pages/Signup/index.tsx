@@ -48,6 +48,7 @@ export default function Signup() {
       },
       onError: (res: any) => {
         console.log("ERROR in Signup", { res });
+        toast.error(res?.response?.data?.message)
       },
     });
   }

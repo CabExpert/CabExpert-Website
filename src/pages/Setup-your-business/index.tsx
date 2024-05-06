@@ -123,23 +123,26 @@ export default function Setup() {
           <ToastContainer />
         </div>
         <form onSubmit={handleSubmit}>
-          <div className={styles.logoUpload} onChange={handleUploadClick}>
+          <div className={styles.logoUpload}>
             {companyLogo ? (
               <label htmlFor="logo">
                 <Image src={companyLogo} alt="Company Logo" width={56} height={72} />
               </label>
-            )
-              : (
-                <label htmlFor="logo">
-                  <Image src="/company_logo_placeholder.png" alt="Company Logo" width={56} height={72} />
-                </label>
-              )}
-            <input type="file" id="logo"
+            ) : (
+              <label htmlFor="logo">
+                <Image src="/company_logo_placeholder.png" alt="Company Logo" width={56} height={72} />
+              </label>
+            )}
+            <input
+              type="file"
+              id="logo"
               ref={fileInputRef}
               onChange={(e) => handleProfileFileChange(e)}
+              accept=".png, .jpg, .jpeg, .webp"
             />
             <p>Upload company logo</p>
           </div>
+
           <div className={styles.setupform}>
             <div>
               <input
