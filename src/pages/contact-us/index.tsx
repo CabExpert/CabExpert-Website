@@ -54,8 +54,8 @@ export default function Home() {
       console.log({ response })
       toast.success(response?.message)
     } catch (error: any) {
-      console.log({ error })
-      toast.error("Email and number should be unique.")
+      console.log({ error });
+      toast.error("Please fill all unique details.");
     }
   }, [])
 
@@ -155,6 +155,7 @@ export default function Home() {
                     value={values?.firstName}
                     onChange={handleChange}
                     className={styles.inputbox}
+                    required
                   />
 
                   <input
@@ -174,6 +175,7 @@ export default function Home() {
                     name="email"
                     onChange={handleChange}
                     className={styles.inputbox}
+                    required
                   />
 
                   <input
@@ -183,6 +185,7 @@ export default function Home() {
                     name="number"
                     onChange={handleChange}
                     className={styles.inputbox}
+                    required
                   />
                 </div>
                 <div className={styles.message}>
@@ -192,6 +195,7 @@ export default function Home() {
                     id="message"
                     name="message"
                     onChange={handleChange}
+                    required
                   ></textarea>
                 </div>
 
