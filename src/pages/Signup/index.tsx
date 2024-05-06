@@ -78,7 +78,7 @@ export default function Signup() {
                 value={values?.firstName}
                 onChange={handleChange}
               />
-              <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
+              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
                 {errors?.firstName && touched?.firstName && errors?.firstName}
               </span>
             </div>
@@ -91,7 +91,7 @@ export default function Signup() {
               value={values?.lastName}
               onChange={handleChange}
             />
-            <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && 'visible'}`}>
+            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && 'visible'}`}>
               {errors?.lastName && touched?.lastName && errors?.lastName}
             </span>
           </div>
@@ -104,7 +104,7 @@ export default function Signup() {
               value={values?.email}
               onChange={handleChange}
             />
-            <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && 'visible'}`}>
+            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && 'visible'}`}>
               {errors?.email && touched?.email && errors?.email}
             </span>
           </div>
@@ -117,7 +117,7 @@ export default function Signup() {
               value={values?.password}
               onChange={handleChange}
             />
-            <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && 'visible'}`}>
+            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && 'visible'}`}>
               {errors?.password && touched?.password && errors?.password}
             </span>
 
@@ -131,7 +131,7 @@ export default function Signup() {
               value={values?.confirmPassword}
               onChange={handleChange}
             />
-            <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && 'visible'}`}>
+            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && 'visible'}`}>
               {errors?.confirmPassword && touched?.confirmPassword && errors?.confirmPassword}
             </span>
 

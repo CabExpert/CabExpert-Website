@@ -110,6 +110,7 @@ export default function Setup() {
       }
     } catch (error: any) {
       console.log({ error })
+      toast.error(error?.response?.data?.message)
     }
   }
 
@@ -150,7 +151,7 @@ export default function Setup() {
                 onChange={handleChange}
               />
 
-              <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.businessName && touched?.businessName && 'visible'}`}>
+              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.businessName && touched?.businessName && 'visible'}`}>
                 {errors?.businessName && touched?.businessName && errors?.businessName}
               </span>
             </div>
@@ -164,7 +165,7 @@ export default function Setup() {
                 value={values?.number}
                 onChange={handleChange}
               />
-              <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.number && touched?.number && 'visible'}`}>
+              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.number && touched?.number && 'visible'}`}>
                 {errors?.number && touched?.number && errors?.number}
               </span>
             </div>
@@ -220,7 +221,7 @@ export default function Setup() {
                 onChange={handleChange}
               />
 
-              <span className={`text-red-600 text-xs error-message absolute top-10 ${errors?.gstNumber && touched?.gstNumber && 'visible'}`}>
+              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.gstNumber && touched?.gstNumber && 'visible'}`}>
                 {errors?.gstNumber && touched?.gstNumber && errors?.gstNumber}
               </span>
             </div>
