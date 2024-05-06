@@ -43,6 +43,7 @@ export default function Home() {
   console.log({ values })
 
   const handleSubmitForm = (e: any, values: any) => {
+    console.log("Working fine..")
     e.preventDefault();
     handleSubmitLeads(values);
   };
@@ -139,63 +140,62 @@ export default function Home() {
               <h2>Let’s talk</h2>
               <span>Ask us anything or just say hi...</span>
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formbox}>
-                <div className={styles.name}>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      id="firstName"
-                      name="firstName"
-                      value={values?.firstName}
-                      onChange={handleChange}
-                      className={styles.inputbox}
-                    />
-                    <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
-                      {errors?.firstName && touched?.firstName && errors?.firstName}
-                    </span>
-                  </div>
-
+            <div className={styles.formbox}>
+              <div className={styles.name}>
+                <div>
                   <input
                     type="text"
-                    placeholder="Last Name"
-                    id="lastName"
-                    name="lastName"
+                    placeholder="First Name"
+                    id="firstName"
+                    name="firstName"
+                    value={values?.firstName}
                     onChange={handleChange}
                     className={styles.inputbox}
                   />
-                </div>
-                <div className={styles.email}>
-                  <input
-                    type="text"
-                    placeholder="Email Address"
-                    id="email"
-                    name="email"
-                    onChange={handleChange}
-                    className={styles.inputbox}
-                  />
-
-                  <input
-                    type="number"
-                    placeholder="Phone Number"
-                    id="number"
-                    name="number"
-                    onChange={handleChange}
-                    className={styles.inputbox}
-                  />
-                </div>
-                <div className={styles.message}>
-                  <textarea
-                    placeholder="Message"
-                    className={styles.inputbox}
-                    id="message"
-                    name="message"
-                    onChange={handleChange}
-                  ></textarea>
+                  <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
+                    {errors?.firstName && touched?.firstName && errors?.firstName}
+                  </span>
                 </div>
 
-                {/* <div className={styles.button}>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id="lastName"
+                  name="lastName"
+                  onChange={handleChange}
+                  className={styles.inputbox}
+                />
+              </div>
+              <div className={styles.email}>
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  id="email"
+                  name="email"
+                  onChange={handleChange}
+                  className={styles.inputbox}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Phone Number"
+                  id="number"
+                  name="number"
+                  onChange={handleChange}
+                  className={styles.inputbox}
+                />
+              </div>
+              <div className={styles.message}>
+                <textarea
+                  placeholder="Message"
+                  className={styles.inputbox}
+                  id="message"
+                  name="message"
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+
+              {/* <div className={styles.button}>
                   <button className={styles.button_one} type="submit" onClick={() => handleSubmitLeads(values)}>
                     <span>submit</span>
                     <div>
@@ -209,13 +209,12 @@ export default function Home() {
                   </button>
                 </div> */}
 
-                <div className={styles.button} onClick={(e) => handleSubmitForm(e, values)}>
-                  <button className={styles.button_one} type="submit" >
-                    Submit
-                  </button>
-                </div>
+              <div className={styles.button}>
+                <button onClick={(e) => handleSubmitForm(e, values)} className={styles.button_one} type="submit" >
+                  Submit
+                </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
