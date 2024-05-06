@@ -185,7 +185,6 @@ const Header = () => {
             <button className={Style.button_two}>Create a free account</button>
           </Link>
         </div>
-
       </div>
       {/* <div className={Style.header_parent}>
         <div className={Style.header}>

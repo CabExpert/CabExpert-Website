@@ -10,6 +10,9 @@ import { useFormik } from "formik";
 import { LeadTypes } from "../../../network-requests/types";
 import { LeadsValidationsSchema } from "../../../network-requests/validations/signupValidation";
 import React from "react";
+import { createLead } from "../../../network-requests/apis";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
 
@@ -40,16 +43,19 @@ export default function Home() {
   console.log({ values })
 
   const handleSubmitForm = (e: any, values: any) => {
-    console.log("Working fine..")
     e.preventDefault();
     handleSubmitLeads(values);
   };
 
   const handleSubmitLeads = React.useCallback(async (values: any) => {
     try {
-      console.log({ values })
+      console.log("Values in handle submit....", { values })
+      const response = await createLead(values);
+      console.log({ response })
+      toast.success(response?.message)
     } catch (error: any) {
       console.log({ error })
+      toast.error("Email and number should be unique.")
     }
   }, [])
 
@@ -132,14 +138,15 @@ export default function Home() {
           })}
         </div>
         <div className={styles.outer_form}>
-          <div className={styles.mainform}>
-            <div className={styles.formside}>
-              <h2>Let’s talk</h2>
-              <span>Ask us anything or just say hi...</span>
-            </div>
-            <div className={styles.formbox}>
-              <div className={styles.name}>
-                <div>
+          <form action="" onSubmit={handleSubmit}>
+            <ToastContainer />
+            <div className={styles.mainform}>
+              <div className={styles.formside}>
+                <h2>Let’s talk</h2>
+                <span>Ask us anything or just say hi...</span>
+              </div>
+              <div className={styles.formbox}>
+                <div className={styles.name}>
                   <input
                     type="text"
                     placeholder="First Name"
@@ -149,50 +156,46 @@ export default function Home() {
                     onChange={handleChange}
                     className={styles.inputbox}
                   />
-                  <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
-                    {errors?.firstName && touched?.firstName && errors?.firstName}
-                  </span>
+
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    id="lastName"
+                    name="lastName"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+                </div>
+                <div className={styles.email}>
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    id="email"
+                    name="email"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+
+                  <input
+                    type="number"
+                    placeholder="Phone Number"
+                    id="number"
+                    name="number"
+                    onChange={handleChange}
+                    className={styles.inputbox}
+                  />
+                </div>
+                <div className={styles.message}>
+                  <textarea
+                    placeholder="Message"
+                    className={styles.inputbox}
+                    id="message"
+                    name="message"
+                    onChange={handleChange}
+                  ></textarea>
                 </div>
 
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  id="lastName"
-                  name="lastName"
-                  onChange={handleChange}
-                  className={styles.inputbox}
-                />
-              </div>
-              <div className={styles.email}>
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  id="email"
-                  name="email"
-                  onChange={handleChange}
-                  className={styles.inputbox}
-                />
-
-                <input
-                  type="number"
-                  placeholder="Phone Number"
-                  id="number"
-                  name="number"
-                  onChange={handleChange}
-                  className={styles.inputbox}
-                />
-              </div>
-              <div className={styles.message}>
-                <textarea
-                  placeholder="Message"
-                  className={styles.inputbox}
-                  id="message"
-                  name="message"
-                  onChange={handleChange}
-                ></textarea>
-              </div>
-
-              {/* <div className={styles.button}>
+                {/* <div className={styles.button}>
                   <button className={styles.button_one} type="submit" onClick={() => handleSubmitLeads(values)}>
                     <span>submit</span>
                     <div>
@@ -206,13 +209,14 @@ export default function Home() {
                   </button>
                 </div> */}
 
-              <div className={styles.button}>
-                <button onClick={(e) => handleSubmitForm(e, values)} className={styles.button_one} type="submit" >
-                  Submit
-                </button>
+                <div className={styles.button}>
+                  <button onClick={(e) => handleSubmitForm(e, values)} className={styles.button_one} type="submit" >
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div>

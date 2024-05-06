@@ -43,3 +43,12 @@ export const uploadCompanyPorfile = async (selectedFile: any) => {
             return error;
         });
 };
+
+
+export const createLead = (data: any) =>
+    axios
+        .post("/auth/lead", data)
+        .then((response: { data: any; }) => response?.data)
+        .catch((error: any) => {
+            throw error;
+        });
