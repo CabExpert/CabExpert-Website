@@ -2,6 +2,7 @@ import React from "react";
 import Style from "../footer/footer.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Footer = () => {
   const router = useRouter();
@@ -120,6 +121,9 @@ const Footer = () => {
             className={Style.movingimagethree}
           />
         </div>
+      </div>
+      <div style={{background:"black", padding: "20px 10px"}}>
+        <p style={{textAlign:"center", color:"white"}}>Powered by <Link href={"https://epicglobal.co.in/"} target="_blank" className={Style.epic}> Epic Global Digital Solutions Pvt. Ltd.</Link> © 2024 All rights reserved.</p>
       </div>
     </div>
   );

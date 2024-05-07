@@ -6,9 +6,8 @@ import { SignupTypes } from "../../../network-requests/types";
 import { SignupValidationsSchema } from "../../../network-requests/validations/signupValidation";
 import { useAdminSignup } from "../../../network-requests/mutations";
 import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Signup() {
   const router = useRouter();
@@ -32,7 +31,7 @@ export default function Signup() {
   const [data, setData] = React.useState("");
 
   const handleSubmitSignupData = async (values: any) => {
-    console.log("IN HANDLE SUBMIT FUNCTION", { values })
+    console.log("IN HANDLE SUBMIT FUNCTION", { values });
     await mutate(values, {
       onSuccess: (res) => {
         console.log("data", { res });
@@ -42,26 +41,20 @@ export default function Signup() {
           toast.success("Successfully signup");
           router.push({
             pathname: "/Setup-your-business",
-            query: { id: res?.data?.id }
+            query: { id: res?.data?.id },
           });
         }
       },
       onError: (res: any) => {
         console.log("ERROR in Signup", { res });
-        toast.error(res?.response?.data?.message)
+        toast.error(res?.response?.data?.message);
       },
     });
-  }
+  };
 
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-    touched,
-  } = formik;
+  const { values, errors, handleChange, handleSubmit, touched } = formik;
 
-  console.log({ values })
+  console.log({ values });
 
   return (
     <>
@@ -73,28 +66,43 @@ export default function Signup() {
           <div className={styles.name}>
             <div>
               <input
+              className={styles.half_width}
                 type="text"
                 placeholder="First Name"
                 name="firstName"
                 value={values?.firstName}
                 onChange={handleChange}
+                
               />
-              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && 'visible'}`}>
+              <span
+                style={{ color: "red" }}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.firstName && touched?.firstName && "visible"
+                }`}
+              >
                 {errors?.firstName && touched?.firstName && errors?.firstName}
               </span>
             </div>
+            <div>
+              <input
+              className={styles.half_width}
 
-            <input
-              type="text"
-              id="LastName"
-              name="lastName"
-              placeholder="Last Name"
-              value={values?.lastName}
-              onChange={handleChange}
-            />
-            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && 'visible'}`}>
-              {errors?.lastName && touched?.lastName && errors?.lastName}
-            </span>
+                type="text"
+                id="LastName"
+                name="lastName"
+                placeholder="Last Name"
+                value={values?.lastName}
+                onChange={handleChange}
+              />
+              <span
+                style={{ color: "red" }}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.lastName && touched?.lastName && "visible"
+                }`}
+              >
+                {errors?.lastName && touched?.lastName && errors?.lastName}
+              </span>
+            </div>
           </div>
           <div>
             <input
@@ -105,7 +113,12 @@ export default function Signup() {
               value={values?.email}
               onChange={handleChange}
             />
-            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && 'visible'}`}>
+            <span
+              style={{ color: "red" }}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.email && touched?.email && "visible"
+              }`}
+            >
               {errors?.email && touched?.email && errors?.email}
             </span>
           </div>
@@ -118,10 +131,14 @@ export default function Signup() {
               value={values?.password}
               onChange={handleChange}
             />
-            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && 'visible'}`}>
+            <span
+              style={{ color: "red" }}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.password && touched?.password && "visible"
+              }`}
+            >
               {errors?.password && touched?.password && errors?.password}
             </span>
-
           </div>
           <div>
             <input
@@ -132,12 +149,19 @@ export default function Signup() {
               value={values?.confirmPassword}
               onChange={handleChange}
             />
-            <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && 'visible'}`}>
-              {errors?.confirmPassword && touched?.confirmPassword && errors?.confirmPassword}
+            <span
+              style={{ color: "red" }}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.confirmPassword && touched?.confirmPassword && "visible"
+              }`}
+            >
+              {errors?.confirmPassword &&
+                touched?.confirmPassword &&
+                errors?.confirmPassword}
             </span>
 
             <div className={styles.check}>
-              <input type="checkbox" style={{ width: 12, height: 12, }} />
+              <input type="checkbox" style={{ width: 12, height: 12 }} />
 
               <p>
                 By signing up, I agree with the <span>Terms of Use</span> &{" "}

@@ -34,11 +34,11 @@ export const uploadCompanyPorfile = async (selectedFile: any) => {
         .post(`/auth/admin/profile`, formData, {
             withCredentials: false,
         })
-        .then((response) => {
+        .then((response: any) => {
             console.log({ response });
             return response?.data;
         })
-        .catch((error) => {
+        .catch((error: any) => {
             console.log({ error });
             return error;
         });

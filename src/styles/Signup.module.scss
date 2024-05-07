@@ -9,9 +9,13 @@
 }
 .name {
   padding-top: 65px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   max-width: 731px;
+}
+.half_width{
+  width: 326px !important;
 }
 .register h2 {
   text-align: center;
@@ -93,6 +97,13 @@
     input {
       width: calc(100% - 24px);
     }
+  }
+  .half_width{
+    width: calc(100% - 24px) !important;
+  }
+  .name{
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 

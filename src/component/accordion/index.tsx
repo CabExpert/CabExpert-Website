@@ -54,6 +54,7 @@ const Accordion = () => {
             zIndex: "-9",
             backgroundColor: "transparent",
           }}
+          className={styles.cloud}
         />
 
         <Image
@@ -68,6 +69,7 @@ const Accordion = () => {
             bottom: "-140px",
             zIndex: "-9",
           }}
+          className={styles.moving_car}
         />
       </div>
 
