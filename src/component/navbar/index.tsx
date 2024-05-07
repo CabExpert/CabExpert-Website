@@ -122,25 +122,27 @@ const Header = () => {
 
         {menu ? (
           <div className="mb_menu_view">
-            <div className={Style.mb_menu_logo}>
-              <Image
-                onClick={() => router.push("/")}
-                src="/Group214.png"
-                className={`${Style.header_logo_mb}`}
-                alt="logo"
-                height={72}
-                width={150}
-              />
-            </div>
-            <div className={Style.mb_menu_close}>
-              <Image
-                onClick={handleMenu}
-                src="/close.png"
-                alt="logo"
-                height={42}
-                width={42}
-                className=""
-              />
+            <div style={{}}>
+              <div className={Style.mb_menu_logo}>
+                <Image
+                  onClick={() => router.push("/")}
+                  src="/Group214.png"
+                  className={`${Style.header_logo_mb}`}
+                  alt="logo"
+                  height={72}
+                  width={150}
+                />
+              </div>
+              <div className={Style.mb_menu_close}>
+                <Image
+                  onClick={handleMenu}
+                  src="/close.png"
+                  alt="logo"
+                  height={42}
+                  width={42}
+                  className=""
+                />
+              </div>
             </div>
             <div className={Style.menu_two_mb}>
               <ul>

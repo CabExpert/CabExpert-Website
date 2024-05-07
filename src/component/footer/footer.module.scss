@@ -126,6 +126,14 @@
   animation-delay: 5s;
   z-index: 2;
 }
+.epic{
+  color: white;
+  text-decoration: none;
+  &:hover{
+    cursor: pointer;
+    color: red;
+  }
+}
 @keyframes moveLeft {
   0% {
     left: -100px; 
