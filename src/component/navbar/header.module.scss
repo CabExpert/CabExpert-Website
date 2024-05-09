@@ -218,7 +218,7 @@
   }
 
   .mb_menu_logo {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 10px;
   }
 
@@ -264,17 +264,21 @@
   }
 }
 @media only screen and (max-width: 425px) {
+  .topnav_two{
+    padding: 10px;
+  }
   .topnav_two img {
     width: 96px !important;
     height: auto !important;
+    margin-bottom: -10px;
   }
   .menu img {
     width: 28px !important;
     height: auto !important;
   }
   .mb_menu_close {
-    right: 15px;
-    top: 27px;
+    right: 10px;
+    top: 15px;
     img {
       width: 30px !important;
     }

@@ -35,19 +35,45 @@
 
 @media screen and (max-width: 600px) {
   .accord {
-    width: 94%;
+    // width: 94%;
     background-color: #f8f9fa;
     padding: 10px;
-    margin-left: 0%;
+    margin-left: 0% !important;
     margin-bottom: 0px;
+    margin-top: 15%;
+    padding-bottom: 15%;
+  
     h3{
       font-size: 20px;
     }
     .cross{
       align-items: start;
       gap: 5px;
-      width: 90%;
+      width: auto;
     }
   }
-
+  .accord>div{
+    z-index: 9;
+    position: relative;
+  }
+  .cloud{
+    width: 100% !important;
+    top: -110px !important;
+  }
+  .moving_car{
+    position: absolute !important;
+    bottom: -229px !important;
+    z-index: 0 !important;
+    width: 100% !important;
+  }
+}
+@media only screen and (max-width:425px){
+  .accord{
+    h3{
+      font-size: 16px;
+    }
+    p{
+      font-size: 16px;
+    }
+  }
 }
