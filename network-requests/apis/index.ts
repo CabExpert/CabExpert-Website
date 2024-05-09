@@ -52,3 +52,13 @@ export const createLead = (data: any) =>
         .catch((error: any) => {
             throw error;
         });
+
+
+export const getAllBlogs = async () => {
+    try {
+        const response = await axios.get("/auth/superadmin/blogs");
+        return response.data;
+    } catch (error) {
+        throw new Error('Error fetching blogs');
+    }
+};
