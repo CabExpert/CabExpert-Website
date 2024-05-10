@@ -55,14 +55,14 @@ const ViewBlog = () => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{title}</title>
         <meta name="title" content={title} />
         <meta name="description" content={description} />
-      </Head>
+      </Head> */}
       <div className={`${styles.view_blog_main_container}`}>
         <Header />
-        {/* <NextSEO data={state} /> */}
+        <NextSEO data={state} />
 
         <div className={`${styles.view_blog_container}`}>
           <h2>
