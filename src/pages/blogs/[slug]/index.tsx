@@ -16,25 +16,40 @@ import PaperPlane from "../../../../public/Paperplane.png";
 import Image from "next/image";
 import Overview from "@/component/overview";
 import Footer from "@/component/footer";
+import { useRouter } from "next/router";
+import { fetchBlogById } from "../../../../network-requests/apis";
+import BlogMeta from "@/component/BlogMeta";
+import NextSEO from "@/component/BlogMeta";
 
 const ViewBlog = () => {
 
+  const router = useRouter();
+  const blogsId = router?.query;
+
   const [state, setState] = useState<any>([]);
   const getBlogs = useCallback(async () => {
-    const res = await fetch(
-      "https://admin.cabexpert.co/api/auth/superadmin/blog/660a99d6c37c238d9da75d7b"
-    );
-    const data = await res.json();
-
-    setState(data);
+    try {
+      const response = await fetchBlogById(blogsId?.slug as unknown as string);
+      console.log({ response })
+      if (response) setState(response)
+    } catch (error: any) {
+      console.log({ error })
+    }
   }, []);
+
   useEffect(() => {
     getBlogs();
-  }, [getBlogs]);
-  console.log(state,"hello");
+  }, []);
+
+  console.log({ state });
+
   return (
     <div className={`${styles.view_blog_main_container}`}>
       <Header />
+      <NextSEO
+        title={state?.metaTitle}
+        description={state?.metaDescription}
+      />
 
       <div className={`${styles.view_blog_container}`}>
         <h2>
@@ -67,37 +82,9 @@ const ViewBlog = () => {
         </div>
         <div className={`${styles.blog_para}`}>
           <p>{state?.content}</p>
-          {/* <span>
-            As a child, I have travelled a lot in trains across India. I
-            remember my excitement as a train would slowly approach the
-            platform, waiting to take me to somewhere new and totally
-            unexplored.
-          </span>
-
-          <span>
-            I carried this dream with me when I moved to the UK and wanted to
-            explore every nook and corner of this beautiful and diverse European
-            continent, to experience the sights and sound of new cultures and
-            their culinary delights. And this, unfortunately, led to many
-            uncomfortable encounters with car rental companies. Over 85% of
-            customers who regularly rent cars or vans have expressed
-            dissatisfaction in their rental experience.
-          </span>
-
-          <span>
-            Now compare this to their No. 1 reason for renting: 70% of people
-            hire cars for ‘convenience’.I am an avid traveller and this was a
-            chance to fix problems faced by my fellow travelers and myself when
-            renting cars.With Cabx, I am able to carry out my vision of creating
-            a consumer-centrical rental experience that unlocks the true value
-            of ‘convenience’ that customers desire.{" "}
-          </span>
-
-          <span>
-            Our goal is to create more transparency and drive best practices in
-            the industry. At Cabx, we believe that transforming the industry
-            from the inside out is key to solving customer problems.
-          </span> */}
+          <p>{state?.ogDescription}</p>
+          <p>{state?.metaTitle}</p>
+          <p>{state?.metaDescription}</p>
         </div>
 
         <div className={`${styles.cabSuggest}`}>
@@ -318,7 +305,7 @@ const ViewBlog = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

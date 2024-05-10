@@ -62,3 +62,16 @@ export const getAllBlogs = async () => {
         throw new Error('Error fetching blogs');
     }
 };
+
+
+// BLOG BY ID ... 
+export async function fetchBlogById(id: string) {
+    try {
+        const response = await axios.get(`/auth/superadmin/blog/${id}`);
+        console.log('API Response:', { response });
+        return response.data
+    } catch (error) {
+        console.error('Error fetching data from API:', error);
+        throw error;
+    }
+}

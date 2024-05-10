@@ -23,6 +23,14 @@ const BlogCard = ({ item }: BlogsCardProps) => {
         <div className={`${styles.blog_card_title}`}>
           {item?.ogTitle}
         </div>
+
+        <div className={`${styles.blog_card_title}`}>
+          {item?.ogDescription}
+        </div>
+
+        <div className={`${styles.blog_card_title}`}>
+          {item?.content}
+        </div>
       </div>
     </div>
   );
