@@ -18,6 +18,8 @@ const Blogs = () => {
     getAllBlogs();
   }, [getAllBlogs]);
 
+  
+
   console.log("state", { state });
   return (
     <div className={`${styles.blog_container}`}>
