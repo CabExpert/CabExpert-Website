@@ -20,23 +20,7 @@ export default function Home() {
   const token = useToken();
   console.log("get token value", token);
 
-  const [places, setPlaces] = useState([]);
-
-  useEffect(() => {
-    const fetchPlaces = async () => {
-      try {
-        const response = await fetch('/api/places?query=CabX');
-        const data = await response.json();
-
-        console.log(data,"review result");
-        setPlaces(data.results);
-      } catch (error) {
-        console.error('Error fetching places:', error);
-      }
-    };
-
-    fetchPlaces();
-  }, []);
+ 
 
   return (
     <>

@@ -1,5 +1,6 @@
 .testbox {
   display: flex;
+  width: 100% !important;
   gap: 10px;
   overflow-x: auto;
   padding: 50px 50px 0 50px;
@@ -61,10 +62,12 @@
 
 .test {
   margin-bottom: 80px;
+  overflow: hidden;
 }
 
 .customer {
-  width: 513px;
+  width: 450px !important;
+  flex: none;
   margin: 10px 10px 10px 10px;
   border: 1px solid transparent;
   border-radius: 10px;

@@ -2,7 +2,28 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "./testimonials.module.scss";
+import { useEffect, useState } from "react";
 const Testimonials = () => {
+
+  const [places, setPlaces] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      try {
+        const response = await fetch('/api/places?query=CabX');
+        const data = await response.json();
+
+       
+        setPlaces(data?.result);
+      } catch (error) {
+        console.error('Error fetching places:', error);
+      }
+    };
+    
+    fetchPlaces();
+  }, []);
+ const reviews = places?.reviews;
+ console.log(reviews,"rrrrrrrrrrrr");
   return (
     <>
       <div className={styles.testHeading}>
@@ -10,20 +31,23 @@ const Testimonials = () => {
       </div>
 
       <div className={styles.test}>
-        <div className={styles.testbox}>
-          {customer.map((value, index) => {
+        <div className={styles.testbox} style={{scrollbarWidth:"thin"}}>
+          {reviews?.map((value:any, index:number) => {
             return (
               <>
                 <div className={styles.customer} key={index}>
                   <Image
-                    src={value.Image}
+                    src={value?.profile_photo_url}
                     alt="/Ellipse28.png"
                     height={100}
                     width={100}
                   />
-                  <h3>{value.name}</h3>
-                  <h5>{value.place}</h5>
-                  <p>{value.content}</p>
+                  <h3>
+                    {/* {value.name} */}
+                    {value?.author_name}
+                  </h3>
+                  <h5>{value?.relative_time_description}</h5>
+                  <p>{value?.text}</p>
                 </div>
               </>
             );
