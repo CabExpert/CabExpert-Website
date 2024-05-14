@@ -10,6 +10,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Signup() {
+
+  const [isChecked, setIsChecked] = React.useState(false);
+  console.log({ isChecked })
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  }
+
+
   const router = useRouter();
 
   const formik = useFormik({
@@ -66,26 +75,25 @@ export default function Signup() {
           <div className={styles.name}>
             <div>
               <input
-              className={styles.half_width}
+                className={styles.half_width}
                 type="text"
                 placeholder="First Name"
                 name="firstName"
                 value={values?.firstName}
                 onChange={handleChange}
-                
+
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${
-                  errors?.firstName && touched?.firstName && "visible"
-                }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && "visible"
+                  }`}
               >
                 {errors?.firstName && touched?.firstName && errors?.firstName}
               </span>
             </div>
             <div>
               <input
-              className={styles.half_width}
+                className={styles.half_width}
 
                 type="text"
                 id="LastName"
@@ -96,9 +104,8 @@ export default function Signup() {
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${
-                  errors?.lastName && touched?.lastName && "visible"
-                }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && "visible"
+                  }`}
               >
                 {errors?.lastName && touched?.lastName && errors?.lastName}
               </span>
@@ -115,9 +122,8 @@ export default function Signup() {
             />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.email && touched?.email && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && "visible"
+                }`}
             >
               {errors?.email && touched?.email && errors?.email}
             </span>
@@ -133,9 +139,8 @@ export default function Signup() {
             />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.password && touched?.password && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && "visible"
+                }`}
             >
               {errors?.password && touched?.password && errors?.password}
             </span>
@@ -151,9 +156,8 @@ export default function Signup() {
             />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.confirmPassword && touched?.confirmPassword && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && "visible"
+                }`}
             >
               {errors?.confirmPassword &&
                 touched?.confirmPassword &&
@@ -161,15 +165,28 @@ export default function Signup() {
             </span>
 
             <div className={styles.check}>
-              <input type="checkbox" style={{ width: 12, height: 12 }} />
-
+              <input
+                type="checkbox"
+                style={{ width: 12, height: 12 }}
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />
               <p>
                 By signing up, I agree with the <span>Terms of Use</span> &{" "}
                 <span>Privacy Policy</span>
               </p>
             </div>
           </div>
-          <button type="submit" className={styles.continuebutton}>
+          <button
+            type="submit"
+            className={styles.continuebutton}
+            style={{
+              backgroundColor: isChecked ? "#ff9900" : "#ccc",
+              color: isChecked ? "#fbfbfb" : "#fbfbfb",
+              cursor: isChecked ? "pointer" : "not-allowed"
+            }}
+            disabled={!isChecked}
+          >
             Continue
           </button>
         </form>
