@@ -8,18 +8,17 @@ import { useAdminSignup } from "../../../network-requests/mutations";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { boolean } from "yup";
 
 export default function Signup() {
+  const router = useRouter();
+  const selectedIsFreeAccount = router?.query;
+  console.log({ selectedIsFreeAccount })
 
   const [isChecked, setIsChecked] = React.useState(false);
-  console.log({ isChecked })
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   }
-
-
-  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -28,6 +27,10 @@ export default function Signup() {
       email: "",
       password: "",
       confirmPassword: "",
+      isFree: selectedIsFreeAccount?.freeAccount === 'true' || false,
+      package: {
+        packageName: selectedIsFreeAccount?.packageName as string
+      },
     } as SignupTypes,
 
     validationSchema: SignupValidationsSchema(),
@@ -36,6 +39,7 @@ export default function Signup() {
       handleSubmitSignupData(values);
     },
   });
+
   const { mutate } = useAdminSignup();
   const [data, setData] = React.useState("");
 

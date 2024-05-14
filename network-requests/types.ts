@@ -4,6 +4,13 @@ export interface SignupTypes {
     email: string,
     password: string,
     confirmPassword: string,
+    isFree: boolean,
+
+    package: {
+        packageName: string;
+        perMonthDuties: string;
+        packageAmount: number;
+    };
 }
 
 export interface SetupYourBusiness {

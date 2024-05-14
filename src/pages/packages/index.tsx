@@ -16,6 +16,17 @@ const Packages = () => {
   };
   const [color, setColor] = useState("");
   const router = useRouter();
+
+  const handleSelect = () => {
+    router.push({
+      pathname: "/Signup",
+      query: {
+        freeAccount: true,
+        packageName: "Free Account"
+      },
+    });
+  };
+
   return (
     <>
       <Header />
@@ -63,46 +74,45 @@ const Packages = () => {
               Unlimited setup of the vehicles
             </li>
           </ul>
-          <button onClick={()=>router.push("/Signup")}>select</button>
+          <button onClick={handleSelect}>select</button>
         </div>
       </div>
       <div className={styles.second_sec}>
         {inner_Box.map((value, index) => {
           return (
             <div
-              className={`${styles.innerBox} ${
-                color === value.title ? "hover_card" : "#000"
-              }`}
+              className={`${styles.innerBox} ${color === value.title ? "hover_card" : "#000"
+                }`}
               key={index}
               onMouseEnter={() => setColor(value.title)}
               onMouseLeave={() => setColor("")}
             >
               <div>
-              {value.title === "Essential Bundle A" && (
+                {value.title === "Essential Bundle A" && (
 
-                <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
-              )}
+                  <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                )}
 
-              {value.title === "Essential Bundle B" && (
-                <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
-              )}
+                {value.title === "Essential Bundle B" && (
+                  <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                )}
 
-              {value.title === "Standard Package" && (
-                <KingSvgIcon color={color === value.title ? "#fff" : "#000"} />
-              )}
+                {value.title === "Standard Package" && (
+                  <KingSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                )}
 
-              {value.title === "Premium Collection A" && (
-                <OrangeStarSvgIcon
-                  color={color === value.title ? "#fff" : "#FF9900"}
-                />
-              )}
+                {value.title === "Premium Collection A" && (
+                  <OrangeStarSvgIcon
+                    color={color === value.title ? "#fff" : "#FF9900"}
+                  />
+                )}
 
-              {value.title === "Premium Collection B" && (
-                <OrangeStarSvgIcon
-                  color={color === value.title ? "#fff" : "#FF9900"}
-                />
-              )}
-</div>
+                {value.title === "Premium Collection B" && (
+                  <OrangeStarSvgIcon
+                    color={color === value.title ? "#fff" : "#FF9900"}
+                  />
+                )}
+              </div>
               <div className={styles.hollowCircle}>
                 <span className="hover"></span>
               </div>
@@ -113,7 +123,7 @@ const Packages = () => {
               <p>
                 Per month cost <br /> <span>{value.cost}</span>
               </p>
-              <button style={{display:"none"}}>Upgrade</button>
+              <button style={{ display: "none" }}>Upgrade</button>
             </div>
           );
         })}
@@ -147,7 +157,7 @@ const Packages = () => {
         <p>*All charges are exclusive of taxes.</p>
       </div>
       <div className={styles.forth_sec}>
-        <h2>Frequently asked questions</h2> 
+        <h2>Frequently asked questions</h2>
         <p>Exercitation dolore reprehenderit fugi</p>
         <div className={styles.faq}>
           {faq.map((value, index) => {
@@ -159,9 +169,8 @@ const Packages = () => {
                   <span>
                     <Image
                       src="/Chevron-up-large.png"
-                      className={`${showFaq === value.ques ? "" : "rotate"} ${
-                        styles.bg
-                      }`}
+                      className={`${showFaq === value.ques ? "" : "rotate"} ${styles.bg
+                        }`}
                       alt="dropdown"
                       width={15}
                       height={15}
