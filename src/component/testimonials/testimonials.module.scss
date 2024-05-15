@@ -149,6 +149,12 @@
   }
   .customer p {
     font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
   }
   .customer {
    
@@ -160,4 +166,5 @@
   .test{
     margin-bottom: 40px !important;
   }
+  
 }
