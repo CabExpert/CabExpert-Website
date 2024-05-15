@@ -2,7 +2,6 @@
   display: flex;
   width: 100% !important;
   gap: 10px;
-  overflow-x: auto;
   // padding: 50px 50px 0 50px;
   
 }
@@ -128,19 +127,18 @@
   }
 
   .testbox {
-    min-width: max-content;
-    overflow: auto;
-    width: 100vw !important;
+    // min-width: max-content;
+   
+    // width: 100vw !important;
     padding: 10px;
   }
 
   .customer {
     padding-top: 60px;
-    width: 325px !important;
+    width: 90vw !important;
   }
 
   .test {
-    overflow: scroll;
     width: 100%;
   }
 }
@@ -158,5 +156,8 @@
     img {
       margin-top: -82px;
     }
+  }
+  .test{
+    margin-bottom: 40px !important;
   }
 }

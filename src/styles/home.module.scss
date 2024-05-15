@@ -243,6 +243,8 @@ margin: 0 50px 80px 50px;
   font-size: 48px;
   margin-bottom: 25px;
   padding: 0 30px;
+  position: relative;
+  z-index: 9;
 }
 .helps p {
   font-size: 20px;
@@ -259,6 +261,8 @@ margin: 0 50px 80px 50px;
   font-size: 16px;
   border-radius: 15px;
   margin-top: 23px;
+  position: relative;
+  z-index: 9;
 }
 
 .indiamap h3{
@@ -326,7 +330,12 @@ left: -10px;
   }
 }
 
-
+@media only screen and (max-width:426px){
+  .main_box img{
+    width: 20%;
+    height: auto;
+  }
+}
 
 
 

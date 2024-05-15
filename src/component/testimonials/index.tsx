@@ -64,7 +64,7 @@ const Testimonials = () => {
       <div className={styles.test}>
         <div className={styles.testbox}>
         <Swiper
-          slidesPerView={windowWidth<1024 ? 2 : windowWidth<500 ? 1 : 3}
+          slidesPerView={windowWidth<500 ? 1 : windowWidth<1024 ? 2 : 3}
           // pagination={{ clickable: true }}
           autoplay={{ delay: 2000 }}
 
