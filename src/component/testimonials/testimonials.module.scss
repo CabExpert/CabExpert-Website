@@ -3,9 +3,9 @@
   width: 100% !important;
   gap: 10px;
   overflow-x: auto;
-  padding: 50px 50px 0 50px;
+  // padding: 50px 50px 0 50px;
+  
 }
-
 .test h2 {
   padding-bottom: 45px;
 }
@@ -64,9 +64,14 @@
   margin-bottom: 80px;
   overflow: hidden;
 }
-
+.ratingStar{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 .customer {
   width: 450px !important;
+  height: 300px;
   flex: none;
   margin: 10px 10px 10px 10px;
   border: 1px solid transparent;
