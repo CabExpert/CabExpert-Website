@@ -288,7 +288,7 @@ export default function Setup() {
                   type="submit"
                   className={styles.continuebutton}
                   style={{
-                    backgroundColor: isChecked ? "#ff9900" : "#ccc",
+                    backgroundColor: values?.businessName && values?.gstNumber && values?.number && isChecked ? "#ff9900" : "#ccc",
                     color: isChecked ? "#fbfbfb" : "#fbfbfb",
                     cursor: isChecked ? "pointer" : "not-allowed"
                   }}

@@ -13,17 +13,16 @@ const Testimonials = () => {
         const response = await fetch('/api/places?query=CabX');
         const data = await response.json();
 
-       
+
         setPlaces(data?.result);
       } catch (error) {
         console.error('Error fetching places:', error);
       }
     };
-    
+
     fetchPlaces();
   }, []);
- const reviews = places?.reviews;
- console.log(reviews,"rrrrrrrrrrrr");
+  const reviews = places?.reviews;
   return (
     <>
       <div className={styles.testHeading}>
@@ -31,8 +30,8 @@ const Testimonials = () => {
       </div>
 
       <div className={styles.test}>
-        <div className={styles.testbox} style={{scrollbarWidth:"thin"}}>
-          {reviews?.map((value:any, index:number) => {
+        <div className={styles.testbox} style={{ scrollbarWidth: "thin" }}>
+          {reviews?.map((value: any, index: number) => {
             return (
               <>
                 <div className={styles.customer} key={index}>

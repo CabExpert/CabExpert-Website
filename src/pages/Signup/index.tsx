@@ -185,11 +185,10 @@ export default function Signup() {
             type="submit"
             className={styles.continuebutton}
             style={{
-              backgroundColor: isChecked ? "#ff9900" : "#ccc",
+              backgroundColor: values?.firstName && values?.lastName && values?.email && values?.password && values?.confirmPassword && isChecked ? "#ff9900" : "#ccc",
               color: isChecked ? "#fbfbfb" : "#fbfbfb",
               cursor: isChecked ? "pointer" : "not-allowed"
             }}
-            disabled={!isChecked}
           >
             Continue
           </button>
