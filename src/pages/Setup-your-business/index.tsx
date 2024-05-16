@@ -17,6 +17,12 @@ export default function Setup() {
   const { id } = router.query;
   console.log({ id })
 
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  }
+
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [companyLogo, setCompanyLogo] = React.useState("");
@@ -266,14 +272,28 @@ export default function Setup() {
                 ))}
               </select>
               <div className={styles.check}>
-                <input type="checkbox" style={{ width: 12, height: 12, }} />
+                <input
+                  type="checkbox"
+                  style={{ width: 12, height: 12 }}
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
                 <p>
                   By signing up, I agree with the <span>Terms of Use</span> &{" "}
                   <span>Privacy Policy</span>
                 </p>
               </div>
               <div className={styles.buttonn}>
-                <button type="submit" className={styles.continuebutton}>
+                <button
+                  type="submit"
+                  className={styles.continuebutton}
+                  style={{
+                    backgroundColor: isChecked ? "#ff9900" : "#ccc",
+                    color: isChecked ? "#fbfbfb" : "#fbfbfb",
+                    cursor: isChecked ? "pointer" : "not-allowed"
+                  }}
+                  disabled={!isChecked}
+                >
                   Setup my business
                 </button>
               </div>

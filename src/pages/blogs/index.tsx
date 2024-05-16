@@ -22,6 +22,8 @@ const Blogs = () => {
     handleGetAllBlogs();
   }, []);
 
+  
+
   console.log("state", { state });
   return (
     <div className={`${styles.blog_container}`}>

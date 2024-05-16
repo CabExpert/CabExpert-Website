@@ -5,12 +5,22 @@ import { useFormik } from "formik";
 import { SignupTypes } from "../../../network-requests/types";
 import { SignupValidationsSchema } from "../../../network-requests/validations/signupValidation";
 import { useAdminSignup } from "../../../network-requests/mutations";
-import React from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { boolean } from "yup";
+import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
+import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
 
 export default function Signup() {
   const router = useRouter();
+  const selectedIsFreeAccount = router?.query;
+  console.log({ selectedIsFreeAccount });
+
+  const [isChecked, setIsChecked] = React.useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -19,6 +29,10 @@ export default function Signup() {
       email: "",
       password: "",
       confirmPassword: "",
+      isFree: selectedIsFreeAccount?.freeAccount === "true" || false,
+      package: {
+        packageName: selectedIsFreeAccount?.packageName as string,
+      },
     } as SignupTypes,
 
     validationSchema: SignupValidationsSchema(),
@@ -27,6 +41,7 @@ export default function Signup() {
       handleSubmitSignupData(values);
     },
   });
+
   const { mutate } = useAdminSignup();
   const [data, setData] = React.useState("");
 
@@ -56,6 +71,9 @@ export default function Signup() {
 
   console.log({ values });
 
+  const [popup, setPopup] = useState("");
+  console.log(popup, "popup");
+
   return (
     <>
       <Navbar />
@@ -66,13 +84,12 @@ export default function Signup() {
           <div className={styles.name}>
             <div>
               <input
-              className={styles.half_width}
+                className={styles.half_width}
                 type="text"
                 placeholder="First Name"
                 name="firstName"
                 value={values?.firstName}
                 onChange={handleChange}
-                
               />
               <span
                 style={{ color: "red" }}
@@ -85,8 +102,7 @@ export default function Signup() {
             </div>
             <div>
               <input
-              className={styles.half_width}
-
+                className={styles.half_width}
                 type="text"
                 id="LastName"
                 name="lastName"
@@ -112,7 +128,7 @@ export default function Signup() {
               placeholder="Email Address"
               value={values?.email}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
               className={`text-red-600 text-xs error-message absolute top-10 ${
@@ -130,7 +146,7 @@ export default function Signup() {
               placeholder="Password"
               value={values?.password}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
               className={`text-red-600 text-xs error-message absolute top-10 ${
@@ -148,7 +164,7 @@ export default function Signup() {
               placeholder="Re-enter Password"
               value={values?.confirmPassword}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
               className={`text-red-600 text-xs error-message absolute top-10 ${
@@ -161,18 +177,65 @@ export default function Signup() {
             </span>
 
             <div className={styles.check}>
-              <input type="checkbox" style={{ width: 12, height: 12 }} />
-
+              <input
+                type="checkbox"
+                style={{ width: 12, height: 12 }}
+                checked={isChecked}
+                
+                onChange={handleCheckboxChange}
+              />
               <p>
-                By signing up, I agree with the <span>Terms of Use</span> &{" "}
-                <span>Privacy Policy</span>
+                By signing up, I agree with the{" "}
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPopup("term")}
+                >
+                  Terms of Use
+                </span>{" "}
+                &{" "}
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPopup("policy")}
+                >
+                  Privacy Policy
+                </span>
               </p>
             </div>
           </div>
-          <button type="submit" className={styles.continuebutton}>
+          <button
+            type="submit"
+            className={styles.continuebutton}
+            style={{
+              backgroundColor: isChecked ? "#ff9900" : "#ccc",
+              color: isChecked ? "#fbfbfb" : "#fbfbfb",
+              cursor: isChecked ? "pointer" : "not-allowed",
+            }}
+            disabled={!isChecked}
+          >
             Continue
           </button>
         </form>
+        {popup === "term" && (
+          <div className={styles.privacyPopup}>
+            <div className={styles.popupChild} style={{ position: "relative" }}>
+              <TermsAndCondition />
+              <div className={styles.closeIcon} onClick={() => setPopup("")}>
+                <span>x</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {popup === "policy" && (
+          <div className={styles.privacyPopup}>
+            <div className={styles.popupChild} style={{ position: "relative" }}>
+              <PrivacyPolicy />
+              <div className={styles.closeIcon} onClick={() => setPopup("")}>
+                <span>x</span>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </>
   );
