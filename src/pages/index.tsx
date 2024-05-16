@@ -24,11 +24,11 @@ export default function Home() {
     <>
       <Head>
         <title>
-          CabX: Streamline Driver Management and Billing Processes Digitally
+        Manage Digital Duty Slip and Driver Real-time Tracking with CabX
         </title>
         <meta
           name="description"
-          content="CabX Driver Management and Billing Processes streamline operations for companies and small cab/Taxi Operators, enabling them to efficiently manage and automate the process of booking, duty slips, and invoices. Explore Now"
+          content="Manage your cab and taxi business with CabX, with real-time driver location tracking, digital duty slips, along with instant invoices and billing. Visit now for a Free Demo."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/fabicon.png" />
