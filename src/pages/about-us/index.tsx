@@ -49,14 +49,10 @@ export default function Home() {
         <div className={styles.content}>
           <h2>Our Story</h2>
           <h4>
-            Cabx parent company, was founded out of a passion how we can make
-            our life easeay by using the , and the urge to make it convenient
-            for all. This is the <br></br>story of our founder Biswajit, an avid
-            traveller with a vision to solve problems faced by fellow travellers
-            looking to rent cars, as well as <br></br>small vehicle rental
-            companies seeking more customers.
-          </h4>
-          <p>
+            <p>
+          CabX parent company, Epic Global Digital Solutions Pvt. Ltd., established CabX with a passion for leveraging technology to simplify our lives and make it more convenient for everyone. This is <b>CabX</b>  story, with a vision of addressing the challenges faced by frequent travelers seeking car rentals, as well as small and large enterprise vehicle rental businesses aiming to attract more customers.
+          </p></h4>
+          {/* <p>
             As a child, I have travelled a lot in trains across India. I
             remember my excitement as a train would slowly approach the
             platform, waiting to take me to somewhere new and totally
@@ -76,7 +72,7 @@ export default function Home() {
             transparency and drive best practices in the industry. At Cabx, we
             believe that transforming the industry from the inside out is key to
             solving customer problems.
-          </p>
+          </p> */}
           {/* <h5>Anupam Singh</h5>
           <span>FOUNDER AND CEO</span> */}
         </div>
@@ -103,7 +99,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className={styles.manphone}>
+        {/* <div className={styles.manphone}>
           <h2>Customizable workflow to suit your internal policies.</h2>
           <h3>Employee profile & category management</h3>
           <ul>
@@ -121,7 +117,7 @@ export default function Home() {
               procedures within your organization
             </li>
           </ul>
-        </div>
+        </div> */}
         <Testimonials />
       </div>
 
@@ -133,39 +129,39 @@ export default function Home() {
 const material = [
   {
     image: "/Group490.png",
-    heading: "Challenging",
+    heading: "Innovation",
     paragraph:
-      "We know we can always do better, and we relentlessly challenge ourselves to do so. We’re innovative in everything we do.",
+      "We strive to push the boundaries of what's possible in the vehicle rental industry by embracing innovation. From cutting-edge technology solutions to creative business strategies, we're constantly seeking new ways to improve and enhance the customer experience.",
   },
   {
     image: "/Group491.png",
-    heading: "Accountable",
+    heading: "Reliability",
 
     paragraph:
-      "We hold ourselves accountable. We say what we’ll do, and we do what we say. We learn from our successes and failures.",
+      "Trust is at the core of everything we do. We believe in delivering reliable and dependable service to our customers and partners alike. You can count on us to be there when you need us, every step of the way.",
   },
   {
     image: "/Group492.png",
-    heading: "Caring",
+    heading: "Community",
     paragraph:
-      " We care about the people we work for, and those we work with. We also care deeply about the environment.",
+      "  At CabX, we believe in the power of community. We're more than just a platform for vehicle rentals – we're a supportive network of travelers, rental businesses, and partners working together towards a common goal. Together, we're building a stronger, more connected community where everyone can thrive.",
   },
-  {
-    image: "/Group493.png",
-    heading: "Commercial",
-    paragraph:
-      "      We build success by making sound business decisions and by building mutually profitable relationships with our customers and our partners.  ",
-  },
-  {
-    image: "/Group494.png",
-    heading: "Transparent",
-    paragraph:
-      " Customers, partners and colleagues know what to expect from us and what we ask from them in return.",
-  },
-  {
-    image: "/Group495.png",
-    heading: "Inclusive",
-    paragraph:
-      "We care about the people we work for, and those we work with. We also care deeply about the environment. ",
-  },
+  // {
+  //   image: "/Group493.png",
+  //   heading: "Commercial",
+  //   paragraph:
+  //     "      We build success by making sound business decisions and by building mutually profitable relationships with our customers and our partners.  ",
+  // },
+  // {
+  //   image: "/Group494.png",
+  //   heading: "Transparent",
+  //   paragraph:
+  //     " Customers, partners and colleagues know what to expect from us and what we ask from them in return.",
+  // },
+  // {
+  //   image: "/Group495.png",
+  //   heading: "Inclusive",
+  //   paragraph:
+  //     "We care about the people we work for, and those we work with. We also care deeply about the environment. ",
+  // },
 ];

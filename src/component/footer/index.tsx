@@ -56,6 +56,9 @@ const Footer = () => {
               <li>
                 <a onClick={() => router.push("/blogs")}>Blogs</a>
               </li>
+              <li>
+                <a onClick={() => router.push("/refund-policy")}>Refund Policy</a>
+              </li>
             </ul>
           </div>
           <div className={Style.links}>

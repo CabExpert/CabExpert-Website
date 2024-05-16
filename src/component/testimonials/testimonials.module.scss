@@ -2,10 +2,9 @@
   display: flex;
   width: 100% !important;
   gap: 10px;
-  overflow-x: auto;
-  padding: 50px 50px 0 50px;
+  // padding: 50px 50px 0 50px;
+  
 }
-
 .test h2 {
   padding-bottom: 45px;
 }
@@ -64,9 +63,14 @@
   margin-bottom: 80px;
   overflow: hidden;
 }
-
+.ratingStar{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 .customer {
   width: 450px !important;
+  height: 300px;
   flex: none;
   margin: 10px 10px 10px 10px;
   border: 1px solid transparent;
@@ -123,19 +127,18 @@
   }
 
   .testbox {
-    min-width: max-content;
-    overflow: auto;
-    width: 100vw !important;
+    // min-width: max-content;
+   
+    // width: 100vw !important;
     padding: 10px;
   }
 
   .customer {
     padding-top: 60px;
-    width: 325px !important;
+    width: 90vw !important;
   }
 
   .test {
-    overflow: scroll;
     width: 100%;
   }
 }
@@ -146,6 +149,12 @@
   }
   .customer p {
     font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
   }
   .customer {
    
@@ -154,4 +163,8 @@
       margin-top: -82px;
     }
   }
+  .test{
+    margin-bottom: 40px !important;
+  }
+  
 }

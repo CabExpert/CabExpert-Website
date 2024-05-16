@@ -5,20 +5,22 @@ import { useFormik } from "formik";
 import { SignupTypes } from "../../../network-requests/types";
 import { SignupValidationsSchema } from "../../../network-requests/validations/signupValidation";
 import { useAdminSignup } from "../../../network-requests/mutations";
-import React from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { boolean } from "yup";
+import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
+import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
 
 export default function Signup() {
   const router = useRouter();
   const selectedIsFreeAccount = router?.query;
-  console.log({ selectedIsFreeAccount })
+  console.log({ selectedIsFreeAccount });
 
   const [isChecked, setIsChecked] = React.useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-  }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -27,9 +29,9 @@ export default function Signup() {
       email: "",
       password: "",
       confirmPassword: "",
-      isFree: selectedIsFreeAccount?.freeAccount === 'true' || false,
+      isFree: selectedIsFreeAccount?.freeAccount === "true" || false,
       package: {
-        packageName: selectedIsFreeAccount?.packageName as string
+        packageName: selectedIsFreeAccount?.packageName as string,
       },
     } as SignupTypes,
 
@@ -69,6 +71,9 @@ export default function Signup() {
 
   console.log({ values });
 
+  const [popup, setPopup] = useState("");
+  console.log(popup, "popup");
+
   return (
     <>
       <Navbar />
@@ -85,12 +90,12 @@ export default function Signup() {
                 name="firstName"
                 value={values?.firstName}
                 onChange={handleChange}
-
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && "visible"
-                  }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.firstName && touched?.firstName && "visible"
+                }`}
               >
                 {errors?.firstName && touched?.firstName && errors?.firstName}
               </span>
@@ -98,7 +103,6 @@ export default function Signup() {
             <div>
               <input
                 className={styles.half_width}
-
                 type="text"
                 id="LastName"
                 name="lastName"
@@ -108,8 +112,9 @@ export default function Signup() {
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && "visible"
-                  }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.lastName && touched?.lastName && "visible"
+                }`}
               >
                 {errors?.lastName && touched?.lastName && errors?.lastName}
               </span>
@@ -123,11 +128,12 @@ export default function Signup() {
               placeholder="Email Address"
               value={values?.email}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && "visible"
-                }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.email && touched?.email && "visible"
+              }`}
             >
               {errors?.email && touched?.email && errors?.email}
             </span>
@@ -140,11 +146,12 @@ export default function Signup() {
               placeholder="Password"
               value={values?.password}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && "visible"
-                }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.password && touched?.password && "visible"
+              }`}
             >
               {errors?.password && touched?.password && errors?.password}
             </span>
@@ -157,11 +164,12 @@ export default function Signup() {
               placeholder="Re-enter Password"
               value={values?.confirmPassword}
               onChange={handleChange}
-            />
+            /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && "visible"
-                }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.confirmPassword && touched?.confirmPassword && "visible"
+              }`}
             >
               {errors?.confirmPassword &&
                 touched?.confirmPassword &&
@@ -173,11 +181,24 @@ export default function Signup() {
                 type="checkbox"
                 style={{ width: 12, height: 12 }}
                 checked={isChecked}
+                
                 onChange={handleCheckboxChange}
               />
               <p>
-                By signing up, I agree with the <span>Terms of Use</span> &{" "}
-                <span>Privacy Policy</span>
+                By signing up, I agree with the{" "}
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPopup("term")}
+                >
+                  Terms of Use
+                </span>{" "}
+                &{" "}
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setPopup("policy")}
+                >
+                  Privacy Policy
+                </span>
               </p>
             </div>
           </div>
@@ -187,12 +208,33 @@ export default function Signup() {
             style={{
               backgroundColor: values?.firstName && values?.lastName && values?.email && values?.password && values?.confirmPassword && isChecked ? "#ff9900" : "#ccc",
               color: isChecked ? "#fbfbfb" : "#fbfbfb",
-              cursor: isChecked ? "pointer" : "not-allowed"
+              cursor: isChecked ? "pointer" : "not-allowed",
             }}
           >
             Continue
           </button>
         </form>
+        {popup === "term" && (
+          <div className={styles.privacyPopup}>
+            <div className={styles.popupChild} style={{ position: "relative" }}>
+              <TermsAndCondition />
+              <div className={styles.closeIcon} onClick={() => setPopup("")}>
+                <span>x</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {popup === "policy" && (
+          <div className={styles.privacyPopup}>
+            <div className={styles.popupChild} style={{ position: "relative" }}>
+              <PrivacyPolicy />
+              <div className={styles.closeIcon} onClick={() => setPopup("")}>
+                <span>x</span>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </>
   );
