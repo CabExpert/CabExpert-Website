@@ -3,16 +3,16 @@ const TermsAndCondition = () => {
     <main>
       <h2>Terms Of Use</h2>
       <p>
-      These < br> Terms</br> regulate your access or usage of the Platform and Services provided by Epic Global Digital Solutions Pvt. Ltd., trading as CabX
+      These  Terms regulate your access or usage of the Platform and Services provided by Epic Global Digital Solutions Pvt. Ltd., trading as CabX
       </p>
       <p>
-      The <br> Services</br>include an online platform in the CabX app or website, helping users manage their business and connect with other fleet owners.
+      The Services include an online platform in the CabX app or website, helping users manage their business and connect with other fleet owners.
       </p>
       <p>
       By using the Services, you agree to these Terms, forming a contract between you and CabX. If you are representing a company, you confirm authority. Not agreeing means no access. These Terms override any prior agreements. CabX can end these Terms or Services at any time.
       </p>
       <p>
-      CabX and the Fleet Owner will be referred to individually as the <br> Party</br> and collectively as the <br> Parties</br> hereinafter.
+      CabX and the Fleet Owner will be referred to individually as the  Party and collectively as the Parties hereinafter.
       </p>
       <p>
       CabX reserves the right to update the Terms regarding the Services periodically. These updates will take effect once posted on the website or within the respective Service(s). Your continued use of the Services implies acceptance of these updated Terms.
@@ -20,14 +20,14 @@ const TermsAndCondition = () => {
       <p>The Parties hereby agree as follows:</p>
       <h4>DEFINITIONS:</h4>
       <p>
-        <b>“Fleet Owner”</b> shall mean any person (including an individual,
+        “Fleet Owner” shall mean any person (including an individual,
         partnership firm company or any other legal entity) having accepted the
         terms and conditions contained herein and using the Platform and
         Services provided in its internal business operations and in accordance
         with applicable law and the terms and conditions contained herein.
       </p>
       <p>
-        <b>“Duty”</b> or collectively <b>“Duties”</b> shall mean every duty slip
+        “Duty” or collectively “Duties” shall mean every duty slip
         manually or automatically generated using the Services of the CabX
         Platform.
       </p>

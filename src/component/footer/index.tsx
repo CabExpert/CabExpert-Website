@@ -40,10 +40,10 @@ const Footer = () => {
                 <a onClick={() => router.push("/privacy-policy")}>Privacy & Policy</a>
               </li>
               <li>
-                <a onClick={() => router.push("/terms-and-condition")}>Terms and Condition</a>
+                <a onClick={() => router.push("/terms-and-use")}>Terms and Condition</a>
               </li>
               <li>
-                <a onClick={() => router.push("contact-us")}>Contact Us</a>
+                <a onClick={() => router.push("/contact-us")}>Contact Us</a>
               </li>
               <li>
                 <a onClick={() => router.push("/blogs")}>Blogs</a>
