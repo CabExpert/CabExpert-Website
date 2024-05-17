@@ -93,9 +93,8 @@ export default function Signup() {
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${
-                  errors?.firstName && touched?.firstName && "visible"
-                }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && "visible"
+                  }`}
               >
                 {errors?.firstName && touched?.firstName && errors?.firstName}
               </span>
@@ -112,9 +111,8 @@ export default function Signup() {
               />
               <span
                 style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${
-                  errors?.lastName && touched?.lastName && "visible"
-                }`}
+                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && "visible"
+                  }`}
               >
                 {errors?.lastName && touched?.lastName && errors?.lastName}
               </span>
@@ -131,9 +129,8 @@ export default function Signup() {
             /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.email && touched?.email && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && "visible"
+                }`}
             >
               {errors?.email && touched?.email && errors?.email}
             </span>
@@ -149,9 +146,8 @@ export default function Signup() {
             /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.password && touched?.password && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && "visible"
+                }`}
             >
               {errors?.password && touched?.password && errors?.password}
             </span>
@@ -167,9 +163,8 @@ export default function Signup() {
             /> <br />
             <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
-                errors?.confirmPassword && touched?.confirmPassword && "visible"
-              }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && "visible"
+                }`}
             >
               {errors?.confirmPassword &&
                 touched?.confirmPassword &&
@@ -181,7 +176,7 @@ export default function Signup() {
                 type="checkbox"
                 style={{ width: 12, height: 12 }}
                 checked={isChecked}
-                
+
                 onChange={handleCheckboxChange}
               />
               <p>
@@ -206,7 +201,7 @@ export default function Signup() {
             type="submit"
             className={styles.continuebutton}
             style={{
-              backgroundColor: isChecked ? "#ff9900" : "#ccc",
+              backgroundColor: values?.firstName && values?.email && values?.password && values?.confirmPassword && isChecked ? "#ff9900" : "#ccc",
               color: isChecked ? "#fbfbfb" : "#fbfbfb",
               cursor: isChecked ? "pointer" : "not-allowed",
             }}
