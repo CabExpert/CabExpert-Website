@@ -13,8 +13,7 @@ const Footer = () => {
         <div className={Style.foottop}>
           <Image src="/Group214.png" alt="logo" height={72} width={150} />
           <span>
-            We successfully cope with tasks of varying complexity, provide
-            long-term guarantees and regularly master new technologies.
+          Your go-to solution for efficient cab and taxi management. Streamline operations and enhance customer experience effortlessly.
           </span>
         </div>
         <div className={Style.lowfooter}>
@@ -26,7 +25,7 @@ const Footer = () => {
             <p>9:00am To 8:00pm</p>
 
             <h4>SATURDAY</h4>
-            <p>10:00am To 7:30pm</p>
+            <p>Close Day!</p>
 
             <h4>SUNDAY</h4>
             <p>Close Day!</p>
@@ -36,20 +35,13 @@ const Footer = () => {
               <span>Useful </span> Links
             </h3>
             <ul>
+              
               <li>
-                <a href="#Cab Booking ">Cab Booking </a>
+                <a onClick={() => router.push("privacy-policy")}>Privacy & Policy</a>
               </li>
-              <li>
-                <a href="#Help Center">Help Center</a>
-              </li>
-              <li>
-                <a onClick={() => router.push("privacy-policy")}>
-                  Privacy & Policy
-                </a>
-              </li>
-              <li>
+              {/* <li>
                 <a onClick={() => router.push("terms-and-use")}>Terms Of Use</a>
-              </li>
+              </li> */}
               <li>
                 <a onClick={() => router.push("contact-us")}>Contact Us</a>
               </li>
@@ -123,6 +115,7 @@ const Footer = () => {
             height={100}
             className={Style.movingimagethree}
           />
+          
         </div>
       </div>
       <div style={{background:"black", padding: "20px 10px"}}>

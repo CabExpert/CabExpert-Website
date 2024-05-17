@@ -79,9 +79,9 @@ export default function Home() {
           <div className={styles.conta}>
             <div className={styles.us}>
               <h2>
-                <span>Connect</span> with a Cabx
+                <span>Connect</span> with Cabx
               </h2>
-              <h3> to kickstart your campaign.</h3>
+              <h3> to manage your fleet.</h3>
             </div>
             <div className={styles.call}>
               <Image src="/Group.png" alt="phone" height={28} width={28} />
@@ -103,15 +103,15 @@ export default function Home() {
         </div>
         <div className={styles.reach}>
           <h2>
-            Reach out to receive hands-on guidance from an expert<br></br> and
-            get your first campaign up and running.
+            Reach out to receive hands-on guidance from an CabX expert and
+            get your fleet management account up and running.
           </h2>
           <p>
             Schedule your 1-to-1 call or chat within the first 30 days of
             signing up and a Cabx Expert will give you easy first steps to get
             started
-            <br></br>
-            on your campaign, at no-cost.
+            
+            on your subscription, at no-cost.
           </p>
         </div>
         <div className={styles.cards}>
@@ -239,23 +239,23 @@ const callus = [
     image: "/Group333.png",
     heading: "Call Us",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
-    number: "5267-214-392",
+      "Call us for expert help with CabX. Our team is ready to guide you in managing your fleet efficiently. Reach out now to get started!",
+    number: "0129-417-6500",
   },
   {
     id: "secondCard",
     image: "/Group433.png",
     heading: "Visit us",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
-    number: "New Delhi.India-110096",
+      "Visit us to explore CabX in person. Experience firsthand how our platform can revolutionize your fleet management. ",
+    number: "402, H-140, Sector 63, Noida (UP) -201301",
   },
   {
     id: "thirdCard",
     image: "/Group434.png",
     heading: "Live Chat",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever.",
+      "Chat with us for immediate support with CabX. Our team is available to answer your questions and provide real-time assistance.",
     number: "Start Chat",
   },
 ];

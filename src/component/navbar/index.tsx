@@ -106,16 +106,20 @@ const Header = () => {
         <div className={Style.menu_two}>
           <ul>
             <li>
-              <a href="#Pricing ">Pricing </a>
+            <a onClick={() => router.push("/packages")}>Packages</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#Features">Features</a>
-            </li>
+            </li> */}
+            
             <li>
               <a onClick={() => router.push("/contact-us")}>Contact us</a>
             </li>
             <li>
               <a onClick={() => router.push("/about-us")}>About Us</a>
+            </li>
+            <li>
+            <a onClick={() => router.push("/blogs")}>Blogs</a>
             </li>
           </ul>
         </div>
