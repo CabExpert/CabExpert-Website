@@ -20,13 +20,11 @@ export default function Home() {
   const token = useToken();
   console.log("get token value", token);
 
- 
-
   return (
     <>
       <Head>
         <title>
-        Manage Digital Duty Slip and Driver Real-time Tracking with CabX
+          Manage Digital Duty Slip and Driver Real-time Tracking with CabX
         </title>
         <meta
           name="description"
@@ -178,9 +176,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         <div className={`${styles.help} container `}>
           <div className={styles.helps}>
             <h2>Let us help.</h2>
-            <p>
-              Get started with our free-of-charge, personalised support. 
-            </p>
+            <p>Get started with our free-of-charge, personalised support.</p>
             <button className={styles.button_help}>0120-417-6500</button>
           </div>
         </div>

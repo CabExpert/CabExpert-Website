@@ -395,3 +395,19 @@ p {
   }
  
 }
+@media only screen and (max-width:425px){
+  .animated-text::after{
+    font-size: 26px !important;
+  }
+  .with{
+    font-size: 26px !important;
+    margin-bottom: 240px !important;
+  }
+  .bg-image {
+    top: 47%;
+}
+.image{
+  left: inherit;
+  right: 0;
+}
+}

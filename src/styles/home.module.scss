@@ -338,6 +338,35 @@ left: -10px;
   .box{
     width: 100%;
   }
+  .three_box ::before{
+    background-image: none;
+  }
+  .button_one{
+    margin-top: 12px;
+  }
+  .content_three{
+    margin-top: 50px;
+  }
+  .indiamap{
+    margin-top: 50px;
+  }
+  .indiamap img{
+    height: 55vh;
+  }
+  .helps h2{
+    padding: 0;
+    font-size: 32px;
+  }
+  .helps{
+    margin: 0;
+    padding-top: 0;
+  }
+  .outer{
+    padding: 0;
+  }
+  .helps::before{
+    background-size: 100% 100%;
+  }
 }
 
 
