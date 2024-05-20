@@ -12,15 +12,35 @@ import { boolean } from "yup";
 import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
 import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
 
+
+interface PackageValue {
+  title: string;
+  duties: string;
+  cost: string;
+  paymentDate: Date;
+}
+
 export default function Signup() {
   const router = useRouter();
   const selectedIsFreeAccount = router?.query;
   console.log({ selectedIsFreeAccount });
 
+  const [packageValue, setPackageValue] = useState<PackageValue | null>(null);
   const [isChecked, setIsChecked] = React.useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
+  console.log({ packageValue })
+  console.log(packageValue?.title)
+
+  React.useEffect(() => {
+    const storedValue = localStorage.getItem('package');
+    if (storedValue) {
+      setPackageValue(JSON.parse(storedValue) as PackageValue);
+    }
+  }, []);
+
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +51,7 @@ export default function Signup() {
       confirmPassword: "",
       isFree: selectedIsFreeAccount?.freeAccount === "true" || false,
       package: {
-        packageName: selectedIsFreeAccount?.packageName as string,
+        packageName: selectedIsFreeAccount?.packageName,
       },
     } as SignupTypes,
 
@@ -46,6 +66,13 @@ export default function Signup() {
   const [data, setData] = React.useState("");
 
   const handleSubmitSignupData = async (values: any) => {
+    if (!values.package.packageName && !values?.package.perMonthDuties && !values?.package?.packageAmount) {
+      values.package.packageName = packageValue?.title || "";
+      values.package.perMonthDuties = packageValue?.duties || "";
+      values.package.packageAmount = packageValue?.cost || "";
+      values.package.paymentDate = new Date();
+    }
+
     console.log("IN HANDLE SUBMIT FUNCTION", { values });
     await mutate(values, {
       onSuccess: (res) => {
@@ -67,12 +94,13 @@ export default function Signup() {
     });
   };
 
+
   const { values, errors, handleChange, handleSubmit, touched } = formik;
 
   console.log({ values });
 
   const [popup, setPopup] = useState("");
-  console.log(popup, "popup");
+  // console.log(popup, "popup");
 
   return (
     <>

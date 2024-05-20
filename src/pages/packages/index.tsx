@@ -9,6 +9,14 @@ import KingSvgIcon from "@/component/svg/king_icon";
 import OrangeStarSvgIcon from "@/component/svg/orange_star_icon";
 import { useRouter } from "next/router";
 
+
+interface PackageValue {
+  title: string;
+  duties: string;
+  cost: string;
+}
+
+
 const Packages = () => {
   const [showFaq, setshowFaq] = useState("");
   const faqToggle = (value: any) => {
@@ -25,6 +33,12 @@ const Packages = () => {
         packageName: "Free Account"
       },
     });
+  };
+
+  const handleItemClick = (value: PackageValue) => {
+    localStorage.setItem('package', JSON.stringify(value));
+    console.log("Clicked item value:", { value });
+    router.push("/Signup");
   };
 
   return (
@@ -86,6 +100,7 @@ const Packages = () => {
               key={index}
               onMouseEnter={() => setColor(value.title)}
               onMouseLeave={() => setColor("")}
+              onClick={() => handleItemClick(value)}
             >
               <div>
                 {value.title === "Essential Bundle A" && (
