@@ -130,7 +130,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       {/* <!-- End Google Tag Manager (noscript) --> */}
 
       <div className={`${styles.start} container `}>
-        <span>One New-Age Car Rental Software to Replace Them All</span>
+        <span>Sustainable Cab and Taxi Management Solutions</span>
         <div className={styles.button}>
           <button className={styles.button_one}>Start now</button>
         </div>
@@ -179,8 +179,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           <div className={styles.helps}>
             <h2>Let us help.</h2>
             <p>
-              Get started with our free-of-charge, personalised support. Create
-              your custom ads plan with a Google Ads Expert.
+              Get started with our free-of-charge, personalised support. 
             </p>
             <button className={styles.button_help}>0120-417-6500</button>
           </div>

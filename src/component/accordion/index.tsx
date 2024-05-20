@@ -81,35 +81,41 @@ export default Accordion;
 
 const accord = [
   {
-    heading: "Ornare laoreet mi tempus neque ",
+    heading: "Can I use multiple vehicles with CabX?",
     paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
+      "Yes, you can register multiple vehicles under your account.",
   },
   {
-    heading: "Rhoncus nullam aliquam nam proin",
+    heading: "What are the benefits of driving with CabX?",
     paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
-  },
-  {
-    heading:
-      "Duis enim bibendum dui ut fringilla suspendisse vel sed ultricies",
-    paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
-  },
-  {
-    heading: "Lectus fringilla volutpat egestas nisi, viverra mauris",
-    paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
-  },
-  {
-    heading: "Vitae sollicitudin vitae libero tincidunt",
-    paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
+      "Monitor live location, and digital duty slip can help to reduce the time for the billing and account.",
   },
   {
     heading:
-      "Tellus velit vitae arcu lacinia pharetra, ut lectus pulvinar facilisis",
+      "How does CabX benefit cab and taxi owners?",
     paragraph:
-      "Timperdiet gravida scelerisque odio nunc. Eget felis, odio bibendum quis eget sit lorem donec diam. Volutpat sed orci turpis sit dolor est a pretium eget. Vitae turpis orci vel tellus cursus lorem vestibulum quis eu. Ut commodo, eget lorem venenatis urna.",
+      "CabX streamlines operations by digitizing receipts, simplifying billing processes, and enhancing customer engagement.",
+  },
+  {
+    heading: "Can CabX assist with customer communication and engagement?",
+    paragraph:
+      "Yes, CabX facilitates direct communication between cab owners and customers through in-app messaging and notification features.",
+  },
+  {
+    heading: "Is CabX suitable for small-scale cab businesses?",
+    paragraph:
+      "Absolutely, CabX caters to businesses of all sizes, offering scalable solutions tailored to meet the specific needs of small cab operations.",
+  },
+  {
+    heading:
+      "How secure is the data stored on CabX?",
+    paragraph:
+      "CabX prioritizes data security and employs robust encryption measures to safeguard sensitive information related to receipts, billing, and customer data.",
+  },
+  {
+    heading:
+      "How can cab owners get started with CabX?",
+    paragraph:
+      "Getting started with CabX is simple! Interested cab owners can sign up for an account, customize settings to their preferences, and start optimizing their operations right away.",
   },
 ];

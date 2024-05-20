@@ -173,7 +173,7 @@ const Packages = () => {
       </div>
       <div className={styles.forth_sec}>
         <h2>Frequently asked questions</h2>
-        <p>Exercitation dolore reprehenderit fugi</p>
+        <p></p>
         <div className={styles.faq}>
           {faq.map((value, index) => {
             return (
@@ -207,24 +207,24 @@ export default Packages;
 
 const faq = [
   {
-    ques: "Complete access to the Cabx platform for business management?",
-    ans: "Nisi do sunt veniam esse quis ex labore Lorem et. Excepteur labore minim ea ea officia labore duis duis Lorem est tempor labore sint sint. Ipsum nostrud velit et qu",
+    ques: "What are the available packages offered by CabX?",
+    ans: "CabX offers a range of packages tailored to meet the needs of cab and taxi businesses, including basic, standard, and premium options.",
   },
   {
-    ques: "Cabx Passenger, Driver and Supplier Android apps?",
-    ans: "Nisi do sunt veniam esse quis ex labore Lorem et. Excepteur labore minim ea ea officia labore duis duis Lorem est tempor labore sint sint. Ipsum nostrud velit et qu",
+    ques: "How do I choose the right package for my business?",
+    ans: "Assess your business requirements and select a package that aligns with your budget, size, and desired features.",
   },
   {
-    ques: "All future platform-level upgrades?",
-    ans: "Nisi do sunt veniam esse quis ex labore Lorem et. Excepteur labore minim ea ea officia labore duis duis Lorem est tempor labore sint sint. Ipsum nostrud velit et qu",
+    ques: "Are there any hidden fees associated with the packages?",
+    ans: "No, CabX packages are transparent, and there are no hidden fees. The price you see is the price you pay.",
   },
   {
-    ques: "Initial training and coaching of staff on the Cabx platform?",
-    ans: "Nisi do sunt veniam esse quis ex labore Lorem et. Excepteur labore minim ea ea officia labore duis duis Lorem est tempor labore sint sint. Ipsum nostrud velit et qu",
+    ques: "How do I purchase a package?",
+    ans: "Simply select the desired package on the packages page and follow the prompts to complete the purchase process securely.",
   },
   {
-    ques: " Customer support as and when needed (Monday to Friday 10am - 7pm)?",
-    ans: "Nisi do sunt veniam esse quis ex labore Lorem et. Excepteur labore minim ea ea officia labore duis duis Lorem est tempor labore sint sint. Ipsum nostrud velit et qu",
+    ques: " What type of customer support is provided with the packages?",
+    ans: "All CabX packages include access to customer support via email, chat, or phone to assist you with any questions or issues you may encounter.",
   },
 ];
 
