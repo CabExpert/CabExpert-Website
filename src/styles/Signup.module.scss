@@ -1,21 +1,28 @@
 .register {
-  max-width: 921px;
-  height: 500px;
-  background-color: #fbfbfb;
   margin-top: 50px;
-  padding-top: 65px;
-  padding-bottom: 80px;
-  margin-bottom: 100px;
+  width: 550px;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(23, 26, 31, 0.11);
+
+  h2 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 .name {
-  padding-top: 65px;
+  display: flex;
+  width: 100%;
+}
+
+.inputone {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 731px;
+  gap: 10px;
 }
-.half_width{
-  width: 326px !important;
+
+.half_width {
 }
 .register h2 {
   text-align: center;
@@ -27,37 +34,35 @@
 .form {
   width: fit-content;
   margin: auto;
-  gap: 26px;
+  gap: 8px;
   display: grid;
   color: #444343;
 
   input {
-    width: 706px;
-    padding: 6px;
-    font-size: 14px;
+    width: 100%;
     border-radius: 5px;
-    border: 1px solid #c8c8c8;
-    font-size: 14px;
-    color: #444343;
-    padding: 12px;
-    outline: 0;
+    outline: none;
+    font-size: 16px;
+    padding: 12px 40px 12px 5px;
+
     &:focus {
-      border: 1.2px solid #444343;
     }
   }
 }
+
 .check {
   display: flex;
   align-items: center;
   font-size: 12px;
   font-weight: 400;
-  gap: 6px;
-  padding-top: 15px;
+  gap: 6px;  
   accent-color: #f55c14;
-  ;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
 }
 .check p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 .check p span {
@@ -65,18 +70,18 @@
 }
 
 .continuebutton {
-  margin: auto;
+  
   padding: 15px 38px;
   border-radius: 8px;
   background-color: #ff9900;
-  color: #fbfbfb;
+  color: #ff9900;
   border: transparent;
   margin-bottom: 50px;
+
   cursor: pointer;
   font-size: 16px;
 }
-.privacyPopup{
-
+.privacyPopup {
   position: fixed;
   overflow-y: auto;
   top: 0;
@@ -87,7 +92,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  .popupChild{
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .popupChild {
     width: 80vw;
     height: 85vh;
     overflow: auto;
@@ -96,7 +118,7 @@
     padding: 20px;
     border-radius: 20px;
     border: 1px solid #e5e5e5;
-    .closeIcon{
+    .closeIcon {
       position: absolute;
       top: 20px;
       right: 20px;
@@ -105,15 +127,15 @@
       border: 1px solid #000;
       width: 25px;
       height: 25px;
-      font-size: 20px;
-       font-weight: 500;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       cursor: pointer;
-       span{
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      span {
         margin-top: -3px;
-       }
+      }
     }
   }
 }
@@ -128,7 +150,7 @@
     margin-top: 20px;
   }
   .name {
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
     padding-top: 35px;
   }
@@ -140,10 +162,10 @@
       width: calc(100% - 24px);
     }
   }
-  .half_width{
+  .half_width {
     width: calc(100% - 24px) !important;
   }
-  .name{
+  .name {
     display: grid;
     grid-template-columns: 1fr;
   }

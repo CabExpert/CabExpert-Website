@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { boolean } from "yup";
 import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
 import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
-
+import Inputfield from "@/component/inputfield";
 
 interface PackageValue {
   title: string;
@@ -31,16 +31,15 @@ export default function Signup() {
     setIsChecked(!isChecked);
   };
 
-  console.log({ packageValue })
-  console.log(packageValue?.title)
+  console.log({ packageValue });
+  console.log(packageValue?.title);
 
   React.useEffect(() => {
-    const storedValue = localStorage.getItem('package');
+    const storedValue = localStorage.getItem("package");
     if (storedValue) {
       setPackageValue(JSON.parse(storedValue) as PackageValue);
     }
   }, []);
-
 
   const formik = useFormik({
     initialValues: {
@@ -66,7 +65,11 @@ export default function Signup() {
   const [data, setData] = React.useState("");
 
   const handleSubmitSignupData = async (values: any) => {
-    if (!values.package.packageName && !values?.package.perMonthDuties && !values?.package?.packageAmount) {
+    if (
+      !values.package.packageName &&
+      !values?.package.perMonthDuties &&
+      !values?.package?.packageAmount
+    ) {
       values.package.packageName = packageValue?.title || "";
       values.package.perMonthDuties = packageValue?.duties || "";
       values.package.packageAmount = packageValue?.cost || "";
@@ -94,7 +97,6 @@ export default function Signup() {
     });
   };
 
-
   const { values, errors, handleChange, handleSubmit, touched } = formik;
 
   console.log({ values });
@@ -110,101 +112,128 @@ export default function Signup() {
         <form className={styles.form} onSubmit={handleSubmit}>
           <ToastContainer />
           <div className={styles.name}>
-            <div>
-              <input
-                className={styles.half_width}
-                type="text"
-                placeholder="First Name"
-                name="firstName"
-                value={values?.firstName}
-                onChange={handleChange}
-              />
-              <span
-                style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.firstName && touched?.firstName && "visible"
+            <div className={styles.inputone}>
+              <div>
+                <Inputfield
+                  name="firstName"
+                  type="text"
+                  label="First name"
+                  placeholder="Input first name"
+                  onChange={(e: any) => handleChange(e)}
+                  value={values.firstName}
+                />
+                <span
+                  style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+                  className={`  ${
+                    errors?.firstName && touched?.firstName && "visible"
                   }`}
-              >
-                {errors?.firstName && touched?.firstName && errors?.firstName}
-              </span>
-            </div>
-            <div>
-              <input
-                className={styles.half_width}
-                type="text"
-                id="LastName"
-                name="lastName"
-                placeholder="Last Name"
-                value={values?.lastName}
-                onChange={handleChange}
-              />
-              <span
-                style={{ color: "red" }}
-                className={`text-red-600 text-xs error-message absolute top-10 ${errors?.lastName && touched?.lastName && "visible"
+                >
+                  {errors?.firstName && touched?.firstName && errors?.firstName}
+                </span>
+              </div>
+              <div>
+                <Inputfield
+                  name="lastName"
+                  type="text"
+                  label="Last name"
+                  placeholder="Input last name"
+                  value={values.lastName}
+                  onChange={(e: any) => handleChange(e)}
+                />
+                {""}
+
+                <span
+                  style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+                  className={`  ${
+                    errors?.lastName && touched?.lastName && "visible"
                   }`}
-              >
-                {errors?.lastName && touched?.lastName && errors?.lastName}
-              </span>
+                >
+                  {errors?.lastName && touched?.lastName && errors?.lastName}
+                </span>
+              </div>
             </div>
           </div>
+
           <div>
-            <input
-              type="email"
-              id="email"
+            <Inputfield
               name="email"
-              placeholder="Email Address"
-              value={values?.email}
-              onChange={handleChange}
-            /> <br />
+              type="email"
+              label="Email address"
+              placeholder="example.email@gmail.com"
+              onChange={(e: any) => handleChange(e)}
+              value={values.email}
+            />
             <span
-              style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.email && touched?.email && "visible"
-                }`}
+              style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+              className={`  ${errors?.email && touched?.email && "visible"}`}
             >
               {errors?.email && touched?.email && errors?.email}
             </span>
           </div>
-          <div>
+
+          {/* <div>
             <input
+              type="email"
+              id="email"
+              name="email"              
+              placeholder="Email Address"
+              value={values?.email}
+              onChange={handleChange}
+            />{" "}
+            <br />
+            <span
+              style={{ color: "red" }}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.email && touched?.email && "visible"
+              }`}
+            >
+              {errors?.email && touched?.email && errors?.email}
+            </span>
+          </div> */}
+          <div>
+            <Inputfield
               type="password"
               id="password"
+              label="Password"
               name="password"
               placeholder="Password"
               value={values?.password}
               onChange={handleChange}
-            /> <br />
+            />{" "}
             <span
-              style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.password && touched?.password && "visible"
-                }`}
+              style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+              className={`  ${
+                errors?.password && touched?.password && "visible"
+              }`}
             >
               {errors?.password && touched?.password && errors?.password}
             </span>
           </div>
           <div>
-            <input
+            {/* <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Re-enter Password"
               value={values?.confirmPassword}
               onChange={handleChange}
-            /> <br />
-            <span
+            />{" "} 
+            <br />*/}
+            {/* <span
               style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${errors?.confirmPassword && touched?.confirmPassword && "visible"
-                }`}
+              className={`text-red-600 text-xs error-message absolute top-10 ${
+                errors?.confirmPassword && touched?.confirmPassword && "visible"
+              }`}
             >
               {errors?.confirmPassword &&
                 touched?.confirmPassword &&
                 errors?.confirmPassword}
-            </span>
-
+            </span> */}
             <div className={styles.check}>
               <input
                 type="checkbox"
-                style={{ width: 12, height: 12 }}
+                style={{ width: 16, height: 16, cursor: "pointer" }}
                 checked={isChecked}
-
                 onChange={handleCheckboxChange}
               />
               <p>
@@ -229,7 +258,15 @@ export default function Signup() {
             type="submit"
             className={styles.continuebutton}
             style={{
-              backgroundColor: values?.firstName && values?.email && values?.password && values?.confirmPassword && isChecked ? "#ff9900" : "#ccc",
+              backgroundColor:
+              values?.firstName &&
+              values?.lastName &&
+                values?.email &&
+                values?.password &&
+                // values?.confirmPassword &&
+                isChecked
+                  ? "#ff9900"
+                  : "#ccc",
               color: isChecked ? "#fbfbfb" : "#fbfbfb",
               cursor: isChecked ? "pointer" : "not-allowed",
             }}
@@ -258,7 +295,6 @@ export default function Signup() {
             </div>
           </div>
         )}
-
       </div>
     </>
   );

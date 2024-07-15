@@ -1,0 +1,66 @@
+
+$font-base: 16px;
+$font-bold: bold;
+$bg-transparent: transparent;
+$color-error: red;
+$color-description: gray;
+
+
+.container {
+    
+
+
+}
+
+
+.text-default {
+  font-size: 17px;
+  font-weight: 600;
+  color: black;
+
+}
+
+
+.field {
+  
+}
+
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  background-color: #F3F4F6;
+  
+  
+  &:focus {
+    
+  }
+}
+
+.error {
+  border-color: red;
+}
+
+
+.validation-text {
+  color: red;
+  font-size: 12px;
+  
+  
+}
+
+
+.description-text {
+  color: $color-description;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+.magic {
+  transition: all 0.3s ease;
+}
