@@ -72,15 +72,15 @@ const Packages = () => {
           <h3>Free Account</h3>
           <ul>
             <li>
-              <Image src="/vector.jpg" alt="box-icon" width={7} height={9} />{" "}
+              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
               Unlimited setup of the customer
             </li>
             <li>
-              <Image src="/vector.jpg" alt="box-icon" width={7} height={9} />{" "}
+              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
               Unlimited setup of the suppliers
             </li>
             <li>
-              <Image src="/vector.jpg" alt="box-icon" width={7} height={9} />{" "}
+              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
               Unlimited setup of the drivers
             </li>
             <li>
