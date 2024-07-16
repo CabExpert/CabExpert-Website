@@ -84,7 +84,7 @@ const Packages = () => {
               Unlimited setup of the drivers
             </li>
             <li>
-              <Image src="/vector.jpg" alt="box-icon" width={7} height={9} />{" "}
+              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
               Unlimited setup of the vehicles
             </li>
           </ul>
