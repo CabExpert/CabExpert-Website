@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import Footer from "@/component/footer";
 import Testimonials from "@/component/testimonials";
 import Animation from "@/component/animation";
-import useToken from "../hooks/useToken";
+// import useToken from "../hooks/useToken";
 import { useDispatch } from "react-redux";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +17,8 @@ export default function Home() {
   // const [popup, setpopup] = useState(false);
 
   // Example how to get token value from redux state
-  const token = useToken();
-  console.log("get token value", token);
+  // const token = useToken();
+  // console.log("get token value", token);
 
   return (
     <>

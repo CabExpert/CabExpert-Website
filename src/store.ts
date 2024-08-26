@@ -1,12 +1,24 @@
-import { combineReducers, createStore } from 'redux';
-import tokenReducer from './reducers/tokenSlice';
+// store.ts
+import { configureStore } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import rootReducer from "./reducers";
+import { saveState, loadState } from "./utils/localStorage";
 
-const rootReducer = combineReducers({
-  token: tokenReducer,
+const preloadedState = loadState();
+
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
-const store = createStore(rootReducer);
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default store;

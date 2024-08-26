@@ -5,24 +5,25 @@ import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import { SetupYourBusiness } from "../../../network-requests/types";
 import { setupNewBusinessValidationSchema } from "../../../network-requests/validations/signupValidation";
-import { useRouter } from 'next/router';
-import { updateSetupNewBusiness, uploadCompanyPorfile } from "../../../network-requests/apis";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { useRouter } from "next/router";
+import {
+  updateSetupNewBusiness,
+  uploadCompanyPorfile,
+} from "../../../network-requests/apis";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Setup() {
   const [typeToggle, setTypeToggle] = useState(false);
   const router = useRouter();
   const { id } = router.query;
-  console.log({ id })
+  console.log({ id });
 
   const [isChecked, setIsChecked] = React.useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-  }
-
+  };
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [companyLogo, setCompanyLogo] = React.useState("");
@@ -52,7 +53,7 @@ export default function Setup() {
     setCompanyLogo
   );
 
-  // FORMIK OBJECT... 
+  // FORMIK OBJECT...
   const formik = useFormik({
     initialValues: {
       businessName: "",
@@ -64,7 +65,7 @@ export default function Setup() {
       country: "",
       verificationCode: "",
       pincode: "",
-      profile: ""
+      profile: "",
     } as SetupYourBusiness,
 
     validationSchema: setupNewBusinessValidationSchema(),
@@ -74,25 +75,21 @@ export default function Setup() {
     },
   });
 
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-    touched,
-  } = formik;
+  const { values, errors, handleChange, handleSubmit, touched } = formik;
 
-  console.log({ values })
+  console.log({ values });
 
-  const [selectedCountry, setSelectedCountry] = useState('India');
+  const [selectedCountry, setSelectedCountry] = useState("India");
   const handleCountryChange = (e: any) => {
     setSelectedCountry(e.target.value);
   };
   // console.log({ selectedCountry })
 
-  const onSetupNewBusiness = async (values: any, id: string | string[] | undefined) => {
+  const onSetupNewBusiness = async (
+    values: any,
+    id: string | string[] | undefined
+  ) => {
     try {
-
       const [profileUrl] = await Promise.all([
         Promise.all(
           Object.values(selectedProfile)?.map((imageInfo) =>
@@ -101,25 +98,28 @@ export default function Setup() {
         ),
       ]);
 
-      console.log("ON SETUP NEW BUSINESS", { values })
+      console.log("ON SETUP NEW BUSINESS", { values });
       const customPayload = {
         ...values,
         country: selectedCountry,
         profile: profileUrl.length !== 0 ? profileUrl[0][0] : "",
-      }
-      console.log({ customPayload })
-      const response = await updateSetupNewBusiness(customPayload, id as string)
-      console.log({ response })
+      };
+      console.log({ customPayload });
+      const response = await updateSetupNewBusiness(
+        customPayload,
+        id as string
+      );
+      console.log({ response });
       if (response) {
         toast.success("Successfully setup your business");
         localStorage.clear();
-        // router.push("/Payment")
+        router.push("/Payment");
       }
     } catch (error: any) {
-      console.log({ error })
-      toast.error(error?.response?.data?.message)
+      console.log({ error });
+      toast.error(error?.response?.data?.message);
     }
-  }
+  };
 
   return (
     <>
@@ -133,11 +133,21 @@ export default function Setup() {
           <div className={styles.logoUpload}>
             {companyLogo ? (
               <label htmlFor="logo">
-                <Image src={companyLogo} alt="Company Logo" width={56} height={72} />
+                <Image
+                  src={companyLogo}
+                  alt="Company Logo"
+                  width={56}
+                  height={72}
+                />
               </label>
             ) : (
               <label htmlFor="logo">
-                <Image src="/company_logo_placeholder.png" alt="Company Logo" width={56} height={72} />
+                <Image
+                  src="/company_logo_placeholder.png"
+                  alt="Company Logo"
+                  width={56}
+                  height={72}
+                />
               </label>
             )}
             <input
@@ -161,8 +171,15 @@ export default function Setup() {
                 onChange={handleChange}
               />
 
-              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.businessName && touched?.businessName && 'visible'}`}>
-                {errors?.businessName && touched?.businessName && errors?.businessName}
+              <span
+                style={{ color: "red" }}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.businessName && touched?.businessName && "visible"
+                }`}
+              >
+                {errors?.businessName &&
+                  touched?.businessName &&
+                  errors?.businessName}
               </span>
             </div>
             <div>
@@ -175,7 +192,12 @@ export default function Setup() {
                 value={values?.number}
                 onChange={handleChange}
               />
-              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.number && touched?.number && 'visible'}`}>
+              <span
+                style={{ color: "red" }}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.number && touched?.number && "visible"
+                }`}
+              >
                 {errors?.number && touched?.number && errors?.number}
               </span>
             </div>
@@ -191,7 +213,9 @@ export default function Setup() {
                   />
                   <button className={styles.verifyButton}>Verify</button>
                 </div>
-                <p className={styles.para}>Verification code is sent to this number:</p>
+                <p className={styles.para}>
+                  Verification code is sent to this number:
+                </p>
               </div>
             </div>
             <div className={styles.type_parent}>
@@ -231,7 +255,12 @@ export default function Setup() {
                 onChange={handleChange}
               />
 
-              <span style={{ color: 'red' }} className={`text-red-600 text-xs error-message absolute top-10 ${errors?.gstNumber && touched?.gstNumber && 'visible'}`}>
+              <span
+                style={{ color: "red" }}
+                className={`text-red-600 text-xs error-message absolute top-10 ${
+                  errors?.gstNumber && touched?.gstNumber && "visible"
+                }`}
+              >
                 {errors?.gstNumber && touched?.gstNumber && errors?.gstNumber}
               </span>
             </div>
@@ -253,7 +282,6 @@ export default function Setup() {
                 className={styles.inputField}
                 placeholder="Pin"
                 onChange={handleChange}
-
               />
             </div>
             <div>
@@ -267,9 +295,16 @@ export default function Setup() {
               />
             </div>
             <div className={styles.country}>
-              <select name="Country" id="Country" value={selectedCountry} onChange={handleCountryChange}>
+              <select
+                name="Country"
+                id="Country"
+                value={selectedCountry}
+                onChange={handleCountryChange}
+              >
                 {countries?.map((country, index) => (
-                  <option key={index} value={country}>{country}</option>
+                  <option key={index} value={country}>
+                    {country}
+                  </option>
                 ))}
               </select>
               <div className={styles.check}>
@@ -289,9 +324,15 @@ export default function Setup() {
                   type="submit"
                   className={styles.continuebutton}
                   style={{
-                    backgroundColor: values?.businessName && values?.gstNumber && values?.number && isChecked ? "#ff9900" : "#ccc",
+                    backgroundColor:
+                      values?.businessName &&
+                      values?.gstNumber &&
+                      values?.number &&
+                      isChecked
+                        ? "#ff9900"
+                        : "#ccc",
                     color: isChecked ? "#fbfbfb" : "#fbfbfb",
-                    cursor: isChecked ? "pointer" : "not-allowed"
+                    cursor: isChecked ? "pointer" : "not-allowed",
                   }}
                   disabled={!isChecked}
                 >
@@ -306,4 +347,4 @@ export default function Setup() {
   );
 }
 
-const countries = ['India', 'USA', 'Canada', 'Australia', 'UK'];
+const countries = ["India", "USA", "Canada", "Australia", "UK"];

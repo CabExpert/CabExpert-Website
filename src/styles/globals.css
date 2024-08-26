@@ -15,6 +15,15 @@ li {
   margin-right: auto;
   min-height: auto;
 }
+.mr-top-10 {
+  margin-top: 10px;
+}
+.mr-top-20 {
+  margin-top: 20px;
+}
+.mr-top-30 {
+  margin-top: 30px;
+}
 h1,
 h2,
 h3,
@@ -372,12 +381,11 @@ p {
   }
   span {
     color: white !important;
-  
   }
-  .hover{
+  .hover {
     background-color: #fff;
   }
-  button{
+  button {
     display: block !important;
     color: #ff9900;
     border: 0;
@@ -393,21 +401,23 @@ p {
     left: 29px;
     cursor: pointer;
   }
- 
 }
-@media only screen and (max-width:425px){
-  .animated-text::after{
+@media only screen and (max-width: 425px) {
+  .animated-text::after {
     font-size: 26px !important;
   }
-  .with{
+  .with {
     font-size: 26px !important;
     margin-bottom: 240px !important;
   }
   .bg-image {
     top: 47%;
+  }
+  .image {
+    left: inherit;
+    right: 0;
+  }
 }
-.image{
-  left: inherit;
-  right: 0;
-}
+.text-center {
+  text-align: center;
 }

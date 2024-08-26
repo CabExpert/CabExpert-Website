@@ -8,20 +8,22 @@ import StarSvgIcon from "@/component/svg/star_icon";
 import KingSvgIcon from "@/component/svg/king_icon";
 import OrangeStarSvgIcon from "@/component/svg/orange_star_icon";
 import { useRouter } from "next/router";
-
+import { useDispatch } from "react-redux";
+import { selectPackage } from "@/reducers/packageSlice";
 
 interface PackageValue {
   title: string;
   duties: string;
   cost: string;
+  amount: any;
 }
-
 
 const Packages = () => {
   const [showFaq, setshowFaq] = useState("");
   const faqToggle = (value: any) => {
     showFaq === "" ? setshowFaq(value) : setshowFaq("");
   };
+  const dispatch = useDispatch();
   const [color, setColor] = useState("");
   const router = useRouter();
 
@@ -30,14 +32,14 @@ const Packages = () => {
       pathname: "/Signup",
       query: {
         freeAccount: true,
-        packageName: "Free Account"
+        packageName: "Free Account",
       },
     });
   };
 
-  const handleItemClick = (value: PackageValue) => {
-    localStorage.setItem('package', JSON.stringify(value));
+  const handleItemClick = (value: any) => {
     console.log("Clicked item value:", { value });
+    dispatch(selectPackage(value));
     router.push("/Signup");
   };
 
@@ -72,19 +74,39 @@ const Packages = () => {
           <h3>Free Account</h3>
           <ul>
             <li>
-              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
+              <Image
+                src="/cross/Vector.jpg"
+                alt="cross-icon"
+                width={7}
+                height={9}
+              />{" "}
               Unlimited setup of the customer
             </li>
             <li>
-              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
+              <Image
+                src="/cross/Vector.jpg"
+                alt="cross-icon"
+                width={7}
+                height={9}
+              />{" "}
               Unlimited setup of the suppliers
             </li>
             <li>
-              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
+              <Image
+                src="/cross/Vector.jpg"
+                alt="cross-icon"
+                width={7}
+                height={9}
+              />{" "}
               Unlimited setup of the drivers
             </li>
             <li>
-              <Image src="/cross/Vector.jpg" alt="cross-icon" width={7} height={9} />{" "}
+              <Image
+                src="/cross/Vector.jpg"
+                alt="cross-icon"
+                width={7}
+                height={9}
+              />{" "}
               Unlimited setup of the vehicles
             </li>
           </ul>
@@ -95,8 +117,9 @@ const Packages = () => {
         {inner_Box.map((value, index) => {
           return (
             <div
-              className={`${styles.innerBox} ${color === value.title ? "hover_card" : "#000"
-                }`}
+              className={`${styles.innerBox} ${
+                color === value.title ? "hover_card" : "#000"
+              }`}
               key={index}
               onMouseEnter={() => setColor(value.title)}
               onMouseLeave={() => setColor("")}
@@ -104,16 +127,21 @@ const Packages = () => {
             >
               <div>
                 {value.title === "Essential Bundle A" && (
-
-                  <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                  <StarSvgIcon
+                    color={color === value.title ? "#fff" : "#000"}
+                  />
                 )}
 
                 {value.title === "Essential Bundle B" && (
-                  <StarSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                  <StarSvgIcon
+                    color={color === value.title ? "#fff" : "#000"}
+                  />
                 )}
 
                 {value.title === "Standard Package" && (
-                  <KingSvgIcon color={color === value.title ? "#fff" : "#000"} />
+                  <KingSvgIcon
+                    color={color === value.title ? "#fff" : "#000"}
+                  />
                 )}
 
                 {value.title === "Premium Collection A" && (
@@ -177,15 +205,20 @@ const Packages = () => {
         <div className={styles.faq}>
           {faq.map((value, index) => {
             return (
-              <div key={index} className={styles.bb} onClick={() => faqToggle(value.ques)}>
-                <h4 >
+              <div
+                key={index}
+                className={styles.bb}
+                onClick={() => faqToggle(value.ques)}
+              >
+                <h4>
                   {" "}
                   <span> {value.ques}</span>{" "}
                   <span>
                     <Image
                       src="/Chevron-up-large.png"
-                      className={`${showFaq === value.ques ? "" : "rotate"} ${styles.bg
-                        }`}
+                      className={`${showFaq === value.ques ? "" : "rotate"} ${
+                        styles.bg
+                      }`}
                       alt="dropdown"
                       width={15}
                       height={15}
@@ -234,29 +267,34 @@ const inner_Box = [
     title: "Essential Bundle A",
     duties: "0 to 100",
     cost: "₹ 1000/month",
+    amount: 1000,
   },
   {
     imageUrl: "/vector.svg",
     title: "Essential Bundle B",
     duties: "101 to 250",
     cost: "₹ 2000/month",
+    amount: 2000,
   },
   {
     imageUrl: "/Group.svg",
     title: "Standard Package",
     duties: "251 to 400",
     cost: "₹ 3000/month",
+    amount: 3000,
   },
   {
     imageUrl: "/Group550.svg",
     title: "Premium Collection A",
     duties: "401 to 1000",
     cost: "₹ 4000/month",
+    amount: 4000,
   },
   {
     imageUrl: "/Group550.svg",
     title: "Premium Collection B",
     duties: "1001 to 2000",
     cost: "₹ 5000/month",
+    amount: 5000,
   },
 ];

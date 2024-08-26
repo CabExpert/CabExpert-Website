@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
-import store from '../store';
+// import { useSelector } from 'react-redux';
+// import store from '../store';
 
-const useToken = (): string | null => {
-  const token = useSelector((state: ReturnType<typeof store.getState>) => state.token.value);
-  return token;
-};
+// const useToken = (): string | null => {
+//   const token = useSelector((state: ReturnType<typeof store.getState>) => state.token.value);
+//   return token;
+// };
 
-export default useToken;
+// export default useToken;

@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import Style from "../navbar/header.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "@/reducers/tokenSlice";
 import Link from "next/link";
+import { RootState } from "@/store";
+import ModelView from "../model";
 
 const Header = () => {
   const router = useRouter();
   const [menu, setMenu] = React.useState(false);
+  const [packageModel, setPackageModel] = React.useState(false);
   const dispatch = useDispatch();
   const handleMenu = () => {
     setMenu(!menu);
@@ -31,67 +34,55 @@ const Header = () => {
     }
   }, [menu]);
 
+  const selectedPackage = useSelector(
+    (state: RootState) => state.package.selectedPackage
+  );
+
+  const handleClick = () => {
+    if (selectedPackage === null) {
+      setPackageModel(true);
+    } else {
+      router.push("/Signup");
+    }
+  };
+
   return (
     <header className={Style.mainheader}>
-      {/* <div className={Style.topheder}>
-        <div className={`${Style.topnav} container `}>
-          <div className={`${Style.text_one} `}>
-            Cabx Taxi Service & Transport Solutions!
-          </div>
-          <div className={Style.righttop}>
-            <div className={Style.areas}>
-              <ul>
-                <li>
-                  <a href="#Help">Help</a>
-                </li>
-                <li>
-                  <a href="#Support">Support</a>
-                </li>
-                <li>
-                  <a href="#FAQ">FAQ</a>
-                </li>
-              </ul>
-            </div>
-            <div className={Style.socialmedia}>
-              <ul>
-                <li>
-                  <Image
-                    src="/Vector (1).png"
-                    alt="facebook"
-                    width="15"
-                    height="15"
-                  />
-                </li>
-                <li>
-                  <Image
-                    src="/twitter.png"
-                    alt="twitter"
-                    width="15"
-                    height="15"
-                  />
-                </li>
-                <li>
-                  <Image
-                    src="/Vector (3).png"
-                    alt="google"
-                    width="15"
-                    height="15"
-                  />
-                </li>
-                <li>
-                  <Image
-                    src="/Vector (4).png"
-                    alt="instagram"
-                    width="15"
-                    height="15"
-                  />
-                </li>
-              </ul>
-            </div>
+      <ModelView show={packageModel}>
+        <Image
+          src={"/cross/close-line.png"}
+          alt="close"
+          width={20}
+          height={20}
+          onClick={() => setPackageModel(false)}
+        />
+        <div className="text-center mr-top-10">
+          <h4>Please select the package</h4>
+          <p className="mr-top-10">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
+            commodi fugiat sapiente optio! Eius voluptas culpa repudiandae quo
+            nostrum optio dignissimos enim ducimus quis ex explicabo eos minus
+            blanditiis quidem laudantium, ipsam itaque numquam, ipsa rerum illum
+            voluptatum ea laboriosam animi? Fugit dolore, eos ut deserunt vel
+            blanditiis assumenda reprehenderit nam aliquid. Quis sed tempore
+            blanditiis, aspernatur, consequatur, sunt repellendus amet impedit
+            corrupti neque libero in! Iusto quod dicta vitae adipisci, id
+            deleniti veniam provident molestiae quidem earum corrupti voluptate
+            aliquam harum nam ad suscipit consequatur eveniet aliquid neque
+            tempore itaque eligendi omnis ducimus. Quam perspiciatis aperiam
+            debitis sit nihil?
+          </p>
+
+          <div className={`${Style.button_nav} mr-top-20`}>
+            <button
+              className={Style.button_two}
+              onClick={() => router.push("/packages")}
+            >
+              Continue
+            </button>
           </div>
         </div>
-      </div> */}
-
+      </ModelView>
       <div className={`${Style.topnav_two} container`}>
         <div>
           <Image
@@ -106,12 +97,9 @@ const Header = () => {
         <div className={Style.menu_two}>
           <ul>
             <li>
-            <a onClick={() => router.push("/packages")}>Packages</a>
+              <a onClick={() => router.push("/packages")}>Packages</a>
             </li>
-            {/* <li>
-              <a href="#Features">Features</a>
-            </li> */}
-            
+
             <li>
               <a onClick={() => router.push("/contact-us")}>Contact us</a>
             </li>
@@ -119,7 +107,7 @@ const Header = () => {
               <a onClick={() => router.push("/about-us")}>About Us</a>
             </li>
             <li>
-            <a onClick={() => router.push("/blogs")}>Blogs</a>
+              <a onClick={() => router.push("/blogs")}>Blogs</a>
             </li>
           </ul>
         </div>
@@ -187,99 +175,12 @@ const Header = () => {
           <Link href="https://admin.cabexpert.co/">
             <button className={Style.button_one}>Sign in</button>
           </Link>
-          <Link href="/Signup">
-            <button className={Style.button_two}>Create a free account</button>
-          </Link>
+
+          <button className={Style.button_two} onClick={handleClick}>
+            Create a free account
+          </button>
         </div>
       </div>
-      {/* <div className={Style.header_parent}>
-        <div className={Style.header}>
-          <Image src="/Group214.png" alt="logo" height={72} width={150} />
-          <div className={Style.icons}>
-            <ul>
-              <li>
-                <div>
-                  <Image
-                    src="/phone-call-icon 1.png"
-                    alt="phone"
-                    height={28}
-                    width={28}
-                  />
-                </div>
-                <div>
-                  <span>Call Us Now</span>
-                  <p>5267-214-392</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <Image
-                    src="/envelope-open-icon 1.png"
-                    alt="email"
-                    height={28}
-                    width={28}
-                  />
-                </div>
-                <div>
-                  <span>Email Now</span>
-                  <p>Info.Carx@mail.com</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <Image
-                    src="/location-pin-icon 1.png"
-                    alt="email"
-                    height={28}
-                    width={28}
-                  />
-                </div>
-                <div>
-                  <span>Halk Street</span>
-                  <p>New Delhi.India-110096</p>
-                </div>
-              </li>
-            </ul>
-
-            <div className={Style.toprightnavbar}>
-              <div className={Style.rightNav_yellow}>
-                <ul>
-                  <li>
-                    <a href="#Home">Home</a>
-                  </li>
-                  <li>
-                    <a href="#About Us">About Us</a>
-                  </li>
-                  <li>
-                    <a href="#Contact us">Contact us</a>
-                  </li>
-                  <li>
-                    <a href="#Packages">Packages</a>
-                  </li>
-                </ul>
-                <div className={Style.line}></div>
-                <div className={Style.search}>
-                  <Image
-                    src="/Group185.svg"
-                    alt="search"
-                    height={26}
-                    width={25}
-                  />
-                  <Image
-                    src="/Group186.svg"
-                    alt="search"
-                    height={26}
-                    width={25}
-                  />
-                </div>
-              </div>
-              <div className={Style.book}>
-              <a href="#About Us">Book a Taxi</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </header>
   );
 };

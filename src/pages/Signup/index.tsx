@@ -12,6 +12,11 @@ import { boolean } from "yup";
 import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
 import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
 import Inputfield from "@/component/inputfield";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import useLoading from "@/hooks/use-loading";
+import SpinnerView from "@/component/spinner";
+import { set } from "react-hook-form";
 
 interface PackageValue {
   title: string;
@@ -22,14 +27,24 @@ interface PackageValue {
 
 export default function Signup() {
   const router = useRouter();
+  const { loading, setLoading } = useLoading();
+
   const selectedIsFreeAccount = router?.query;
-  console.log({ selectedIsFreeAccount });
+  console.log("selectedIsFreeAccount", { selectedIsFreeAccount });
+
+  // get package value from redux store
 
   const [packageValue, setPackageValue] = useState<PackageValue | null>(null);
   const [isChecked, setIsChecked] = React.useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
+  const selectedPackage = useSelector(
+    (state: any) => state.package.selectedPackage
+  );
+
+  console.log("selectedPackage", { selectedPackage });
 
   console.log({ packageValue });
   console.log(packageValue?.title);
@@ -50,13 +65,24 @@ export default function Signup() {
       confirmPassword: "",
       isFree: selectedIsFreeAccount?.freeAccount === "true" || false,
       package: {
-        packageName: selectedIsFreeAccount?.packageName,
+        packageName:
+          selectedIsFreeAccount.freeAccount === "Free Account"
+            ? selectedIsFreeAccount?.packageName
+            : (selectedPackage?.title as string),
+        perMonthDuties:
+          selectedIsFreeAccount.freeAccount === "Free Account"
+            ? ""
+            : selectedPackage?.duties,
+        packageAmount:
+          selectedIsFreeAccount.freeAccount === "Free Account"
+            ? ""
+            : selectedPackage?.amount,
       },
     } as SignupTypes,
 
     validationSchema: SignupValidationsSchema(),
     onSubmit: (values: SignupTypes) => {
-      console.log({ values }, "values");
+      console.log({ values }, "values new");
       handleSubmitSignupData(values);
     },
   });
@@ -65,18 +91,20 @@ export default function Signup() {
   const [data, setData] = React.useState("");
 
   const handleSubmitSignupData = async (values: any) => {
+    setLoading(true);
+    console.log("values submit", { values });
+
     if (
       !values.package.packageName &&
       !values?.package.perMonthDuties &&
       !values?.package?.packageAmount
     ) {
-      values.package.packageName = packageValue?.title || "";
-      values.package.perMonthDuties = packageValue?.duties || "";
-      values.package.packageAmount = packageValue?.cost || "";
+      values.package.packageName = selectedIsFreeAccount?.packageName || "";
+      values.package.perMonthDuties = selectedPackage?.duties || "";
+      values.package.packageAmount = selectedPackage?.amount || "";
       values.package.paymentDate = new Date();
     }
 
-    console.log("IN HANDLE SUBMIT FUNCTION", { values });
     await mutate(values, {
       onSuccess: (res) => {
         console.log("data", { res });
@@ -90,6 +118,7 @@ export default function Signup() {
           });
         }
       },
+
       onError: (res: any) => {
         console.log("ERROR in Signup", { res });
         toast.error(res?.response?.data?.message);
@@ -209,26 +238,29 @@ export default function Signup() {
               {errors?.password && touched?.password && errors?.password}
             </span>
           </div>
+          {/* conform password */}
           <div>
-            {/* <input
+            <Inputfield
               type="password"
               id="confirmPassword"
+              label="Confirm Password"
               name="confirmPassword"
-              placeholder="Re-enter Password"
+              placeholder="Confirm Password"
               value={values?.confirmPassword}
               onChange={handleChange}
-            />{" "} 
-            <br />*/}
-            {/* <span
-              style={{ color: "red" }}
-              className={`text-red-600 text-xs error-message absolute top-10 ${
+            />{" "}
+            <span
+              style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+              className={`  ${
                 errors?.confirmPassword && touched?.confirmPassword && "visible"
               }`}
             >
               {errors?.confirmPassword &&
                 touched?.confirmPassword &&
                 errors?.confirmPassword}
-            </span> */}
+            </span>
+          </div>
+          <div>
             <div className={styles.check}>
               <input
                 type="checkbox"
@@ -254,26 +286,42 @@ export default function Signup() {
               </p>
             </div>
           </div>
-          <button
-            type="submit"
-            className={styles.continuebutton}
-            style={{
-              backgroundColor:
-              values?.firstName &&
-              values?.lastName &&
-                values?.email &&
-                values?.password &&
-                // values?.confirmPassword &&
-                isChecked
-                  ? "#ff9900"
-                  : "#ccc",
-              color: isChecked ? "#fbfbfb" : "#fbfbfb",
-              cursor: isChecked ? "pointer" : "not-allowed",
-            }}
-            disabled={!isChecked}
-          >
-            Continue
-          </button>
+          {loading ? (
+            <>
+              <button
+                type="submit"
+                className={styles.continuebutton}
+                style={{
+                  backgroundColor: "#ff9900",
+                }}
+              >
+                <SpinnerView size={16} loading={loading} />
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="submit"
+                className={styles.continuebutton}
+                style={{
+                  backgroundColor:
+                    values?.firstName &&
+                    values?.lastName &&
+                    values?.email &&
+                    values?.password &&
+                    // values?.confirmPassword &&
+                    isChecked
+                      ? "#ff9900"
+                      : "#ccc",
+                  color: isChecked ? "#fbfbfb" : "#fbfbfb",
+                  cursor: isChecked ? "pointer" : "not-allowed",
+                }}
+                disabled={!isChecked}
+              >
+                Continue
+              </button>
+            </>
+          )}
         </form>
         {popup === "term" && (
           <div className={styles.privacyPopup}>
