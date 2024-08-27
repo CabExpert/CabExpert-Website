@@ -1,16 +1,14 @@
 import React from "react";
 import css from "./model.module.scss";
 
-type Ref<T> = React.RefObject<T> | null;
 type Props = {
   show: boolean;
   outerclass?: string;
-  //   containerProps?: React.ComponentPropsWithRef<"div">;
 } & React.ComponentPropsWithRef<"div">;
 
 const Component = (
   { children, outerclass, show, ...props }: Props,
-  ref: Ref<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLDivElement> // Updated type here
 ) => (
   <React.Fragment>
     {show && (
@@ -27,7 +25,7 @@ const Component = (
   </React.Fragment>
 );
 
-const ModelView = React.forwardRef(Component);
+const ModelView = React.forwardRef<HTMLDivElement, Props>(Component);
 ModelView.displayName = "ModelView";
 ModelView.defaultProps = {};
 
