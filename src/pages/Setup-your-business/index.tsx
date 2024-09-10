@@ -122,7 +122,7 @@ export default function Setup() {
         toast.success("Successfully setup your business");
         handlePayment();
         localStorage.clear();
-        router.push("/Payment");
+        // router.push("/Payment");
       }
     } catch (error: any) {
       console.log({ error });
