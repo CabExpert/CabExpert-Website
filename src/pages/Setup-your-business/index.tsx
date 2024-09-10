@@ -12,12 +12,20 @@ import {
 } from "../../../network-requests/apis";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { getUserById } from "../../../network-requests/hooks/api";
 
 export default function Setup() {
   const [typeToggle, setTypeToggle] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); 
   const { id } = router.query;
   console.log({ id });
+  
+  const selectedPackage = useSelector(
+    (state: any) => state.package.selectedPackage
+  );
+  console.log("selectedPackage",{ selectedPackage });
 
   const [isChecked, setIsChecked] = React.useState(false);
 
@@ -112,6 +120,7 @@ export default function Setup() {
       console.log({ response });
       if (response) {
         toast.success("Successfully setup your business");
+        handlePayment();
         localStorage.clear();
         router.push("/Payment");
       }
@@ -120,6 +129,112 @@ export default function Setup() {
       toast.error(error?.response?.data?.message);
     }
   };
+
+  // payment module integration
+
+  const [userData , setUserData] = React.useState<any>([]);
+  const getUserData = React.useCallback(async()=>{
+    try {
+      const response = await getUserById(id as string);
+      console.log("data res",{response});
+      setUserData(response);
+      
+    } catch (error) {
+      console.log("error",{error});
+    }
+  }
+  ,[id])
+
+  React.useEffect(()=>{
+    getUserData();
+  }
+  ,[getUserData])
+
+  console.log("userData",{userData})
+  console.log("id",{id})
+
+
+    const payment_Payload = {
+      amount: selectedPackage?.amount,
+      productinfo: selectedPackage?.title,
+      firstName: userData?.firstName,
+      lastName: userData?.lastName,
+      email: userData?.email,
+      phone: values?.number,
+      address: values?.address,
+      country:"India",
+      zipCode: values?.pincode,
+      city: values?.city,
+      currency: "INR",
+      receipt: "order_rcptid_11",
+      payment_capture: "1",
+      bookingId: "12323",
+      userId: id,
+
+    };
+
+
+    const handlePayment = React.useCallback(async()=>{
+
+     
+      try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment`,payment_Payload);
+        console.log("res",{response});
+
+        const data = response.data;
+        console.log("data",{data});
+
+        const payU_result:any = {
+          key: data?.key,
+          txnid: data?.txnid,
+          amount: data?.amount,
+          productinfo: data?.productinfo,
+          firstName: data?.firstName,
+          lastName: data?.lastName,
+          address2: data?.address2,
+          zipcode: data?.zipcode,
+          email: data?.email,
+          phone: data?.phone,
+          address1: data?.address1,
+          city: data?.city,
+          state: data?.state,
+          country: data?.country,
+          udf1: data?.udf1,
+          udf2: data?.udf2,
+          surl: `${data?.surl}?bookingId=${data?.bookingId}`,
+          furl: `${data?.furl}?bookingId=${data?.bookingId}`,
+          hash: data?.hashValue,
+        }
+
+        console.log("payU_result",{payU_result});
+        const form = document.createElement('form');
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "https://secure.payu.in/_payment");
+  
+        Object.keys(payU_result).forEach((key) => {
+          const input = document.createElement("input");
+          input.setAttribute("type", "hidden");
+          input.setAttribute("name", key);
+          input.setAttribute("value", payU_result[key]);
+          form.appendChild(input);
+        });
+  
+        document.body.appendChild(form);
+        form.submit();
+        
+      } catch (error) {
+        console.log("error",{error});
+        
+      }
+
+    },[
+      payment_Payload,
+      userData,
+      values,
+      id,
+      selectedPackage,
+      
+    ])
 
   return (
     <>
