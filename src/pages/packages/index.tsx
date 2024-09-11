@@ -10,6 +10,7 @@ import OrangeStarSvgIcon from "@/component/svg/orange_star_icon";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { selectPackage } from "@/reducers/packageSlice";
+import { access } from "fs";
 
 interface PackageValue {
   title: string;
@@ -61,7 +62,14 @@ const Packages = () => {
             <span></span>No upfront payment
           </p>
         </div>
-        <div className={styles.box}>
+
+        {free_card?.map((value , index)=>{
+          console.log("free account",{value})
+          return (
+            <>
+            <div className={styles.box} 
+            key={index}
+            >
           <Image
             src="/box-package-icon1.png"
             alt="box-icon"
@@ -71,47 +79,29 @@ const Packages = () => {
           <div className={styles.circle}>
             <span></span>
           </div>
-          <h3>Free Account</h3>
+          <h3>{value?.title}</h3>
           <ul>
-            <li>
-              <Image
-                src="/cross/Vector.jpg"
-                alt="cross-icon"
-                width={7}
-                height={9}
-              />{" "}
-              Unlimited setup of the customer
-            </li>
-            <li>
-              <Image
-                src="/cross/Vector.jpg"
-                alt="cross-icon"
-                width={7}
-                height={9}
-              />{" "}
-              Unlimited setup of the suppliers
-            </li>
-            <li>
-              <Image
-                src="/cross/Vector.jpg"
-                alt="cross-icon"
-                width={7}
-                height={9}
-              />{" "}
-              Unlimited setup of the drivers
-            </li>
-            <li>
-              <Image
-                src="/cross/Vector.jpg"
-                alt="cross-icon"
-                width={7}
-                height={9}
-              />{" "}
-              Unlimited setup of the vehicles
-            </li>
+            {value.accessories.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Image
+                    src="/cross/Vector.jpg"
+                    alt="cross-icon"
+                    width={7}
+                    height={9}
+                  />{" "}
+                  {item.title}
+                </li>
+              );
+            }
+            )} 
           </ul>
-          <button onClick={handleSelect}>select</button>
+          <button onClick={() => handleItemClick(value)}>Select</button>
         </div>
+            </>
+          )
+        })}
+        
       </div>
       <div className={styles.second_sec}>
         {inner_Box.map((value, index) => {
@@ -298,3 +288,27 @@ const inner_Box = [
     amount: 5000,
   },
 ];
+
+
+const free_card = [
+  {
+    title: "Free Account",
+    duties: "Unlimited",
+    cost: "Free",
+    amount: 0,
+    accessories: [
+      {
+        title: "Unlimited setup of the customer",
+      },
+      {
+        title: "Unlimited setup of the suppliers",
+      },
+      {
+        title: "Unlimited setup of the drivers",
+      },
+      {
+        title: "Unlimited setup of the vehicles",
+      },
+    ], 
+  },
+]

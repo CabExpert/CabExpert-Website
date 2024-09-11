@@ -15,10 +15,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { getUserById } from "../../../network-requests/hooks/api";
+import useLoading from "@/hooks/use-loading";
+import SpinnerView from "@/component/spinner";
 
 export default function Setup() {
   const [typeToggle, setTypeToggle] = useState(false);
   const router = useRouter(); 
+  const { loading, setLoading } = useLoading();
+
   const { id } = router.query;
   console.log({ id });
   
@@ -97,6 +101,7 @@ export default function Setup() {
     values: any,
     id: string | string[] | undefined
   ) => {
+    setLoading(true);
     try {
       const [profileUrl] = await Promise.all([
         Promise.all(
@@ -120,9 +125,14 @@ export default function Setup() {
       console.log({ response });
       if (response) {
         toast.success("Successfully setup your business");
+        if(selectedPackage?.title === "Free Account"){
+          router.push("/free-package")
+        localStorage.clear();
+        }else{
         handlePayment();
         localStorage.clear();
-        // router.push("/Payment");
+        }
+        
       }
     } catch (error: any) {
       console.log({ error });
@@ -435,6 +445,17 @@ export default function Setup() {
                 </p>
               </div>
               <div className={styles.buttonn}>
+                {loading ? <>
+                  <button
+                  type="submit"
+                  className={styles.continuebutton} 
+                  style={{
+                    backgroundColor: "#ff9900",
+                  }}
+                >
+                <SpinnerView size={16} loading={loading} />
+                </button>
+                </> : <>
                 <button
                   type="submit"
                   className={styles.continuebutton}
@@ -453,6 +474,8 @@ export default function Setup() {
                 >
                   Setup my business
                 </button>
+                </>}
+               
               </div>
             </div>
           </div>

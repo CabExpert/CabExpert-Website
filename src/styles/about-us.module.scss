@@ -207,3 +207,26 @@
 
     }
 }
+
+.freePara{
+    font-size: 25px;
+    font-weight: 500;   
+    color: #000000;
+    text-align: center;
+}
+.buttonn {
+    display: flex;
+    padding-top: 16px;
+  }
+.continuebutton {
+    margin: auto;
+    font-size: 18px;
+    padding: 15px 38px;
+    border-radius: 8px;
+    background-color: #ff9900;
+    color: #fbfbfb;
+    border: transparent;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
