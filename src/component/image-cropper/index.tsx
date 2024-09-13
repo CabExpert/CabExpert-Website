@@ -34,14 +34,14 @@ const Component = (
   });
 
   React.useMemo(() => {
-    setState((draft) => {
+    setState((draft:any) => {
       draft.image = image;
     });
   }, [image, setState]);
 
   const onChangeState = React.useCallback(
     (key: keyof typeof state, value: any) => {
-      setState((draft) => {
+      setState((draft:any) => {
         draft[key] = value;
       });
     },
@@ -134,7 +134,7 @@ const Component = (
           ref={cropperRef}
           className={css["img-fluid"]}
           zoomTo={0}
-          src={state.image}
+          src={state.image as any}
           viewMode={1}
           minCropBoxHeight={0}
           minCropBoxWidth={0}
