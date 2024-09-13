@@ -1,0 +1,365 @@
+$mobile: 576px;
+$tab: 991px;
+
+.inputbox {
+  margin-bottom: 20px;
+}
+.signupboxinnerbox {
+  max-width: 600px;
+  margin: 0px auto;
+}
+.sociallink {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.socialmedialogin {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    li {
+      width: calc(100% / 2 - 10px);
+      border: 1px solid #dadada;
+      box-sizing: border-box;
+      border-radius: 5px;
+      text-align: center;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.requiredstyle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #d92a2a;
+
+  display: block;
+}
+.avtarbox {
+  display: block;
+  margin: 0px auto 0 auto;
+  text-align: center;
+}
+
+.addphoto {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0px auto 0 auto;
+  // border: 1.33333px solid var(--color-primary2);
+  border-radius: 50%;
+  // padding: 8px 11px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  img {
+    border-radius: 100px;
+  }
+  .editicon {
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+  }
+}
+
+.addphototext {
+  margin-top: 8px;
+  margin-bottom: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #979797;
+}
+.logosection {
+  text-align: center;
+  span {
+    margin: 0 auto;
+    display: block;
+  }
+  h1 {
+    text-align: center;
+    color: #000646;
+    margin: 0px 0px 16px;
+  }
+  p {
+    text-align: center;
+    color: #63768d;
+  }
+}
+
+.simply-box-signup-page {
+  .simply-col-8 {
+    height: 100vh;
+  }
+}
+
+.formsignup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.formsignup label {
+  display: block;
+  width: 100%;
+}
+
+.inputform {
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  // padding: 11px 0px;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid #d0d5dd;
+}
+
+// .inputform:focus {
+//   border-bottom: 1px solid #000646 !important;
+// }
+
+.signbutton {
+  width: 100%;
+  background: #000646;
+  opacity: 1;
+  height: 48px;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  border: none;
+  padding: 6px 0px;
+  margin: 33px 0px 0 0px;
+}
+.buttonDisabled {
+  background: #000646;
+  opacity: 0.5 !important;
+}
+
+.alreadysignup {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.alreadysignup p {
+  width: 100%;
+  text-align: center;
+  // font-style: normal;
+  // font-weight: 400;
+  // font-size: 14px;
+  // line-height: 18px;
+  align-items: center;
+  color: #979797;
+  margin: 0;
+}
+
+.alreadysignup p a {
+  align-items: center;
+  color: #000646;
+  border-radius: 8px;
+  padding: 0px 4px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  &:hover {
+    color: var(--Primary-600);
+  }
+}
+
+.signupright {
+  text-align: center;
+  margin-top: 70px;
+  padding: 0 50px;
+}
+.signuprightsection {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.signupboxleft {
+  display: flex !important;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.text-box {
+  display: block;
+}
+@media (max-width: $tab) {
+  .signupboxleft {
+    padding-right: 0px;
+    .signupboxinnerbox {
+      flex: 0 0 100%;
+      max-width: 600px;
+    }
+
+    .heading {
+      margin: 40px !important;
+    }
+  }
+}
+
+.inputbox {
+  display: block;
+  width: 100%;
+  margin: 0px 0px 16px 0px;
+}
+.boxpasswordeye {
+  display: block;
+  position: relative;
+}
+
+.boxpasswordeyeicon {
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  user-select: none;
+  cursor: pointer;
+}
+@media (max-width: $mobile) {
+  .addphoto {
+    cursor: default;
+  }
+  .mainlogo2 {
+    background: #f3f2ef;
+  }
+  .signuprightsection {
+    display: none;
+  }
+  .signupboxleft {
+    flex: 0 0 100%;
+    max-width: 100%;
+    align-items: inherit !important;
+    padding: 20px;
+    padding-top: 0px;
+    .logoimg {
+      width: 152px !important;
+      height: 38px !important;
+    }
+    .heading {
+      margin: 24px 0px !important;
+    }
+    .headingsub {
+      margin-bottom: 30px;
+    }
+  }
+
+  .formsignup {
+    // label {
+    //   font-size: 14px;
+    //   font-weight: 400;
+    // }
+    .validation-error {
+      margin-top: 8px;
+    }
+    .signbutton {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+  .alreadysignup {
+    p {
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 0px 0px;
+    }
+    a {
+      margin-top: 0px;
+      display: block;
+    }
+  }
+}
+.termsCondition {
+  // margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    background: #f6f7fa;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+
+  span {
+    // margin-left: 5px;
+    // font-style: normal;
+    // font-weight: 400;
+    // font-size: 12px;
+    // line-height: 18px;
+    color: #979797;
+    a {
+      color: #000646;
+      border-radius: 8px;
+      // padding: 0px 4px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      // &:hover {
+      //   background: #f1f1f8;
+      // }
+    }
+  }
+}
+
+.avatarimg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.validationerrores {
+  label {
+    color: #d92a2a;
+  }
+
+  .inputform {
+    border-bottom: 2px solid #d92a2a;
+  }
+  span {
+    color: #d92a2a;
+  }
+}
+.editicon {
+  color: #1d99f2;
+}
+.removebtn {
+  color: #d92a2a;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .inputform {
+    font-size: 16px !important;
+  }
+}

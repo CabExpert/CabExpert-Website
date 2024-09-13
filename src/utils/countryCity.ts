@@ -1,0 +1,65 @@
+type citiesType = {
+  [key: string]: { value: any; label: any }[];
+};
+
+export const cities: citiesType = {
+  IN: [
+    { value: 'DELHI', label: 'Delhi' },
+    { value: 'MUMBAI', label: 'Mumbai' },
+    { value: 'BENGALURU', label: 'Bengaluru' },
+    { value: 'KOLKATA', label: 'Kolkata' },
+    { value: 'CHENNAI', label: 'Chennai' },
+    { value: 'HYDERABAD', label: 'Hyderabad' },
+    { value: 'AHMEDABAD', label: 'Ahmedabad' },
+    { value: 'PUNE', label: 'Pune' },
+    { value: 'JAIPUR', label: 'Jaipur' },
+    { value: 'SURAT', label: 'Surat' },
+    { value: 'KANPUR', label: 'Kanpur' },
+    { value: 'LUCKNOW', label: 'Lucknow' },
+    { value: 'NAGPUR', label: 'Nagpur' },
+    { value: 'VISAKHAPATNAM', label: 'Visakhapatnam' },
+    { value: 'INDORE', label: 'Indore' },
+    { value: 'THANE', label: 'Thane' },
+    { value: 'BHOPAL', label: 'Bhopal' },
+    { value: 'PATNA', label: 'Patna' },
+    { value: 'VADODARA', label: 'Vadodara' },
+    { value: 'LUDHIANA', label: 'Ludhiana' },
+    { value: 'AGRA', label: 'Agra' },
+    { value: 'NASHIK', label: 'Nashik' },
+    { value: 'FARIDABAD', label: 'Faridabad' },
+    { value: 'MEERUT', label: 'Meerut' },
+    { value: 'RAJKOT', label: 'Rajkot' },
+    { value: 'VARANASI', label: 'Varanasi' },
+    { value: 'SRINAGAR', label: 'Srinagar' },
+    { value: 'AURANGABAD', label: 'Aurangabad' },
+    { value: 'DHANBAD', label: 'Dhanbad' },
+    { value: 'AMRITSAR', label: 'Amritsar' },
+    { value: 'ALLAHABAD', label: 'Allahabad' },
+    { value: 'RANCHI', label: 'Ranchi' },
+    { value: 'HOWRAH', label: 'Howrah' },
+    { value: 'COIMBATORE', label: 'Coimbatore' },
+    { value: 'JABALPUR', label: 'Jabalpur' },
+    { value: 'GHAZIABAD', label: 'Ghaziabad' },
+    { value: 'GURUGRAM', label: 'Gurugram' },
+    { value: 'NOIDA', label: 'Noida' },
+    { value: 'MADURAI', label: 'Madurai' },
+    { value: 'JAMSHEDPUR', label: 'Jamshedpur' },
+    { value: 'RAIPUR', label: 'Raipur' },
+    { value: 'KOTA', label: 'Kota' },
+    { value: 'CHANDIGARH', label: 'Chandigarh' },
+    { value: 'GUWAHATI', label: 'Guwahati' },
+    { value: 'SOLAPUR', label: 'Solapur' },
+    { value: 'HUBBALLI', label: 'Hubballi' },
+    { value: 'TIRUCHIRAPPALLI', label: 'Tiruchirappalli' },
+    { value: 'BAREILLY', label: 'Bareilly' },
+    { value: 'ALIGARH', label: 'Aligarh' },
+    { value: 'MYSORE', label: 'Mysore' },
+    { value: 'SALEM', label: 'Salem' },
+  ],
+};
+
+
+  export const countrie = [
+    { value: 'IN', label: 'India' }, 
+  ];
+

@@ -1,6 +1,7 @@
 import Navbar from "@/component/navbar";
 import styles from "@/styles/setup-your-business.module.scss";
 import Image from "next/image";
+import Select from 'react-select';
 import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import { SetupYourBusiness } from "../../../network-requests/types";
@@ -17,6 +18,14 @@ import axios from "axios";
 import { getUserById } from "../../../network-requests/hooks/api";
 import useLoading from "@/hooks/use-loading";
 import SpinnerView from "@/component/spinner";
+import { cities, countrie } from "@/utils/countryCity";
+import ImageCropper from "@/component/image-cropper";
+import { useImmer } from "use-immer";
+import getExtension from "@/utils/get-extension";
+import { checkDimensions } from "@/utils/dimensions";
+
+
+ 
 
 export default function Setup() {
   const [typeToggle, setTypeToggle] = useState(false);
@@ -41,10 +50,56 @@ export default function Setup() {
   const [companyLogo, setCompanyLogo] = React.useState("");
   const [selectedProfile, setSelectedProfile] = React.useState("");
 
+  const imageCropperRef = useRef<HTMLInputElement>(null);
+  const [croppedImageBlob, setCroppedImageBlob] = useState<Blob | null>(null);
+
+  const [croppedImage, setCroppedImage] = useState<any>(null); 
+  
+    const [avatarPreview, setAvatarPreview] = useState(""); 
+  const [cropping, setCropping] = useState(false);
+
+
+  const [fileMeta, setFileMeta] = useImmer({
+    name: "",
+    size: 0,
+    type: "",
+    extension: ".png",
+    file: null,
+  });
+
+  const handleAvatarClick = () => {
+    imageCropperRef.current?.click();
+  };
+
+  const handleCancel = () => {
+    const confirmCancel = confirm("Are you sure you want to cancel?");
+    if (confirmCancel) {
+      setAvatarPreview("");
+      setCropping(false);
+      setCroppedImage(null);
+    } else {
+      return;
+    }
+  };
+
+  console.log("croppedImage", {croppedImage});
+
   const handleUploadClick: any = () => {
     if (fileInputRef.current) {
       fileInputRef?.current?.click();
     }
+  };
+
+  const [selectCountry, setSelectCountry] = useState<{ value: any; label: any } | null>(null);
+  const [selectedCity, setSelectedCity] = useState<{ value: any; label: any } | null>(null);
+
+
+  console.log("selectCountry",{selectCountry})
+  console.log("selectedCity",{selectedCity})
+
+  const handleCountryChanged = (option: any) => {
+    setSelectCountry(option);
+    setSelectedCity(null);
   };
 
   const handleFileChange = (setSide: any, setPreview: any) => (event: any) => {
@@ -73,7 +128,7 @@ export default function Setup() {
       number: "",
       gstNumber: "",
       gstType: "",
-      city: "",
+      // city: "",
       country: "",
       verificationCode: "",
       pincode: "",
@@ -91,7 +146,7 @@ export default function Setup() {
 
   console.log({ values });
 
-  const [selectedCountry, setSelectedCountry] = useState("India");
+  const [selectedCountry, setSelectedCountry] = useState(selectCountry?.label ? selectCountry?.label : "");
   const handleCountryChange = (e: any) => {
     setSelectedCountry(e.target.value);
   };
@@ -114,15 +169,16 @@ export default function Setup() {
       console.log("ON SETUP NEW BUSINESS", { values });
       const customPayload = {
         ...values,
-        country: selectedCountry,
+        city: selectedCity?.label ? selectedCity?.label : values?.city,
+        country: selectCountry?.label ? selectCountry?.label : "",
         profile: profileUrl.length !== 0 ? profileUrl[0][0] : "",
       };
-      console.log({ customPayload });
+      console.log("customPayload",{ customPayload });
       const response = await updateSetupNewBusiness(
         customPayload,
         id as string
       );
-      console.log({ response });
+      console.log("response",{ response });
       if (response) {
         toast.success("Successfully setup your business");
         if(selectedPackage?.title === "Free Account"){
@@ -255,7 +311,8 @@ export default function Setup() {
           <ToastContainer />
         </div>
         <form onSubmit={handleSubmit}>
-          <div className={styles.logoUpload}>
+          {/* <div className={styles.logoUpload}>
+
             {companyLogo ? (
               <label htmlFor="logo">
                 <Image
@@ -283,7 +340,96 @@ export default function Setup() {
               accept=".png, .jpg, .jpeg, .webp"
             />
             <p>Upload company logo</p>
-          </div>
+          </div> */}
+           <div
+                          className={styles.avtarbox}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <div className="d-flex flex-column">
+                            <ImageCropper
+                              ref={imageCropperRef}
+                              maxSize={5}
+                              image={croppedImage}
+                              onCrop={(data) => setCroppedImage(data as string)}
+                              onCropBlob={(data) => setCroppedImageBlob(data)}
+                              onSelectFile={async (file) => {
+                                setFileMeta((draft:any) => {
+                                  draft.name = file.name;
+                                  draft.type = file.type;
+                                  draft.size = file.size;
+                                  draft.extension = getExtension(file.name);
+                                  draft.file = file;
+                                });
+
+                                if (file) {
+                                  Object.defineProperty(file, "dimensions", {
+                                    value: await checkDimensions(file),
+                                  });
+                                }
+                              }}
+                            >
+                              <div
+                                className={styles.addphoto}
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                {!croppedImage ? (
+                                  <Image
+                                    src="/company_logo_placeholder.png"
+                                    alt="fav"
+                                    height={70}
+                                    width={70}
+                                  />
+                                ) : (
+                                  <Image
+                                    src={croppedImage}
+                                    width={70}
+                                    height={70}
+                                    className={styles.userimageicon}
+                                    alt="avatar"
+                                  />
+                                )}
+                              </div>
+                            </ImageCropper>
+                            <p
+                              className={`${styles.addphototext} lg-mt-8 lg-mb-20`}
+                            >
+                              {croppedImage ? (
+                                <div className="d-flex align-items-center justify-content-center gap-16">
+                                  <a
+                                    className="label-medium primary_color"
+                                    onClick={handleAvatarClick}
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    Edit &nbsp;
+                                  </a>
+                                  <a
+                                    className="label-medium  danger-color"
+                                    onClick={handleCancel}
+                                    style={{ cursor: "pointer" }}
+
+                                  >
+                                    Delete
+                                  </a>
+                                </div>
+                              ) : (
+                                <a
+                                  className="label-medium primary_color"
+                                  onClick={handleAvatarClick}
+                                >
+                                    Add Photo
+                                </a>
+                              )}
+                            </p>
+                          </div>
+                        </div>
 
           <div className={styles.setupform}>
             <div>
@@ -409,7 +555,29 @@ export default function Setup() {
                 onChange={handleChange}
               />
             </div>
+
+            {/* // new city and country start */}
             <div>
+      <Select
+        value={selectCountry}
+        onChange={handleCountryChanged}
+        options={countrie}
+        placeholder="Select Country"
+      />
+      
+        <Select
+          value={selectedCity}
+          onChange={setSelectedCity}
+          options={selectCountry ? cities[selectCountry.value] : []}
+          placeholder="Select City"
+          className={styles.city}
+        />
+   
+    </div>
+            {/* // new city and country end */}
+
+
+            {/* <div>
               <input
                 type="City"
                 id="city"
@@ -418,9 +586,9 @@ export default function Setup() {
                 placeholder="City"
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             <div className={styles.country}>
-              <select
+              {/* <select
                 name="Country"
                 id="Country"
                 value={selectedCountry}
@@ -431,7 +599,7 @@ export default function Setup() {
                     {country}
                   </option>
                 ))}
-              </select>
+              </select> */}
               <div className={styles.check}>
                 <input
                   type="checkbox"
