@@ -437,3 +437,12 @@ p {
 .setup-your-business_city__3UKlE.css-b62m3t-container { 
   background: transparent;
 }
+.radio-button {
+  background-color: #e2e2e2;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 8px;
+    width: calc(100% - 44px);
+    display: flex;
+    justify-content: space-between;
+}

@@ -133,25 +133,34 @@ const Component = (
         <Cropper
           ref={cropperRef}
           className={css["img-fluid"]}
-          zoomTo={0}
+          // zoomTo={0}
           src={state.image as any}
+          zoomTo={0}
+          initialAspectRatio={1}
           viewMode={1}
-          minCropBoxHeight={0}
-          minCropBoxWidth={0}
+          minCropBoxHeight={10}
+          minCropBoxWidth={10}
           background={false}
           responsive={true}
           autoCropArea={1}
-          initialAspectRatio={1 / 1}
-          aspectRatio={1 / 1}
-          dragMode="none"
-          checkOrientation={false}
+          checkOrientation={false} 
+          guides={true}
+          // viewMode={1}
+          // minCropBoxHeight={0}
+          // minCropBoxWidth={0}
+          // background={false}
+          // responsive={true}
+          // autoCropArea={1}
+          // initialAspectRatio={1 / 1}
+          // aspectRatio={1 / 1}
+          // dragMode="none"
+          // checkOrientation={false}
           onInitialized={(instance) => {
             onChangeState("instance", instance);
-          }}
-          guides={true}
+          }} 
         />
         <div className="d-flex justify-content-between align-items-center">
-          <div
+          {/* <div
             className={`d-flex align-items-center simply-gap-8 mt-16 lg-mt-16 ${css["controls"]}`}
           >
             <span
@@ -163,23 +172,17 @@ const Component = (
               <Image src="/images/serviceProvider/rotate-right.png" alt="rotateLeft" width={24} height={24} />
 
             </span>
-          </div>
-          <div className="d-flex align-items-center simply-gap-8  mt-16 lg-mt-16">
+          </div> */}
+          <div className={css.cropButtons}>
             <span
-              className="d-flex align-items-center justify-content-center" 
-              onClick={onCloseHandler}
-              style={{
-                minWidth: "80px",
-              }}
+              className={css.cropEdit} 
+              onClick={onCloseHandler} 
             >
               Cancel
             </span>
             <span
-              className="d-flex align-items-center justify-content-center"
-              onClick={onCropHandler}
-              style={{
-                minWidth: "80px",
-              }}
+              className={css.cropSave} 
+              onClick={onCropHandler} 
             >
               Save
             </span>

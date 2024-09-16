@@ -3,7 +3,7 @@ import styles from "@/styles/setup-your-business.module.scss";
 import Image from "next/image";
 import Select from 'react-select';
 import React, { useRef, useState } from "react";
-import { useFormik } from "formik";
+import { useFormik , Field } from "formik";
 import { SetupYourBusiness } from "../../../network-requests/types";
 import { setupNewBusinessValidationSchema } from "../../../network-requests/validations/signupValidation";
 import { useRouter } from "next/router";
@@ -23,6 +23,8 @@ import ImageCropper from "@/component/image-cropper";
 import { useImmer } from "use-immer";
 import getExtension from "@/utils/get-extension";
 import { checkDimensions } from "@/utils/dimensions";
+import RadioButtonText from "@/component/radio-button-text";
+import RadioButtonGroup from "@/component/radio-button-text";
 
 
  
@@ -42,6 +44,12 @@ export default function Setup() {
 
   const [isChecked, setIsChecked] = React.useState(false);
 
+  
+const radioOptions = [
+  { label: 'Registered', value: 'registered' },
+  { label: 'Unregistered', value: 'unregistered' },
+];
+
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
@@ -57,6 +65,9 @@ export default function Setup() {
   
     const [avatarPreview, setAvatarPreview] = useState(""); 
   const [cropping, setCropping] = useState(false);
+
+
+  
 
 
   const [fileMeta, setFileMeta] = useImmer({
@@ -302,6 +313,9 @@ export default function Setup() {
       
     ])
 
+
+    console.log("values check",{values})
+
   return (
     <>
       <Navbar />
@@ -347,6 +361,7 @@ export default function Setup() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
+                            cursor: "pointer",
                           }}
                         >
                           <div className="d-flex flex-column">
@@ -378,6 +393,7 @@ export default function Setup() {
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "center",
+                                  cursor: "pointer",
                                 }}
                               >
                                 {!croppedImage ? (
@@ -504,17 +520,27 @@ export default function Setup() {
               </div>
               {typeToggle && (
                 <div>
-                  <div className={styles.toggle_parent}>
-                    <label htmlFor="regi">Registered</label>
-                    <input type="radio" name="business" id="regi" />
-                  </div>
-                  <div className={styles.toggle_parent}>
-                    <label htmlFor="unreg">Unregistered</label>{" "}
-                    <input type="radio" name="business" id="unreg" />
-                  </div>
+                 <RadioButtonGroup 
+                 options={radioOptions}
+                 label={"Business Type"}
+                 name={"gstType"}
+                 selectedValue={values?.gstType}
+                 onChange={
+                  
+                  (e) => {
+                    setTypeToggle(false);
+                    handleChange(e);
+                  }
+                 }
+                  />
+
+                  
+                  
                 </div>
               )}
             </div>
+            {values?.gstType === "registered" && (
+             
             <div>
               <input
                 type="GST number"
@@ -527,14 +553,17 @@ export default function Setup() {
               />
 
               <span
-                style={{ color: "red" }}
+                style={{ color: "red" }} 
                 className={`text-red-600 text-xs error-message absolute top-10 ${
                   errors?.gstNumber && touched?.gstNumber && "visible"
                 }`}
-              >
-                {errors?.gstNumber && touched?.gstNumber && errors?.gstNumber}
+
+              > 
+              {values?.gstType === "registered" && errors?.gstNumber && touched?.gstNumber && errors?.gstNumber}
+              {/* {errors?.gstNumber && touched?.gstNumber && errors?.gstNumber} */}
               </span>
             </div>
+            )}
             <div>
               <input
                 type="Address"
@@ -629,8 +658,8 @@ export default function Setup() {
                   className={styles.continuebutton}
                   style={{
                     backgroundColor:
-                      values?.businessName &&
-                      values?.gstNumber &&
+                      values?.businessName && 
+                      values?.gstType && 
                       values?.number &&
                       isChecked
                         ? "#ff9900"
@@ -654,3 +683,7 @@ export default function Setup() {
 }
 
 const countries = ["India", "USA", "Canada", "Australia", "UK"];
+
+ 
+
+
