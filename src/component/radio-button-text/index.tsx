@@ -12,8 +12,9 @@ const RadioButtonGroup = ({ label, name, options, selectedValue, onChange }:Radi
     return (
       
         <div role="group" aria-labelledby={name}  >
-          {options.map((option) => (
+          {options.map((option , index) => (
             <div className='radio-button' 
+            key={index}
             > 
             <label key={option.value} 
             style={{
