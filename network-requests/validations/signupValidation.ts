@@ -27,7 +27,7 @@ export const setupNewBusinessValidationSchema = () =>
         "GST number must contain only alphanumeric characters"
       )
       .length(15, "GST number must be exactly 15 characters")
-      .required("GST number is required"),
+      // .required("GST number is required"),
   });
 
 export const LeadsValidationsSchema = () =>

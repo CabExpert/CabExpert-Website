@@ -4,11 +4,21 @@ import Head from 'next/head';
 import styles from "@/styles/about-us.module.scss";
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 
 
 const FreePackage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+
+  /// need to clear dispatch here as well 
+  React.useEffect(() => {
+    return () => {
+      dispatch({type: "package/clearPackage"})
+    }
+  }, [])
   return (
     <>
     <Head>

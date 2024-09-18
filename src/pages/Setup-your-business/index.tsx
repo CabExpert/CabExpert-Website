@@ -62,6 +62,7 @@ const radioOptions = [
   const [croppedImageBlob, setCroppedImageBlob] = useState<Blob | null>(null);
 
   const [croppedImage, setCroppedImage] = useState<any>(null); 
+  console.log("croppedImage", {croppedImage});
   
     const [avatarPreview, setAvatarPreview] = useState(""); 
   const [cropping, setCropping] = useState(false);
@@ -143,7 +144,7 @@ const radioOptions = [
       country: "",
       verificationCode: "",
       pincode: "",
-      profile: "",
+      // profile: "",
     } as SetupYourBusiness,
 
     validationSchema: setupNewBusinessValidationSchema(),
@@ -169,20 +170,28 @@ const radioOptions = [
   ) => {
     setLoading(true);
     try {
-      const [profileUrl] = await Promise.all([
-        Promise.all(
-          Object.values(selectedProfile)?.map((imageInfo) =>
-            uploadCompanyPorfile(imageInfo)
-          )
-        ),
-      ]);
+      // const [profileUrl] = await Promise.all([
+      //   Promise.all(
+      //     Object.values(selectedProfile)?.map((imageInfo) =>
+      //       uploadCompanyPorfile(imageInfo)
+      //     )
+      //   ),
+      // ]);
 
-      console.log("ON SETUP NEW BUSINESS", { values });
+      // need to set profile image url on uploadCompanyPorfile function 
+      const profileUrl = croppedImage;
+      console.log("profileUrl", { profileUrl });
+
+      const onUploadImage  = await uploadCompanyPorfile(profileUrl);
+      console.log("onUploadImage",{onUploadImage});
+
+
+      console.log("ON SETUP NEW BUSINESS", { values }); 
       const customPayload = {
         ...values,
         city: selectedCity?.label ? selectedCity?.label : values?.city,
         country: selectCountry?.label ? selectCountry?.label : "",
-        profile: profileUrl.length !== 0 ? profileUrl[0][0] : "",
+        profile: profileUrl ? profileUrl : "",
       };
       console.log("customPayload",{ customPayload });
       const response = await updateSetupNewBusiness(
@@ -315,6 +324,28 @@ const radioOptions = [
 
 
     console.log("values check",{values})
+ 
+
+
+    const handleRadioChange = (e: any) => {  
+      if(e.target.value === values?.gstType){
+        setTypeToggle(!typeToggle);
+      }else {
+        handleChange(e);
+        setTypeToggle(!typeToggle);
+      }
+      
+
+    }
+    
+    React.useEffect(()=>{
+      // if values.gsttype is equal to unregistered then set gstNumber to empty string 
+      if (values?.gstType === "unregistered") {
+        formik.setFieldValue("gstNumber", "");
+      }
+    },[values?.gstType])
+
+
 
   return (
     <>
@@ -525,13 +556,7 @@ const radioOptions = [
                  label={"Business Type"}
                  name={"gstType"}
                  selectedValue={values?.gstType}
-                 onChange={
-                  
-                  (e) => {
-                    setTypeToggle(false);
-                    handleChange(e);
-                  }
-                 }
+                 onChange={(e:any) => handleRadioChange(e)} 
                   />
 
                   

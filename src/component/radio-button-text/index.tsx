@@ -5,7 +5,7 @@ interface RadioButtonGroupProps {
     name: string
     options: { value: string; label: string }[]
     selectedValue: string
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: any
     }
 
 const RadioButtonGroup = ({ label, name, options, selectedValue, onChange }:RadioButtonGroupProps) => {
@@ -30,7 +30,7 @@ const RadioButtonGroup = ({ label, name, options, selectedValue, onChange }:Radi
                 name={name}
                 value={option.value}
                 checked={selectedValue === option.value}
-                onChange={onChange}
+                onClick={onChange}
               />
             </label>
             </div>
