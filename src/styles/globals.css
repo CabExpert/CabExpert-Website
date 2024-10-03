@@ -446,3 +446,12 @@ p {
     display: flex;
     justify-content: space-between;
 }
+
+
+.selectCountry .css-t3ipsp-control {
+  margin-bottom: 25px;
+  overflow:hidden;
+ width:589px !important;
+  outline:none;
+ border:none;
+}

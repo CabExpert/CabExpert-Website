@@ -25,6 +25,7 @@ import getExtension from "@/utils/get-extension";
 import { checkDimensions } from "@/utils/dimensions";
 import RadioButtonText from "@/component/radio-button-text";
 import RadioButtonGroup from "@/component/radio-button-text";
+import { isAbsolute } from "path";
 
 
  
@@ -612,19 +613,51 @@ const radioOptions = [
 
             {/* // new city and country start */}
             <div>
-      <Select
+      {/* <Select
         value={selectCountry}
         onChange={handleCountryChanged}
         options={countrie}
         placeholder="Select Country"
       />
-      
+       
         <Select
           value={selectedCity}
           onChange={setSelectedCity}
           options={selectCountry ? cities[selectCountry.value] : []}
           placeholder="Select City"
           className={styles.city}
+        /> */}
+
+
+<Select
+className="selectCountry"
+        value={selectCountry}
+        onChange={handleCountryChanged}
+        options={countrie}
+        placeholder="Select Country"
+        styles={{
+          control: (base) => ({
+            ...base,
+            // padding: '10px',
+            // margin: ' 10px 0',
+          }),
+        }}
+      />
+       
+        <Select 
+         
+          value={selectedCity}
+          onChange={setSelectedCity}
+          options={selectCountry ? cities[selectCountry.value] : []}
+          placeholder="Select City"
+          className={`${styles.city} selectCountry`}
+          styles={{
+            control: (base) => ({
+              ...base,
+              // padding: '10px',
+              // margin: '10px',
+            }),
+          }}
         />
    
     </div>
