@@ -113,7 +113,7 @@ export default function Signup() {
           console.log(res, "res");
           toast.success("Successfully signup");
           router.push({
-            pathname: "/Setup-your-business",
+            pathname: "/setup-your-business",
             query: { id: res?.data?.id },
           });
         }

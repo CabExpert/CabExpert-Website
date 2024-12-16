@@ -75,3 +75,18 @@ export async function fetchBlogById(id: string) {
         throw error;
     }
 }
+
+// send otp 
+export const sendOtp = async (data: any) => {
+    try {
+        const response = await axios.post("/send-sms", {
+            params :{
+                company_name : data.company_name,
+                to: data.phone_number,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};

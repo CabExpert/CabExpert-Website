@@ -446,3 +446,8 @@ p {
     display: flex;
     justify-content: space-between;
 }
+
+
+.selectedCitystyle .css-13cymwt-control {
+  margin-bottom: 0px !important;
+}
