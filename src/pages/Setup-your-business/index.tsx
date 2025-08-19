@@ -7,14 +7,13 @@ import getExtension from "@/utils/get-extension";
 import { checkDimensions } from "@/utils/dimensions";
 import Image from "next/image";
 import axios from "axios";
-import RadioButtonGroup from "@/component/radio-button-text";
 import Select from "react-select";
 import { cities, countrie } from "@/utils/countryCity";
 import useLoading from "@/hooks/use-loading";
 import SpinnerView from "@/component/spinner";
 import { on } from "events";
 import { useRouter } from "next/router";
-import { updateSetupNewBusiness, uploadCompanyPorfile } from "../../../network-requests/apis";
+import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails } from "../../../network-requests/apis";
 import { set } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { getUserById } from "../../../network-requests/hooks/api";
@@ -29,7 +28,7 @@ const SetupYourBusiness = () => {
   );
   console.log("id",{ id });
     console.log("selectedPackage", { selectedPackage });
-  const [typeToggle, setTypeToggle] = React.useState(false);
+  // Business type removed
   const { loading, setLoading } = useLoading();
   const [state, setState] = useImmer({
     businessName: "",
@@ -103,6 +102,17 @@ const SetupYourBusiness = () => {
   const [verifyButton, setVerifyButton] = React.useState(false);
   const [otp, setOtp] = React.useState("");
   const [isVerified, setIsVerified] = React.useState(false);
+  const [gstVerified, setGstVerified] = React.useState(false);
+  const [lockedFromGst, setLockedFromGst] = React.useState({
+    businessName: false,
+    address: false,
+    pincode: false,
+    country: false,
+    city: false,
+    gstNumber: false,
+    gstType: false,
+    number: false,
+  });
 
   const handleOtpSend = React.useCallback(async () => {
     const otpPayload = {
@@ -153,11 +163,76 @@ const SetupYourBusiness = () => {
     }
   }, [otp]);
 
+  // gst verification (API call)
+  const handleVerifyGst = React.useCallback(async () => {
+    const input = (state.gstNumber || "").trim();
+    const isValidFormat = /^[0-9A-Za-z]{15}$/.test(input);
+    if (!isValidFormat) {
+      alert("Invalid GST number. It must be exactly 15 alphanumeric characters.");
+      setGstVerified(false);
+      return;
+    }
+    try {
+      const apiResponse: any = await getGstDetails(input);
+      const details = apiResponse?.data || apiResponse;
+      console.log("GST details:", details);
+
+      // Populate fields from GST data
+      const companyName = details?.lgnm || details?.tradeNam || "";
+      const fullAddress = details?.pradr?.adr || "";
+      const pincode = details?.pradr?.addr?.pncd || "";
+      const cityValueUpper = (details?.pradr?.addr?.loc || "").toString().toUpperCase();
+      const maybePhone = details?.phone || details?.mobile || details?.contact || "";
+
+      setState((draft) => {
+        draft.businessName = companyName;
+        draft.address = fullAddress;
+        draft.pincode = pincode;
+        draft.gstType = "registered";
+        draft.country = "India";
+        draft.city = details?.pradr?.addr?.loc || draft.city;
+        draft.gstNumber = details?.gstin || draft.gstNumber;
+        if (maybePhone) {
+          draft.number = maybePhone;
+        }
+      });
+
+      // Set selects for country and city
+      const indiaOption = { value: "IN", label: "India" } as const;
+      setSelectCountry(indiaOption as any);
+
+      const cityOptions = cities?.IN || [];
+      const matchedCity = cityOptions.find((c) => c.value === cityValueUpper);
+      if (matchedCity) {
+        setSelectedCity(matchedCity as any);
+      }
+
+      setLockedFromGst({
+        businessName: !!companyName,
+        address: !!fullAddress,
+        pincode: !!pincode,
+        country: true,
+        city: !!matchedCity,
+        gstNumber: true,
+        gstType: true,
+        number: !!maybePhone,
+      });
+
+      setGstVerified(true);
+    } catch (error) {
+      console.log("GST verify error", { error });
+      setGstVerified(false);
+      alert("GST number not found or invalid. Please check and try again.");
+    }
+  }, [state.gstNumber]);
+
+  React.useEffect(() => {
+    // reset GST verified flag when value changes
+    setGstVerified(false);
+  }, [state.gstNumber]);
+
   // business data start
-  const radioOptions = [
-    { label: "Registered", value: "registered" },
-    { label: "Unregistered", value: "unregistered" },
-  ];
+  // Business type removed
 
   // country and city
   const [selectCountry, setSelectCountry] = React.useState<{
@@ -189,22 +264,9 @@ const SetupYourBusiness = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleRadioChange = (e: any) => {
-    if (e.target.value === state.gstType) {
-      setTypeToggle(!typeToggle);
-    } else {
-      onChangeState("gstType", e.target.value);
-      setTypeToggle(!typeToggle);
-    }
-  };
+  // Business type removed
 
-  React.useEffect(() => {
-    if (state.gstType === "unregistered") {
-      setState((draft) => {
-        draft.gstNumber = "";
-      });
-    }
-  }, [state.gstType]);
+  // Business type removed
 
   // payment process
 
@@ -426,6 +488,42 @@ const SetupYourBusiness = () => {
           </div>
 
           <div className={styles.setupform}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <input
+                type="text"
+                id="gstNumber"
+                name="gstNumber"
+                className={styles.inputField}
+                placeholder="GST number"
+                value={state.gstNumber}
+                onChange={({ target }) => onChangeState("gstNumber", target.value)}
+                style={{ width: "300px" }}
+                disabled={lockedFromGst.gstNumber}
+              />
+              {gstVerified ? (
+                <>
+                  <Image
+                    src="/verified-badge-fill.svg"
+                    width={20}
+                    height={20}
+                    alt="gst-verified"
+                  />
+                </>
+              ) : (
+                <button
+                  className={styles.verifyButton}
+                  onClick={handleVerifyGst}
+                  disabled={(state.gstNumber || "").length !== 15}
+                  style={{
+                    backgroundColor: (state.gstNumber || "").length === 15 ? "#ff9900" : "#ccc",
+                    color: "#fff",
+                    cursor: (state.gstNumber || "").length === 15 ? "pointer" : "not-allowed",
+                  }}
+                >
+                  Verify
+                </button>
+              )}
+            </div>
             <div>
               <input
                 type="text"
@@ -436,6 +534,7 @@ const SetupYourBusiness = () => {
                 onChange={({ target }) =>
                   onChangeState("businessName", target.value)
                 }
+                disabled={lockedFromGst.businessName}
               />
             </div>
             <div>
@@ -446,13 +545,13 @@ const SetupYourBusiness = () => {
                 className={styles.inputField}
                 placeholder="Phone Number"
                 value={state.number}
-                // only allow numbers to be entered in the input field
                 onKeyPress={(e) => {
                   if (isNaN(Number(e.key))) {
                     e.preventDefault();
                   }
                 }}
                 onChange={({ target }) => onChangeState("number", target.value)}
+                disabled={lockedFromGst.number}
               />
             </div>
             <div>
@@ -530,46 +629,7 @@ const SetupYourBusiness = () => {
                 </p>
               </div>
             </div>
-            <div className={styles.type_parent}>
-              <div
-                className={styles.business_type}
-                onClick={() => setTypeToggle(!typeToggle)}
-              >
-                <h3>Business Type</h3>
-                <Image
-                  src="/arrow-down.png"
-                  alt="arrow-down"
-                  width={16}
-                  height={16}
-                />
-              </div>
-              {typeToggle && (
-                <div>
-                  <RadioButtonGroup
-                    name="gstType"
-                    label="Business Type"
-                    options={radioOptions}
-                    selectedValue={state.gstType}
-                    onChange={(e: any) => handleRadioChange(e)}
-                  />
-                </div>
-              )}
-            </div>
-            {state?.gstType === "registered" && (
-              <div>
-                <input
-                  type="GST number"
-                  id="gstNumber"
-                  name="gstNumber"
-                  className={styles.inputField}
-                  placeholder="GST number"
-                  value={state.gstNumber}
-                  onChange={({ target }) =>
-                    onChangeState("gstNumber", target.value)
-                  }
-                />
-              </div>
-            )}
+            {/* Business type removed; GST number field is at top with verify button */}
 
             <div>
               <input
@@ -578,6 +638,9 @@ const SetupYourBusiness = () => {
                 name="address"
                 className={styles.inputField}
                 placeholder="Address"
+                value={state.address}
+                onChange={({ target }) => onChangeState("address", target.value)}
+                disabled={lockedFromGst.address}
               />
             </div>
             <div>
@@ -591,6 +654,7 @@ const SetupYourBusiness = () => {
                 onChange={({ target }) =>
                   onChangeState("pincode", target.value)
                 }
+                disabled={lockedFromGst.pincode}
               />
             </div>
 
@@ -600,6 +664,7 @@ const SetupYourBusiness = () => {
                 onChange={handleCountryChanged}
                 options={countrie}
                 placeholder="Select Country"
+                isDisabled={lockedFromGst.country}
               />
                </div>
  
@@ -610,6 +675,7 @@ const SetupYourBusiness = () => {
                 options={selectCountry ? cities[selectCountry.value] : []}
                 placeholder="Select City"
                 className={styles.city}
+                isDisabled={lockedFromGst.city}
               />
               </div>
            
@@ -648,7 +714,6 @@ const SetupYourBusiness = () => {
                       style={{
                         backgroundColor:
                           state?.businessName &&
-                          state?.gstType &&
                           state?.number &&
                           isChecked
                             ? "#ff9900"
@@ -673,3 +738,4 @@ const SetupYourBusiness = () => {
 };
 
 export default SetupYourBusiness;
+

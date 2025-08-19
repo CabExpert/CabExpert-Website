@@ -63,6 +63,16 @@ export const getAllBlogs = async () => {
     }
 };
 
+// GST details by GST number
+export const getGstDetails = async (gstNumber: string) => {
+    try {
+        const response = await axios.get(`auth/admin/gst-details/${gstNumber}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 // BLOG BY ID ... 
 export async function fetchBlogById(id: string) {
