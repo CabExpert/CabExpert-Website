@@ -167,7 +167,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           <h3>
             Automated Calculations from<br></br> Garage to Garage
           </h3>
-          <Image src="/Group489.png" alt="Indiamap" width={950} height={900} />
+          <Image src="/cabx.svg" alt="Indiamap" width={950} height={900} style={{ marginTop: 16 }} />
         </div>
 
         <Testimonials />
