@@ -17,6 +17,8 @@ import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails } from "../
 import { set } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { getUserById } from "../../../network-requests/hooks/api";
+import TermsAndCondition from "@/component/terms-and-condition/terms-and-condition";
+import PrivacyPolicy from "@/component/privacy-policy/privacy-policy";
 
 
 
@@ -263,6 +265,9 @@ const SetupYourBusiness = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
+  // terms/privacy popup
+  const [popup, setPopup] = React.useState("");
 
   // Business type removed
 
@@ -689,10 +694,62 @@ const SetupYourBusiness = () => {
                   onChange={handleCheckboxChange}
                 />
                 <p>
-                  By signing up, I agree with the <span>Terms of Use</span> &{" "}
-                  <span>Privacy Policy</span>
+                  By signing up, I agree with the {""}
+                  <span style={{ cursor: "pointer" }} onClick={() => setPopup("term")}>
+                    Terms of Use
+                  </span>{" "}
+                  & {""}
+                  <span style={{ cursor: "pointer" }} onClick={() => setPopup("policy")}>
+                    Privacy Policy
+                  </span>
                 </p>
               </div>
+              {popup === "term" && (
+                <div
+                  style={{
+                    position: "fixed",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 1000,
+                  }}
+                >
+                  <div style={{ position: "relative", background: "#fff", maxHeight: "80vh", overflow: "auto", padding: 16, width: "90%", maxWidth: 900 }}>
+                    <TermsAndCondition />
+                    <div
+                      onClick={() => setPopup("")}
+                      style={{ position: "absolute", top: 8, right: 12, cursor: "pointer", fontSize: 18 }}
+                    >
+                      x
+                    </div>
+                  </div>
+                </div>
+              )}
+              {popup === "policy" && (
+                <div
+                  style={{
+                    position: "fixed",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 1000,
+                  }}
+                >
+                  <div style={{ position: "relative", background: "#fff", maxHeight: "80vh", overflow: "auto", padding: 16, width: "90%", maxWidth: 900 }}>
+                    <PrivacyPolicy />
+                    <div
+                      onClick={() => setPopup("")}
+                      style={{ position: "absolute", top: 8, right: 12, cursor: "pointer", fontSize: 18 }}
+                    >
+                      x
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className={styles.buttonn}>
                 {loading ? (
                   <>

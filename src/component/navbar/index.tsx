@@ -39,11 +39,7 @@ const Header = () => {
   );
 
   const handleClick = () => {
-    if (selectedPackage === null) {
-      setPackageModel(true);
-    } else {
-      router.push("/Signup");
-    }
+    router.push("/packages");
   };
 
   return (
@@ -154,7 +150,7 @@ const Header = () => {
             </div>
             <div className={Style.button_nav_mb}>
               <button className={Style.button_one}>Sign in</button>
-              <button className={Style.button_two}>
+              <button className={Style.button_two} onClick={() => router.push("/packages")}>
                 Create a free account
               </button>
             </div>
