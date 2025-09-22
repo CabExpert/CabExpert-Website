@@ -37,6 +37,7 @@ const SetupYourBusiness = () => {
     number: "",
     gstType: "",
     gstNumber: "",
+    email: "",
     address: "",
     pincode: "",
     country: "",
@@ -71,9 +72,16 @@ const SetupYourBusiness = () => {
       void  getUserData();
     },[getUserData])
 
+  // prefill email from userData
+  React.useEffect(() => {
+    if (userData?.email && !state.email) {
+      onChangeState("email", userData.email);
+    }
+  }, [userData?.email]);
+
   //image croper start
   const imageCropperRef = useRef<HTMLInputElement>(null);
-  const [croppedImage, setCroppedImage] = React.useState<any>(null);
+  const [croppedImage, setCroppedImage] = React.useState<any>("/photo.png");
   const [croppedImageBlob, setCroppedImageBlob] = React.useState<Blob | null>(
     null
   );
@@ -90,11 +98,11 @@ const SetupYourBusiness = () => {
     imageCropperRef.current?.click();
   };
   const handleCancel = () => {
-    const confirmCancel = confirm("Are you sure you want to cancel?");
+    const confirmCancel = confirm("Are you sure you want to delete this photo?");
     if (confirmCancel) {
       setAvatarPreview("");
       setCropping(false);
-      setCroppedImage(null);
+      setCroppedImage("/photo.png");
     } else {
       return;
     }
@@ -372,9 +380,17 @@ const SetupYourBusiness = () => {
             city: state.city,
         }
         console.log("payload", {payload})
-        const profileUrl = croppedImage;
-        const uploadImage = await uploadCompanyPorfile(profileUrl);
-        console.log("uploadImage", {uploadImage})
+        let profileUrl = croppedImage;
+        
+        // Only upload if it's not the default photo
+        if (croppedImage !== "/photo.png") {
+          const uploadImage = await uploadCompanyPorfile(croppedImage);
+          console.log("uploadImage", {uploadImage})
+          profileUrl = uploadImage; // Use the uploaded URL
+        } else {
+          // Use the default photo path
+          profileUrl = "/photo.png";
+        }
 
         const response = await updateSetupNewBusiness(payload , id as string);
         console.log("response", {response})
@@ -444,34 +460,25 @@ const SetupYourBusiness = () => {
                     cursor: "pointer",
                   }}
                 >
-                  {!croppedImage ? (
-                    <Image
-                      src="/company_logo_placeholder.png"
-                      alt="fav"
-                      height={70}
-                      width={70}
-                    />
-                  ) : (
-                    <Image
-                      src={croppedImage}
-                      width={70}
-                      height={70}
-                      className={styles.userimageicon}
-                      alt="avatar"
-                    />
-                  )}
+                  <Image
+                    src={croppedImage}
+                    width={137}
+                    height={137}
+                    className={styles.userimageicon}
+                    alt="avatar"
+                  />
                 </div>
               </ImageCropper>
               <p className={`${styles.addphototext} lg-mt-8 lg-mb-20`}>
-                {croppedImage ? (
-                  <div className="d-flex align-items-center justify-content-center gap-16">
-                    <a
-                      className="label-medium primary_color"
-                      onClick={handleAvatarClick}
-                      style={{ cursor: "pointer" }}
-                    >
-                      Edit &nbsp;
-                    </a>
+                <div className="d-flex align-items-center justify-content-center gap-16">
+                  <a
+                    className="label-medium primary_color"
+                    onClick={handleAvatarClick}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {croppedImage === "/photo.png" ? "" : "Edit"} &nbsp;
+                  </a>
+                  {croppedImage !== "/photo.png" && (
                     <a
                       className="label-medium  danger-color"
                       onClick={handleCancel}
@@ -479,85 +486,56 @@ const SetupYourBusiness = () => {
                     >
                       Delete
                     </a>
-                  </div>
-                ) : (
-                  <a
-                    className="label-medium primary_color"
-                    onClick={handleAvatarClick}
-                  >
-                    Add Photo
-                  </a>
-                )}
+                  )}
+                </div>
               </p>
             </div>
           </div>
 
           <div className={styles.setupform}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <input
-                type="text"
-                id="gstNumber"
-                name="gstNumber"
-                className={styles.inputField}
-                placeholder="GST number"
-                value={state.gstNumber}
-                onChange={({ target }) => onChangeState("gstNumber", target.value)}
-                style={{ width: "300px" }}
-                disabled={lockedFromGst.gstNumber}
-              />
-              {gstVerified ? (
-                <>
-                  <Image
-                    src="/verified-badge-fill.svg"
-                    width={20}
-                    height={20}
-                    alt="gst-verified"
-                  />
-                </>
-              ) : (
-                <button
-                  className={styles.verifyButton}
-                  onClick={handleVerifyGst}
-                  disabled={(state.gstNumber || "").length !== 15}
-                  style={{
-                    backgroundColor: (state.gstNumber || "").length === 15 ? "#ff9900" : "#ccc",
-                    color: "#fff",
-                    cursor: (state.gstNumber || "").length === 15 ? "pointer" : "not-allowed",
+            {/* Row: Phone + GST */}
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ flex: 1, minWidth: "240px" }}>
+                <input
+                  type="tel"
+                  id="number"
+                  name="number"
+                  className={styles.inputField}
+                  placeholder="Phone number"
+                  value={state.number}
+                  onKeyPress={(e) => {
+                    if (isNaN(Number(e.key))) {
+                      e.preventDefault();
+                    }
                   }}
-                >
-                  Verify
-                </button>
-              )}
-            </div>
-            <div>
-              <input
-                type="text"
-                name="businessName"
-                className={styles.inputField}
-                placeholder="Company Name"
-                value={state.businessName}
-                onChange={({ target }) =>
-                  onChangeState("businessName", target.value)
-                }
-                disabled={lockedFromGst.businessName}
-              />
-            </div>
-            <div>
-              <input
-                type="tel"
-                id="number"
-                name="number"
-                className={styles.inputField}
-                placeholder="Phone Number"
-                value={state.number}
-                onKeyPress={(e) => {
-                  if (isNaN(Number(e.key))) {
-                    e.preventDefault();
-                  }
-                }}
-                onChange={({ target }) => onChangeState("number", target.value)}
-                disabled={lockedFromGst.number}
-              />
+                  onChange={({ target }) => onChangeState("number", target.value)}
+                  disabled={lockedFromGst.number}
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: "240px", display: "flex", alignItems: "center", gap: 12 }}>
+                <input
+                  type="text"
+                  id="gstNumber"
+                  name="gstNumber"
+                  className={styles.inputField}
+                  placeholder="GST Number"
+                  value={state.gstNumber}
+                  onChange={({ target }) => onChangeState("gstNumber", target.value)}
+                  disabled={lockedFromGst.gstNumber}
+                />
+                {gstVerified ? (
+                  <Image src="/verified-badge-fill.svg" width={20} height={20} alt="gst-verified" />
+                ) : (
+                  <button
+                    className={styles.verifyButton}
+                    onClick={handleVerifyGst}
+                    disabled={(state.gstNumber || "").length !== 15}
+                    style={{ backgroundColor: (state.gstNumber || "").length === 15 ? "#ff9900" : "#ccc", color: "#fff", cursor: (state.gstNumber || "").length === 15 ? "pointer" : "not-allowed" }}
+                  >
+                    Verify
+                  </button>
+                )}
+              </div>
             </div>
             <div>
               <div className={styles.box}>
@@ -567,7 +545,7 @@ const SetupYourBusiness = () => {
                   <input
                     type="text"
                     className={styles.input}
-                    style={{ width: "300px" }}
+                    style={{ flex: 1 }}
                     value={otp}
                     // onChange={(e) => setOtp(e.target.value)}
 
@@ -634,55 +612,82 @@ const SetupYourBusiness = () => {
                 </p>
               </div>
             </div>
-            {/* Business type removed; GST number field is at top with verify button */}
-
-            <div>
-              <input
-                type="Address"
-                id="address"
-                name="address"
-                className={styles.inputField}
-                placeholder="Address"
-                value={state.address}
-                onChange={({ target }) => onChangeState("address", target.value)}
-                disabled={lockedFromGst.address}
-              />
-            </div>
-            <div>
-              <input
-                type="Pin"
-                id="pincode"
-                name="pincode"
-                className={styles.inputField}
-                placeholder="Pin"
-                value={state.pincode}
-                onChange={({ target }) =>
-                  onChangeState("pincode", target.value)
-                }
-                disabled={lockedFromGst.pincode}
-              />
-            </div>
-
-            <div className="selectedCitystyle">
-              <Select
-                value={selectCountry}
-                onChange={handleCountryChanged}
-                options={countrie}
-                placeholder="Select Country"
-                isDisabled={lockedFromGst.country}
-              />
-               </div>
- 
-<div className="selectedCitystyle">
-              <Select
-                value={selectedCity}
-                onChange={setSelectedCity}
-                options={selectCountry ? cities[selectCountry.value] : []}
-                placeholder="Select City"
-                className={styles.city}
-                isDisabled={lockedFromGst.city}
-              />
+            {/* Row: Company + Email */}
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ flex: 1, minWidth: "240px" }}>
+                <input
+                  type="text"
+                  name="businessName"
+                  className={styles.inputField}
+                  placeholder="Company name"
+                  value={state.businessName}
+                  onChange={({ target }) => onChangeState("businessName", target.value)}
+                  disabled={lockedFromGst.businessName}
+                />
               </div>
+              <div style={{ flex: 1, minWidth: "240px" }}>
+                <input
+                  type="email"
+                  name="email"
+                  className={styles.inputField}
+                  placeholder="Email address"
+                  value={state.email}
+                  onChange={({ target }) => onChangeState("email", target.value)}
+                  disabled={false}
+                />
+              </div>
+            </div>
+
+            {/* Row: Address + Pincode */}
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ flex: 1, minWidth: "240px" }}>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  className={styles.inputField}
+                  placeholder="Address"
+                  value={state.address}
+                  onChange={({ target }) => onChangeState("address", target.value)}
+                  disabled={lockedFromGst.address}
+                />
+              </div>
+              <div style={{ flex: 1, minWidth: "240px" }}>
+                <input
+                  type="text"
+                  id="pincode"
+                  name="pincode"
+                  className={styles.inputField}
+                  placeholder="Pincode"
+                  value={state.pincode}
+                  onChange={({ target }) => onChangeState("pincode", target.value)}
+                  disabled={lockedFromGst.pincode}
+                />
+              </div>
+            </div>
+
+            {/* Row: Country + City */}
+            <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+              <div className="selectedCitystyle" style={{ flex: 1, minWidth: "240px" }}>
+                <Select
+                  value={selectCountry}
+                  onChange={handleCountryChanged}
+                  options={countrie}
+                  placeholder="Select country"
+                  isDisabled={lockedFromGst.country}
+                />
+              </div>
+              <div className="selectedCitystyle" style={{ flex: 1, minWidth: "240px" }}>
+                <Select
+                  value={selectedCity}
+                  onChange={setSelectedCity}
+                  options={selectCountry ? cities[selectCountry.value] : []}
+                  placeholder="Select city"
+                  className={styles.city}
+                  isDisabled={lockedFromGst.city}
+                />
+              </div>
+            </div>
            
 
             <div className={styles.country}>
@@ -795,4 +800,5 @@ const SetupYourBusiness = () => {
 };
 
 export default SetupYourBusiness;
+
 

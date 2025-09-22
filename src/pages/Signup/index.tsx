@@ -146,8 +146,8 @@ export default function Signup() {
                 <Inputfield
                   name="firstName"
                   type="text"
-                  label="First name"
-                  placeholder="Input first name"
+                  // label="First name"
+                  placeholder="First name"
                   onChange={(e: any) => handleChange(e)}
                   value={values.firstName}
                 />
@@ -164,8 +164,8 @@ export default function Signup() {
                 <Inputfield
                   name="lastName"
                   type="text"
-                  label="Last name"
-                  placeholder="Input last name"
+                  // label="Last name"
+                  placeholder="Last name"
                   value={values.lastName}
                   onChange={(e: any) => handleChange(e)}
                 />
@@ -187,8 +187,8 @@ export default function Signup() {
             <Inputfield
               name="email"
               type="email"
-              label="Email address"
-              placeholder="example.email@gmail.com"
+              // label="Email address"
+              placeholder="Enter Email address"
               onChange={(e: any) => handleChange(e)}
               value={values.email}
             />
@@ -223,7 +223,7 @@ export default function Signup() {
             <Inputfield
               type="password"
               id="password"
-              label="Password"
+              // label="Password"
               name="password"
               placeholder="Password"
               value={values?.password}
@@ -243,7 +243,7 @@ export default function Signup() {
             <Inputfield
               type="password"
               id="confirmPassword"
-              label="Confirm Password"
+              // label="Confirm Password"
               name="confirmPassword"
               placeholder="Confirm Password"
               value={values?.confirmPassword}
