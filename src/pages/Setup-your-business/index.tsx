@@ -13,7 +13,7 @@ import useLoading from "@/hooks/use-loading";
 import SpinnerView from "@/component/spinner";
 import { on } from "events";
 import { useRouter } from "next/router";
-import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails } from "../../../network-requests/apis";
+import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails, updateCustomerProfilePicture } from "../../../network-requests/apis";
 import { set } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { getUserById } from "../../../network-requests/hooks/api";
@@ -124,6 +124,11 @@ const SetupYourBusiness = () => {
     number: false,
   });
 
+  // input validation errors
+  const [phoneError, setPhoneError] = React.useState("");
+  const [gstError, setGstError] = React.useState("");
+  const [gstLoading, setGstLoading] = React.useState(false);
+
   const handleOtpSend = React.useCallback(async () => {
     const otpPayload = {
       company_name: state?.businessName,
@@ -175,14 +180,16 @@ const SetupYourBusiness = () => {
 
   // gst verification (API call)
   const handleVerifyGst = React.useCallback(async () => {
-    const input = (state.gstNumber || "").trim();
-    const isValidFormat = /^[0-9A-Za-z]{15}$/.test(input);
-    if (!isValidFormat) {
-      alert("Invalid GST number. It must be exactly 15 alphanumeric characters.");
+    const input = (state.gstNumber || "").trim().toUpperCase();
+    const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+    if (!gstRegex.test(input)) {
+      setGstError("Invalid GSTIN format.");
+      alert("Invalid GST number. It must be a valid 15-character GSTIN.");
       setGstVerified(false);
       return;
     }
     try {
+      setGstLoading(true);
       const apiResponse: any = await getGstDetails(input);
       const details = apiResponse?.data || apiResponse;
       console.log("GST details:", details);
@@ -229,10 +236,14 @@ const SetupYourBusiness = () => {
       });
 
       setGstVerified(true);
+      setGstError("");
+      // details fetched successfully, no popup per requirement
     } catch (error) {
       console.log("GST verify error", { error });
       setGstVerified(false);
       alert("GST number not found or invalid. Please check and try again.");
+    } finally {
+      setGstLoading(false);
     }
   }, [state.gstNumber]);
 
@@ -240,6 +251,41 @@ const SetupYourBusiness = () => {
     // reset GST verified flag when value changes
     setGstVerified(false);
   }, [state.gstNumber]);
+
+  // input handlers with validation
+  const handlePhoneChange = React.useCallback(
+    ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+      const digits = target.value.replace(/\D/g, "").slice(0, 10);
+      onChangeState("number", digits);
+      if (digits.length === 0) {
+        setPhoneError("");
+      } else if (digits.length !== 10) {
+        setPhoneError("Enter a valid 10-digit phone number.");
+      } else {
+        setPhoneError("");
+      }
+    },
+    [onChangeState]
+  );
+
+  const handleGstChange = React.useCallback(
+    ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+      const upper = target.value
+        .toUpperCase()
+        .replace(/[^0-9A-Z]/g, "")
+        .slice(0, 15);
+      onChangeState("gstNumber", upper);
+      if (upper.length === 0) {
+        setGstError("");
+      } else if (upper.length < 15) {
+        setGstError("GSTIN must be 15 characters.");
+      } else {
+        const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+        setGstError(gstRegex.test(upper) ? "" : "Invalid GSTIN format.");
+      }
+    },
+    [onChangeState]
+  );
 
   // business data start
   // Business type removed
@@ -382,13 +428,18 @@ const SetupYourBusiness = () => {
         console.log("payload", {payload})
         let profileUrl = croppedImage;
         
-        // Only upload if it's not the default photo
         if (croppedImage !== "/photo.png") {
+          if (croppedImageBlob) {
+            try {
+              await updateCustomerProfilePicture(id as string, croppedImageBlob);
+            } catch (e) {
+              console.log("profile PUT error", e);
+            }
+          }
           const uploadImage = await uploadCompanyPorfile(croppedImage);
           console.log("uploadImage", {uploadImage})
-          profileUrl = uploadImage; // Use the uploaded URL
+          profileUrl = uploadImage; 
         } else {
-          // Use the default photo path
           profileUrl = "/photo.png";
         }
 
@@ -426,6 +477,7 @@ const SetupYourBusiness = () => {
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
+              marginTop: 24,
             }}
           >
             <div className="d-flex flex-column">
@@ -458,6 +510,10 @@ const SetupYourBusiness = () => {
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
+                    width: 137,
+                    height: 137,
+                    borderRadius: "50%",
+                    overflow: "hidden",
                   }}
                 >
                   <Image
@@ -466,23 +522,26 @@ const SetupYourBusiness = () => {
                     height={137}
                     className={styles.userimageicon}
                     alt="avatar"
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
               </ImageCropper>
-              <p className={`${styles.addphototext} lg-mt-8 lg-mb-20`}>
-                <div className="d-flex align-items-center justify-content-center gap-16">
-                  <a
-                    className="label-medium primary_color"
-                    onClick={handleAvatarClick}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {croppedImage === "/photo.png" ? "" : "Edit"} &nbsp;
-                  </a>
+              <p className={`${styles.addphototext} lg-mt-8 lg-mb-20`} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", textAlign: "center", marginTop: 12, marginBottom: 12 }}>
+                <div className="d-flex align-items-center justify-content-center gap-16" style={{ width: "100%", justifyContent: "center", columnGap: 10 }}>
+                  {croppedImage !== "/photo.png" && (
+                    <a
+                      className="label-medium primary_color"
+                      onClick={handleAvatarClick}
+                      style={{ cursor: "pointer", padding: "4px 10px", borderRadius: 4, background: "#2e7d32", color: "#ffffff", border: "1px solid #2e7d32", lineHeight: 1.2, fontSize: 12, display: "inline-block" }}
+                    >
+                      Edit
+                    </a>
+                  )}
                   {croppedImage !== "/photo.png" && (
                     <a
                       className="label-medium  danger-color"
                       onClick={handleCancel}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer", padding: "4px 10px", borderRadius: 4, background: "#e53935", color: "#ffffff", border: "1px solid #e53935", lineHeight: 1.2, fontSize: 12, display: "inline-block", marginLeft: 10 }}
                     >
                       Delete
                     </a>
@@ -492,7 +551,7 @@ const SetupYourBusiness = () => {
             </div>
           </div>
 
-          <div className={styles.setupform}>
+          <div className={styles.setupform} style={{ marginTop: 16 }}>
             {/* Row: Phone + GST */}
             <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
               <div style={{ flex: 1, minWidth: "240px" }}>
@@ -508,9 +567,12 @@ const SetupYourBusiness = () => {
                       e.preventDefault();
                     }
                   }}
-                  onChange={({ target }) => onChangeState("number", target.value)}
+                  onChange={handlePhoneChange}
                   disabled={lockedFromGst.number}
                 />
+                {phoneError && (
+                  <span style={{ color: "#d32f2f", fontSize: 12 }}>{phoneError}</span>
+                )}
               </div>
               <div style={{ flex: 1, minWidth: "240px", display: "flex", alignItems: "center", gap: 12 }}>
                 <input
@@ -520,19 +582,22 @@ const SetupYourBusiness = () => {
                   className={styles.inputField}
                   placeholder="GST Number"
                   value={state.gstNumber}
-                  onChange={({ target }) => onChangeState("gstNumber", target.value)}
+                  onChange={handleGstChange}
                   disabled={lockedFromGst.gstNumber}
                 />
+                {gstError && (
+                  <span style={{ color: "#d32f2f", fontSize: 12 }}>{gstError}</span>
+                )}
                 {gstVerified ? (
                   <Image src="/verified-badge-fill.svg" width={20} height={20} alt="gst-verified" />
                 ) : (
                   <button
                     className={styles.verifyButton}
                     onClick={handleVerifyGst}
-                    disabled={(state.gstNumber || "").length !== 15}
-                    style={{ backgroundColor: (state.gstNumber || "").length === 15 ? "#ff9900" : "#ccc", color: "#fff", cursor: (state.gstNumber || "").length === 15 ? "pointer" : "not-allowed" }}
+                    disabled={!!gstError || (state.gstNumber || "").length !== 15}
+                    style={{ backgroundColor: !gstError && (state.gstNumber || "").length === 15 ? "#ff9900" : "#ccc", color: "#fff", cursor: !gstError && (state.gstNumber || "").length === 15 ? "pointer" : "not-allowed", minWidth: 90, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                   >
-                    Verify
+                    {gstLoading ? <SpinnerView size={14} loading={true} /> : 'Verify'}
                   </button>
                 )}
               </div>
@@ -551,7 +616,7 @@ const SetupYourBusiness = () => {
 
                     // only allow numbers to be entered in the input field and when is verified is true then don't allow to enter the value in the input field
                     onKeyPress={(e) => {
-                      if (isNaN(Number(e.key))) {
+                      if (isNaN(Number(e.key)) || otp.length >= 6) {
                         e.preventDefault();
                       }
                     }}
@@ -559,7 +624,8 @@ const SetupYourBusiness = () => {
                       if (isVerified) {
                         e.preventDefault();
                       } else {
-                        setOtp(e.target.value);
+                        const digits = e.target.value.replace(/\D/g, "").slice(0, 6);
+                        setOtp(digits);
                       }
                     }}
                   />
