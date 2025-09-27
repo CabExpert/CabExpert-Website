@@ -66,7 +66,7 @@ export const getAllBlogs = async () => {
 // GST details by GST number
 export const getGstDetails = async (gstNumber: string) => {
     try {
-        const response = await axios.get(`auth/admin/gst-details/${gstNumber}`);
+        const response = await axios.get(`/auth/admin/gst-details/${gstNumber}`);
         return response.data;
     } catch (error) {
         throw error;
@@ -79,7 +79,7 @@ export const updateCustomerProfilePicture = (id: string, file: File | Blob) => {
     const formData = new FormData();
     formData.append("profilePicture", file);
     return axios
-        .put(`auth/admin//customer/${id}/pf`, formData, {
+        .put(`/auth/admin/customer/${id}/pf`, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response: any) => response?.data)
@@ -108,6 +108,16 @@ export const sendOtp = async (data: any) => {
                 to: data.phone_number,
             }
         });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+// check unique field (gst, phone, email)
+export const checkUnique = async (field: string, value: string) => {
+    try {
+        const response = await axios.get(`/auth/admin/check-unique?field=${field}&value=${value}`);
         return response.data;
     } catch (error) {
         throw error;

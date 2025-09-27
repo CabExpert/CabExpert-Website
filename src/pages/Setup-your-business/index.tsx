@@ -13,7 +13,7 @@ import useLoading from "@/hooks/use-loading";
 import SpinnerView from "@/component/spinner";
 import { on } from "events";
 import { useRouter } from "next/router";
-import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails, updateCustomerProfilePicture } from "../../../network-requests/apis";
+import { updateSetupNewBusiness, uploadCompanyPorfile, getGstDetails, updateCustomerProfilePicture, checkUnique } from "../../../network-requests/apis";
 import { set } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { getUserById } from "../../../network-requests/hooks/api";
@@ -77,7 +77,7 @@ const SetupYourBusiness = () => {
     if (userData?.email && !state.email) {
       onChangeState("email", userData.email);
     }
-  }, [userData?.email]);
+  }, [userData?.email, state.email, onChangeState]);
 
   //image croper start
   const imageCropperRef = useRef<HTMLInputElement>(null);
@@ -85,6 +85,7 @@ const SetupYourBusiness = () => {
   const [croppedImageBlob, setCroppedImageBlob] = React.useState<Blob | null>(
     null
   );
+  const [cropperKey, setCropperKey] = React.useState(0);
   const [avatarPreview, setAvatarPreview] = React.useState("");
   const [cropping, setCropping] = React.useState(false);
   const [fileMeta, setFileMeta] = useImmer({
@@ -103,6 +104,18 @@ const SetupYourBusiness = () => {
       setAvatarPreview("");
       setCropping(false);
       setCroppedImage("/photo.png");
+      setCroppedImageBlob(null);
+      setFileMeta((draft: any) => {
+        draft.name = "";
+        draft.type = "";
+        draft.size = 0;
+        draft.extension = ".png";
+        draft.file = null;
+      });
+      if (imageCropperRef.current) {
+        try { (imageCropperRef.current as any).value = ""; } catch {}
+      }
+      setCropperKey((k) => k + 1);
     } else {
       return;
     }
@@ -128,6 +141,9 @@ const SetupYourBusiness = () => {
   const [phoneError, setPhoneError] = React.useState("");
   const [gstError, setGstError] = React.useState("");
   const [gstLoading, setGstLoading] = React.useState(false);
+  const [gstTaken, setGstTaken] = React.useState("");
+  const [phoneTaken, setPhoneTaken] = React.useState("");
+  const [emailTaken, setEmailTaken] = React.useState("");
 
   const handleOtpSend = React.useCallback(async () => {
     const otpPayload = {
@@ -171,12 +187,15 @@ const SetupYourBusiness = () => {
       if (response.data.status === "success") {
         setIsVerified(true);
       } else {
-        alert("OTP is not correct");
+        const ok = window.confirm("OTP is not correct");
+        if (ok) {
+          window.location.reload();
+        }
       }
     } catch (error) {
       console.log("error", { error });
     }
-  }, [otp]);
+  }, [otp, state?.number]);
 
   // gst verification (API call)
   const handleVerifyGst = React.useCallback(async () => {
@@ -184,7 +203,10 @@ const SetupYourBusiness = () => {
     const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
     if (!gstRegex.test(input)) {
       setGstError("Invalid GSTIN format.");
-      alert("Invalid GST number. It must be a valid 15-character GSTIN.");
+      const ok = window.confirm("Invalid GST number. It must be a valid 15-character GSTIN.");
+      if (ok) {
+        window.location.reload();
+      }
       setGstVerified(false);
       return;
     }
@@ -241,11 +263,17 @@ const SetupYourBusiness = () => {
     } catch (error) {
       console.log("GST verify error", { error });
       setGstVerified(false);
-      alert("GST number not found or invalid. Please check and try again.");
+      const msg = (error as any)?.response?.data?.message || "GST number not found or invalid. Please check and try again.";
+      if (typeof window !== "undefined") {
+        const ok = window.confirm(msg);
+        if (ok) {
+          window.location.reload();
+        }
+      }
     } finally {
       setGstLoading(false);
     }
-  }, [state.gstNumber]);
+  }, [state.gstNumber, setState]);
 
   React.useEffect(() => {
     // reset GST verified flag when value changes
@@ -259,8 +287,10 @@ const SetupYourBusiness = () => {
       onChangeState("number", digits);
       if (digits.length === 0) {
         setPhoneError("");
+        setPhoneTaken("");
       } else if (digits.length !== 10) {
         setPhoneError("Enter a valid 10-digit phone number.");
+        setPhoneTaken("");
       } else {
         setPhoneError("");
       }
@@ -312,7 +342,7 @@ const SetupYourBusiness = () => {
     if (selectedCity) {
       onChangeState("city", selectedCity.label);
     }
-  }, [selectedCity]);
+  }, [selectedCity, onChangeState]);
 
   // checkbox
   const [isChecked, setIsChecked] = React.useState(false);
@@ -401,12 +431,10 @@ const SetupYourBusiness = () => {
     }
 
   },[
-    payment_Payload,
+    selectedPackage,
     userData,
     state,
-    id,
-    selectedPackage,
-    
+    id
   ])
 
 
@@ -414,7 +442,7 @@ const SetupYourBusiness = () => {
   const handleSubmit = React.useCallback(async()=>{
 
     try {
-        // setLoading(true);
+        setLoading(true);
         const payload:any = {
             businessName: state.businessName,
             number: state.number,
@@ -443,9 +471,36 @@ const SetupYourBusiness = () => {
           profileUrl = "/photo.png";
         }
 
+        // Before submit, ensure phone not already in use
+        try {
+          const digits = (state.number || "").trim();
+          if (digits.length === 10) {
+            const phoneResp: any = await checkUnique("phone", digits);
+            if (phoneResp?.success === false) {
+              const msg = phoneResp?.message || "Phone number is already in use";
+              setPhoneTaken(msg);
+              alert(msg);
+              return;
+            }
+          }
+        } catch {}
+
+        // Before submit, ensure email not already in use
+        try {
+          const email = (state.email || "").trim();
+          if (email.length > 3) {
+            const emailResp: any = await checkUnique("email", email);
+            if (emailResp?.success === false) {
+              const msg = emailResp?.message || "Email is already in use";
+              setEmailTaken(msg);
+              alert(msg);
+              return;
+            }
+          }
+        } catch {}
+
         const response = await updateSetupNewBusiness(payload , id as string);
         console.log("response", {response})
-        setLoading(false);
         if (response) { 
             if(selectedPackage?.title === "Free Account"){
               router.push("/free-package")
@@ -457,11 +512,17 @@ const SetupYourBusiness = () => {
             
           }
         
-    } catch (error) {
+  } catch (error) {
         console.log("error", {error})
+        const msg = (error as any)?.response?.data?.message || (error as any)?.message || "Something went wrong. Please try again.";
+        setGstError("");
+        setGstTaken(msg);
+        alert(msg);
+    } finally {
+        setLoading(false);
     }
 
-  },[ state, croppedImage, id , selectedPackage, setLoading, handlePayment ])
+  },[ state, croppedImage, croppedImageBlob, id, selectedPackage, setLoading, handlePayment, router ])
 
   return (
     <>
@@ -482,6 +543,7 @@ const SetupYourBusiness = () => {
           >
             <div className="d-flex flex-column">
               <ImageCropper
+                key={cropperKey}
                 ref={imageCropperRef}
                 maxSize={5}
                 image={croppedImage}
@@ -514,6 +576,9 @@ const SetupYourBusiness = () => {
                     height: 137,
                     borderRadius: "50%",
                     overflow: "hidden",
+                    padding: 12,
+                    boxSizing: "border-box",
+                    background: "#fff",
                   }}
                 >
                   <Image
@@ -522,11 +587,11 @@ const SetupYourBusiness = () => {
                     height={137}
                     className={styles.userimageicon}
                     alt="avatar"
-                    style={{ objectFit: "cover" }}
+                    style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
                   />
                 </div>
               </ImageCropper>
-              <p className={`${styles.addphototext} lg-mt-8 lg-mb-20`} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", textAlign: "center", marginTop: 12, marginBottom: 12 }}>
+              <div className={`${styles.addphototext} lg-mt-8 lg-mb-20`} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", textAlign: "center", marginTop: 12, marginBottom: 12 }}>
                 <div className="d-flex align-items-center justify-content-center gap-16" style={{ width: "100%", justifyContent: "center", columnGap: 10 }}>
                   {croppedImage !== "/photo.png" && (
                     <a
@@ -547,7 +612,7 @@ const SetupYourBusiness = () => {
                     </a>
                   )}
                 </div>
-              </p>
+              </div>
             </div>
           </div>
 
@@ -555,24 +620,29 @@ const SetupYourBusiness = () => {
             {/* Row: Phone + GST */}
             <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
               <div style={{ flex: 1, minWidth: "240px" }}>
-                <input
-                  type="tel"
-                  id="number"
-                  name="number"
-                  className={styles.inputField}
-                  placeholder="Phone number"
-                  value={state.number}
-                  onKeyPress={(e) => {
-                    if (isNaN(Number(e.key))) {
-                      e.preventDefault();
-                    }
-                  }}
-                  onChange={handlePhoneChange}
-                  disabled={lockedFromGst.number}
-                />
-                {phoneError && (
-                  <span style={{ color: "#d32f2f", fontSize: 12 }}>{phoneError}</span>
-                )}
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <input
+                    type="tel"
+                    id="number"
+                    name="number"
+                    className={styles.inputField}
+                    placeholder="Phone number"
+                    value={state.number}
+                    onKeyPress={(e) => {
+                      if (isNaN(Number(e.key))) {
+                        e.preventDefault();
+                      }
+                    }}
+                    onChange={handlePhoneChange}
+                    disabled={lockedFromGst.number}
+                  />
+                  {phoneError && (
+                    <span style={{ color: "#d32f2f", fontSize: 12, marginTop: 4 }}>{phoneError}</span>
+                  )}
+                  {!phoneError && phoneTaken && (
+                    <span style={{ color: "#d32f2f", fontSize: 12, marginTop: 4 }}>{phoneTaken}</span>
+                  )}
+                </div>
               </div>
               <div style={{ flex: 1, minWidth: "240px", display: "flex", alignItems: "center", gap: 12 }}>
                 <input
@@ -692,15 +762,23 @@ const SetupYourBusiness = () => {
                 />
               </div>
               <div style={{ flex: 1, minWidth: "240px" }}>
-                <input
-                  type="email"
-                  name="email"
-                  className={styles.inputField}
-                  placeholder="Email address"
-                  value={state.email}
-                  onChange={({ target }) => onChangeState("email", target.value)}
-                  disabled={false}
-                />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <input
+                    type="email"
+                    name="email"
+                    className={styles.inputField}
+                    placeholder="Email address"
+                    value={state.email}
+                    onChange={({ target }) => {
+                      onChangeState("email", target.value);
+                      setEmailTaken("");
+                    }}
+                    disabled={false}
+                  />
+                  {emailTaken && (
+                    <span style={{ color: "#d32f2f", fontSize: 12, marginTop: 4 }}>{emailTaken}</span>
+                  )}
+                </div>
               </div>
             </div>
 
