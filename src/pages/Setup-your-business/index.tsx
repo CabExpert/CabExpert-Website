@@ -305,6 +305,11 @@ const SetupYourBusiness = () => {
         .replace(/[^0-9A-Z]/g, "")
         .slice(0, 15);
       onChangeState("gstNumber", upper);
+      
+      // Clear error messages when user starts typing
+      setGstError("");
+      setGstTaken("");
+      
       if (upper.length === 0) {
         setGstError("");
       } else if (upper.length < 15) {
@@ -479,7 +484,6 @@ const SetupYourBusiness = () => {
             if (phoneResp?.success === false) {
               const msg = phoneResp?.message || "Phone number is already in use";
               setPhoneTaken(msg);
-              alert(msg);
               return;
             }
           }
@@ -493,7 +497,6 @@ const SetupYourBusiness = () => {
             if (emailResp?.success === false) {
               const msg = emailResp?.message || "Email is already in use";
               setEmailTaken(msg);
-              alert(msg);
               return;
             }
           }
@@ -515,9 +518,25 @@ const SetupYourBusiness = () => {
   } catch (error) {
         console.log("error", {error})
         const msg = (error as any)?.response?.data?.message || (error as any)?.message || "Something went wrong. Please try again.";
-        setGstError("");
-        setGstTaken(msg);
-        alert(msg);
+        
+        // Check if it's a GST-related error
+        if (msg.toLowerCase().includes("gst")) {
+          setGstError("");
+          setGstTaken(msg);
+        } 
+        // Check if it's a phone-related error
+        else if (msg.toLowerCase().includes("phone") || msg.toLowerCase().includes("number")) {
+          setPhoneTaken(msg);
+        }
+        // Check if it's an email-related error
+        else if (msg.toLowerCase().includes("email")) {
+          setEmailTaken(msg);
+        }
+        // For other errors, show GST error as fallback
+        else {
+          setGstError("");
+          setGstTaken(msg);
+        }
     } finally {
         setLoading(false);
     }
@@ -579,6 +598,7 @@ const SetupYourBusiness = () => {
                     padding: 12,
                     boxSizing: "border-box",
                     background: "#fff",
+                    border: "1px solid #ccc",
                   }}
                 >
                   <Image
@@ -653,11 +673,8 @@ const SetupYourBusiness = () => {
                   placeholder="GST Number"
                   value={state.gstNumber}
                   onChange={handleGstChange}
-                  disabled={lockedFromGst.gstNumber}
+                  disabled={!!(lockedFromGst.gstNumber && !!state.gstNumber && !gstError && !gstTaken)}
                 />
-                {gstError && (
-                  <span style={{ color: "#d32f2f", fontSize: 12 }}>{gstError}</span>
-                )}
                 {gstVerified ? (
                   <Image src="/verified-badge-fill.svg" width={20} height={20} alt="gst-verified" />
                 ) : (
@@ -672,6 +689,20 @@ const SetupYourBusiness = () => {
                 )}
               </div>
             </div>
+            {/* GST Error Messages */}
+            {(gstError || gstTaken) && (
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 20, flexWrap: "wrap", marginTop: -20 }}>
+                <div style={{ flex: 1, minWidth: "240px" }}></div>
+                <div style={{ flex: 1, minWidth: "240px", display: "flex", flexDirection: "column" }}>
+                  {gstError && (
+                    <span style={{ color: "#d32f2f", fontSize: 12, marginTop: 0 }}>{gstError}</span>
+                  )}
+                  {!gstError && gstTaken && (
+                    <span style={{ color: "#d32f2f", fontSize: 12, marginTop: 0 }}>{gstTaken}</span>
+                  )}
+                </div>
+              </div>
+            )}
             <div>
               <div className={styles.box}>
                 <p tabIndex={0}>Verification</p>

@@ -17,6 +17,7 @@ import { RootState } from "@/store";
 import useLoading from "@/hooks/use-loading";
 import SpinnerView from "@/component/spinner";
 import { set } from "react-hook-form";
+import { checkUnique } from "../../../network-requests/apis";
 
 interface PackageValue {
   title: string;
@@ -36,8 +37,29 @@ export default function Signup() {
 
   const [packageValue, setPackageValue] = useState<PackageValue | null>(null);
   const [isChecked, setIsChecked] = React.useState(false);
+  const [emailError, setEmailError] = React.useState("");
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handleEmailChange = async (e: any) => {
+    const email = e.target.value;
+    formik.handleChange(e);
+    
+    // Clear previous error
+    setEmailError("");
+    
+    // Check if email is valid format and not empty
+    if (email && email.includes("@") && email.includes(".")) {
+      try {
+        const response = await checkUnique("email", email);
+        if (response?.success === false) {
+          setEmailError("Email address is already in use");
+        }
+      } catch (error) {
+        console.log("Error checking email uniqueness:", error);
+      }
+    }
   };
 
   const selectedPackage = useSelector(
@@ -91,6 +113,12 @@ export default function Signup() {
   const [data, setData] = React.useState("");
 
   const handleSubmitSignupData = async (values: any) => {
+    // Check if email is already in use before submitting
+    if (emailError) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     console.log("values submit", { values });
 
@@ -121,7 +149,15 @@ export default function Signup() {
 
       onError: (res: any) => {
         console.log("ERROR in Signup", { res });
-        toast.error(res?.response?.data?.message);
+        const errorMessage = res?.response?.data?.message;
+        
+        // Check if it's an email-related error
+        if (errorMessage && errorMessage.toLowerCase().includes("email")) {
+          setEmailError("Email address is already in use");
+        } else {
+          toast.error(errorMessage);
+        }
+        setLoading(false);
       },
     });
   };
@@ -189,7 +225,7 @@ export default function Signup() {
               type="email"
               // label="Email address"
               placeholder="Enter Email address"
-              onChange={(e: any) => handleChange(e)}
+              onChange={handleEmailChange}
               value={values.email}
             />
             <span
@@ -198,6 +234,14 @@ export default function Signup() {
             >
               {errors?.email && touched?.email && errors?.email}
             </span>
+            {emailError && (
+              <span
+                style={{ color: "red", marginTop: "-11px", fontSize: "15px" }}
+                className="visible"
+              >
+                {emailError}
+              </span>
+            )}
           </div>
 
           {/* <div>
@@ -310,13 +354,14 @@ export default function Signup() {
                     values?.email &&
                     values?.password &&
                     // values?.confirmPassword &&
-                    isChecked
+                    isChecked &&
+                    !emailError
                       ? "#ff9900"
                       : "#ccc",
                   color: isChecked ? "#fbfbfb" : "#fbfbfb",
-                  cursor: isChecked ? "pointer" : "not-allowed",
+                  cursor: isChecked && !emailError ? "pointer" : "not-allowed",
                 }}
-                disabled={!isChecked}
+                disabled={!isChecked || !!emailError}
               >
                 Continue
               </button>
