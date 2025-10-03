@@ -200,13 +200,15 @@ const SetupYourBusiness = () => {
   // gst verification (API call)
   const handleVerifyGst = React.useCallback(async () => {
     const input = (state.gstNumber || "").trim().toUpperCase();
+    // If GST number is empty, treat as optional: do nothing and return without error
+    if (!input) {
+      setGstError("");
+      setGstVerified(false);
+      return;
+    }
     const gstRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
     if (!gstRegex.test(input)) {
       setGstError("Invalid GSTIN format.");
-      const ok = window.confirm("Invalid GST number. It must be a valid 15-character GSTIN.");
-      if (ok) {
-        window.location.reload();
-      }
       setGstVerified(false);
       return;
     }
@@ -264,12 +266,7 @@ const SetupYourBusiness = () => {
       console.log("GST verify error", { error });
       setGstVerified(false);
       const msg = (error as any)?.response?.data?.message || "GST number not found or invalid. Please check and try again.";
-      if (typeof window !== "undefined") {
-        const ok = window.confirm(msg);
-        if (ok) {
-          window.location.reload();
-        }
-      }
+      setGstError(msg);
     } finally {
       setGstLoading(false);
     }

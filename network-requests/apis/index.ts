@@ -79,7 +79,7 @@ export const updateCustomerProfilePicture = (id: string, file: File | Blob) => {
     const formData = new FormData();
     formData.append("profilePicture", file);
     return axios
-        .put(`/auth/admin/customer/${id}/pf`, formData, {
+        .put(`/auth/admin/user/pf`, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response: any) => response?.data)
